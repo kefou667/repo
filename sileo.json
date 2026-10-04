@@ -42,18 +42,6 @@
       "icon": "https://repo.xxtt.pp.ua//icons/com.nx.stheno.png"
     },
     {
-      "name": "NotchBanners",
-      "package": "com.ginsu.notchbanners",
-      "version": "2.0",
-      "description": "Banners from the notch!",
-      "section": "Tweaks",
-      "author": {
-        "name": "Ginsu"
-      },
-      "depiction": "https://repo.xxtt.pp.ua//depictions/com.ginsu.notchbanners.html",
-      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
-    },
-    {
       "name": "insulation",
       "package": "com.be-huge.insulation",
       "version": "0.1.38.1",

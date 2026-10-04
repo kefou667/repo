@@ -58,23 +58,6 @@ Size: 551004
 MD5sum: 06b38ca76d64a00e5b3fa72107e3ea2a
 SHA256: bc6a143df8dc8c555919df646a5323847b3f3dc6f877255e32b604955757986f
 
-Package: com.ginsu.notchbanners
-Name: NotchBanners
-Version: 2.0
-Architecture: iphoneos-arm
-Description: Banners from the notch!
-Maintainer: Ginsu
-Author: Ginsu
-Depiction: https://repo.xxtt.pp.ua//depictions/com.ginsu.notchbanners.html
-Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.ginsu.notchbanners.json
-Section: Tweaks
-Depends: dev.theos.orion14, firmware (>= 14.0), preferenceloader, com.ginsu.libgscommon
-Icon: https://repo.xxtt.pp.ua//icons/default.png
-Filename: debs/com.ginsu.notchbanners_2.0_iphoneos-arm.deb
-Size: 259084
-MD5sum: 96ddd79a4b4234683b9cfdb0991a5287
-SHA256: e6c51b9e7cbd3344e0b9ee946b7c6e06ec5f01437b65b0c4a58edcecf9ce01f4
-
 Package: com.be-huge.insulation
 Name: insulation
 Version: 0.1.38.1
