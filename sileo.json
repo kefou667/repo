@@ -30,6 +30,18 @@
       "icon": "https://repo.xxtt.pp.ua//icons/org.mr.appdatamanagerrl.png"
     },
     {
+      "name": "CocoaTop64 inject (RootHide)",
+      "package": "cn.zqbb.cocoatop64.inject.roothide",
+      "version": "3.2.0",
+      "description": "(RootHide) 白名单注入辅助器",
+      "section": "Utilities",
+      "author": {
+        "name": "Domo, SXX , zp"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/cn.zqbb.cocoatop64.inject.roothide.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/cn.zqbb.cocoatop64.inject.roothide.png"
+    },
+    {
       "name": "DockX",
       "package": "com.udevs.dockx",
       "version": "2.6.2",

@@ -38,6 +38,23 @@ Size: 4666008
 MD5sum: e615179a6bf582198ef62966e7f9aed8
 SHA256: b76bb2988fa598db21015a709c9374b10a30837fbdd91bbdc417e4d5c06a5613
 
+Package: cn.zqbb.cocoatop64.inject.roothide
+Name: CocoaTop64 inject (RootHide)
+Version: 3.2.0
+Architecture: iphoneos-arm64e
+Description: (RootHide) 白名单注入辅助器
+Maintainer: zp, SXX, Domo
+Author: Domo, SXX , zp
+Depiction: https://repo.xxtt.pp.ua//depictions/cn.zqbb.cocoatop64.inject.roothide.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/cn.zqbb.cocoatop64.inject.roothide.json
+Section: Utilities
+Conflicts: ru.domo.cocoatop, ru.domo.cocoatop64, zp.cocoatop64, zp.cocoatop64.unject, zp.cocoatop64.inject
+Icon: https://repo.xxtt.pp.ua//icons/cn.zqbb.cocoatop64.inject.roothide.png
+Filename: debs/CocoaTop64 inject (RootHide)_3.2.0_iphoneos-arm64e.deb
+Size: 184540
+MD5sum: ca2bfd7846b8f6d01f47dbe030047f9b
+SHA256: 1daf893467b78c01a7f2bf02083e40b0f8519f373d74c9fcc684a225d72fafd8
+
 Package: com.udevs.dockx
 Name: DockX
 Version: 2.6.2
