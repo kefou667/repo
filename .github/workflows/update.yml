@@ -1,4 +1,4 @@
-name: 更新源索引
+name: 更新并发布源
 
 on:
   push:
@@ -7,11 +7,16 @@ on:
       - 'debs/**'
       - 'icons/**'
       - 'update_packages.py'
+      - 'index.html'
+      - 'news/**'
+      - 'news.json'
       - '.github/workflows/update.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -37,3 +42,39 @@ jobs:
             git commit -m "🤖 自动更新源索引"
             git push
           fi
+
+      - name: 配置 GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: 准备 Pages 文件
+        run: |
+          mkdir -p _site
+
+          cp -r debs _site/
+          cp -r depictions _site/
+          cp -r icons _site/
+
+          cp Packages _site/
+          cp Packages.gz _site/
+          cp Packages.bz2 _site/
+          cp sileo.json _site/
+          cp news.json _site/
+
+          cp index.html _site/
+          cp -r news _site/
+
+          echo "Pages 文件准备完成"
+          find _site -maxdepth 2 -type f | sort
+
+      - name: 上传 Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+
+      - name: 发布到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
