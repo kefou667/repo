@@ -20,6 +20,24 @@ Size: 10001552
 MD5sum: a8939b8f4c7a70e3a61dfc34fdae98d4
 SHA256: 90dc14b7509e1e027eac24face108aca1d875f39fdb096e58957cd38b1c7144a
 
+Package: org.mr.appdatamanagerrl
+Name: Apps Manager软件备份破解版-Rootless
+Version: 1.8.2-5k
+Architecture: iphoneos-arm64e
+Description: 备份软件工具
+Maintainer: 搬运工
+Author: MainRepo
+Depiction: https://repo.xxtt.pp.ua//depictions/org.mr.appdatamanagerrl.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/org.mr.appdatamanagerrl.json
+Section: 软件破解
+Depends: firmware (>= 7.0)
+Pre-Depends: rootless-compat (>= 0.9)
+Icon: https://repo.xxtt.pp.ua//icons/org.mr.appdatamanagerrl.png
+Filename: debs/Apps Manager软件备份破解版-Rootless_1.8.2-5k_iphoneos-arm64e.deb
+Size: 4666008
+MD5sum: e615179a6bf582198ef62966e7f9aed8
+SHA256: b76bb2988fa598db21015a709c9374b10a30837fbdd91bbdc417e4d5c06a5613
+
 Package: com.udevs.dockx
 Name: DockX
 Version: 2.6.2

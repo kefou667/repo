@@ -18,6 +18,18 @@
       "icon": "https://repo.xxtt.pp.ua//icons/com.netskao.appdatas.png"
     },
     {
+      "name": "Apps Manager软件备份破解版-Rootless",
+      "package": "org.mr.appdatamanagerrl",
+      "version": "1.8.2-5k",
+      "description": "备份软件工具",
+      "section": "软件破解",
+      "author": {
+        "name": "MainRepo"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/org.mr.appdatamanagerrl.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/org.mr.appdatamanagerrl.png"
+    },
+    {
       "name": "DockX",
       "package": "com.udevs.dockx",
       "version": "2.6.2",
