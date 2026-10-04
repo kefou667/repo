@@ -1,48 +1,18 @@
 {
   "class": "DepictionTabView",
-  "minVersion": "0.3",
+  "tintColor": "#007AFF",
   "tabs": [
     {
-      "class": "DepictionStackView",
-      "tabname": "描述",
+      "tabname": "详情",
       "views": [
         {
-          "class": "DepictionHeaderView",
-          "title": "Stheno",
-          "useBoldText": true
-        },
-        {
           "class": "DepictionMarkdownView",
-          "markdown": "## Stheno\n\nStheno分屏正式版（关闭诊断文件日志）",
-          "useSpacing": true
-        },
-        {
-          "class": "DepictionSeparatorView"
-        },
-        {
-          "class": "DepictionHeaderView",
-          "title": "信息",
-          "useBoldText": true
-        },
-        {
-          "class": "DepictionTableTextView",
-          "title": "作者",
-          "text": "Crassna"
+          "markdown": "# Stheno\n\nStheno分屏正式版（关闭诊断文件日志）"
         },
         {
           "class": "DepictionTableTextView",
           "title": "版本",
           "text": "0.1.23-1"
-        },
-        {
-          "class": "DepictionTableTextView",
-          "title": "架构",
-          "text": "iphoneos-arm64"
-        },
-        {
-          "class": "DepictionTableTextView",
-          "title": "分类",
-          "text": "Tweaks"
         }
       ]
     }

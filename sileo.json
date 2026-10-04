@@ -4,5 +4,13 @@
   "url": "https://kefou667.github.io/repo",
   "version": "1.0",
   "contact": "https://github.com/kefou667",
-  "packages": []
+  "packages": [
+    {
+      "name": "Stheno",
+      "identifier": "com.nx.stheno",
+      "version": "0.1.23-1",
+      "description": "Stheno分屏正式版（关闭诊断文件日志）",
+      "section": "Tweaks"
+    }
+  ]
 }
