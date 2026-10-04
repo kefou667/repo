@@ -12,6 +12,7 @@ Depends: dev.theos.orion (>= 1.0.0), mobilesubstrate, firmware (>= 16.0)
 Conflicts: com.h.sthenokb, com.nx.stheno.splitlastownerprobe, com.nx.stheno.splitcycleownerprobe, com.nx.stheno.renderresourceprobe, com.nx.stheno.surfaceownerprobe, com.nx.stheno.splittransitionownerprobe, com.nx.stheno.splitcontextunbindfix, com.nx.stheno.fix.bannerpull80fix1, com.nx.stheno.fix.nativereplycompetition1, com.nx.stheno.fix.nativereplydisable1, com.nx.stheno.fix
 Provides: com.h.sthenokb (= 1.1.2-59), com.nx.stheno.fix (= 0.1.23-1~defaultscache1)
 Replaces: com.h.sthenokb, com.nx.stheno.fix.bannerpull80fix1, com.nx.stheno.fix.nativereplycompetition1, com.nx.stheno.fix.nativereplydisable1, com.nx.stheno.fix
+Icon: https://kefou.github.io/repo/icons/com.nx.stheno.png
 Filename: debs/Stheno_0.1.23-1_Official_NoProbeLogs_iphoneos-arm.deb
 Size: 551004
 MD5sum: 06b38ca76d64a00e5b3fa72107e3ea2a

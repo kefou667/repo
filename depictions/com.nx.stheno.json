@@ -7,8 +7,13 @@
       "tabname": "描述",
       "views": [
         {
+          "class": "DepictionHeaderView",
+          "title": "Stheno",
+          "useBoldText": true
+        },
+        {
           "class": "DepictionMarkdownView",
-          "markdown": "## Stheno\nStheno分屏正式版（关闭诊断文件日志）",
+          "markdown": "## Stheno\n\nStheno分屏正式版（关闭诊断文件日志）",
           "useSpacing": true
         },
         {
