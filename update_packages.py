@@ -1371,25 +1371,14 @@ def main():
     # ========================================================
 
     sileo = {
-
-        "name":
-            SOURCE_NAME,
-
-        "identifier":
-            SOURCE_IDENTIFIER,
-
-        "url":
-            REPO_URL,
-
-        "version":
-            "1.0",
-
-        "contact":
-            SOURCE_CONTACT,
-
-        "packages":
-            sileo_packages
-    }
+    "name": SOURCE_NAME,
+    "identifier": SOURCE_IDENTIFIER,
+    "url": REPO_URL,
+    "version": "1.0",
+    "contact": SOURCE_CONTACT,
+    "icon": "https://img.kekezw.nyc.mn/20261004_8a4756c9.jpg",
+    "packages": sileo_packages
+}
 
 
     (
