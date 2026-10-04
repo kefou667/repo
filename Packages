@@ -47,7 +47,6 @@ Depiction: https://kefou667.github.io/repo/depictions/com.eason.shortcutsintentg
 Sileodepiction: https://kefou667.github.io/repo/depictions/com.eason.shortcutsintentguard.json
 Section: System
 Depends: firmware (>= 15.0)
-Icon: https://kefou667.github.io/repo/icons/default.png
 Filename: debs/快捷指令闪退修复ios16_1.0.2_iphoneos-arm64e.deb
 Size: 7496
 MD5sum: 05c4055555f651281b2654a9c45bb6f8
