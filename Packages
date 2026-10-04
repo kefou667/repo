@@ -22,7 +22,8 @@ Package: com.eason.shortcutsintentguard
 Name: 快捷指令闪退修复ios16
 Version: 1.0.2
 Architecture: iphoneos-arm64e
-Description: Repairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.
+Description: 快捷指令闪退修复ios16
+修复由iOS 26 VisualIntelligence App Intent元数据引起的iOS 16快捷方式崩溃。使用独立的保护服务，不注入任何进程。
 Maintainer: eason
 Author: eason
 Depiction: https://kefou667.github.io/repo/depictions/com.eason.shortcutsintentguard.html
