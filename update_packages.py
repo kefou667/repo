@@ -1,14 +1,35 @@
-import os
-import json
-import gzip
-import bz2
-import tarfile
-import tempfile
-from datetime import datetime, timezone
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-# =========================
+"""
+kefou Sileo/APT Packages 生成器
+
+功能：
+- 无需 dpkg-deb
+- 支持 control.tar.gz / control.tar.xz / control.tar
+- 生成 Packages / Packages.gz / Packages.bz2
+- 自动生成 HTML / JSON Depiction
+- 自动生成 sileo.json
+- 混合图标方案：
+    1. 优先使用 icons/<Package>.png
+    2. 没有则尝试从 .deb 中的 .app 提取 PNG
+    3. 都没有则使用 icons/default.png
+"""
+
+import bz2
+import gzip
+import hashlib
+import html
+import io
+import json
+import lzma
+import tarfile
+from pathlib import Path
+
+
+# ============================================================
 # 基本配置
-# =========================
+# ============================================================
 
 REPO_URL = "https://kefou667.github.io/repo"
 
@@ -16,754 +37,1104 @@ SOURCE_NAME = "kefou"
 SOURCE_IDENTIFIER = "com.kefou.repo"
 SOURCE_CONTACT = "https://github.com/kefou667"
 
-DEBS_DIR = "debs"
-DEPICTIONS_DIR = "depictions"
-ICONS_DIR = "icons"
 
-PACKAGES_FILE = "Packages"
-PACKAGES_GZ = "Packages.gz"
-PACKAGES_BZ2 = "Packages.bz2"
+ROOT = Path(__file__).resolve().parent
 
-SILEO_JSON = "sileo.json"
-NEWS_JSON = "news.json"
-
-MAX_NEWS = 10
+DEBS = ROOT / "debs"
+DEPICTIONS = ROOT / "depictions"
+ICONS = ROOT / "icons"
 
 
-# =========================
+# ============================================================
+# control 字段
+# ============================================================
+
+FIELDS = [
+    "Package",
+    "Name",
+    "Version",
+    "Architecture",
+    "Description",
+    "Maintainer",
+    "Author",
+    "Section",
+    "Depends",
+    "Pre-Depends",
+    "Recommends",
+    "Conflicts",
+    "Provides",
+    "Replaces",
+    "Icon",
+    "Filename",
+    "Size",
+]
+
+
+# ============================================================
+# 读取 .deb
+# ============================================================
+
+def read_deb_members(path: Path):
+    """
+    读取 Debian ar 格式的 .deb
+    """
+
+    raw = path.read_bytes()
+
+    if not raw.startswith(b"!<arch>\n"):
+        raise ValueError("不是标准 .deb/ar 文件")
+
+    pos = 8
+
+    while pos + 60 <= len(raw):
+
+        hdr = raw[pos:pos + 60]
+
+        if hdr[58:60] != b"`\n":
+            break
+
+        name = (
+            hdr[0:16]
+            .rstrip(b" /")
+            .decode("ascii", "replace")
+            .strip()
+        )
+
+        try:
+            size = int(hdr[48:58].strip())
+        except ValueError:
+            break
+
+        data_start = pos + 60
+        member = raw[data_start:data_start + size]
+
+        yield name, member
+
+        pos = data_start + size + (size & 1)
+
+
+# ============================================================
+# 读取 control
+# ============================================================
+
+def read_control_from_deb(path: Path) -> dict:
+
+    for name, member in read_deb_members(path):
+
+        if name not in (
+            "control.tar.gz",
+            "control.tar.xz",
+            "control.tar"
+        ):
+            continue
+
+        if name.endswith(".gz"):
+            tar_data = gzip.decompress(member)
+
+        elif name.endswith(".xz"):
+            tar_data = lzma.decompress(member)
+
+        else:
+            tar_data = member
+
+        with tarfile.open(
+            fileobj=io.BytesIO(tar_data),
+            mode="r:"
+        ) as tar:
+
+            control_file = None
+
+            try:
+                control_file = tar.extractfile("./control")
+            except KeyError:
+                pass
+
+            if control_file is None:
+
+                try:
+                    control_file = tar.extractfile("control")
+                except KeyError:
+                    pass
+
+            if control_file is None:
+
+                for m in tar.getmembers():
+
+                    if (
+                        m.name.rstrip("/").endswith("/control")
+                        or m.name == "control"
+                    ):
+                        control_file = tar.extractfile(m)
+                        break
+
+            if control_file is None:
+                raise ValueError(
+                    "control.tar 中找不到 control"
+                )
+
+            text = control_file.read().decode(
+                "utf-8",
+                "replace"
+            )
+
+        info = {}
+
+        current_key = None
+
+        for line in text.splitlines():
+
+            # 多行字段
+            if line.startswith((" ", "\t")) and current_key:
+
+                info[current_key] += "\n" + line.strip()
+
+                continue
+
+            if ":" not in line:
+                continue
+
+            k, v = line.split(":", 1)
+
+            k = k.strip()
+            v = v.strip()
+
+            current_key = k
+
+            if k in FIELDS:
+                info[k] = v
+
+        return info
+
+    raise ValueError(
+        "找不到 control.tar.*"
+    )
+
+
+# ============================================================
+# Hash
+# ============================================================
+
+def digest(path, algorithm):
+
+    h = hashlib.new(algorithm)
+
+    with open(path, "rb") as f:
+
+        for chunk in iter(
+            lambda: f.read(1024 * 1024),
+            b""
+        ):
+            h.update(chunk)
+
+    return h.hexdigest()
+
+
+# ============================================================
 # 工具
-# =========================
+# ============================================================
 
-def read_control_from_deb(deb_path):
+def safe_package_name(package):
+
+    return package.replace("/", "_")
+
+
+# ============================================================
+# 混合图标系统
+# ============================================================
+
+def find_icon(package, deb_path):
+
     """
-    从 .deb 中读取 DEBIAN/control
-    支持 control.tar.gz / control.tar.xz / control.tar / control.tar.bz2
+    图标优先级：
+
+    1. icons/<Package>.png
+    2. 从 .deb 中尝试寻找 .app PNG
+    3. icons/default.png
     """
 
-    with tarfile.open(deb_path, mode="r:*") as tar:
-        for member in tar.getmembers():
-            name = member.name
+    ICONS.mkdir(exist_ok=True)
 
-            if name.endswith("control"):
-                extracted = tar.extractfile(member)
+    # --------------------------------------------------------
+    # 方案 A：手动图标
+    # --------------------------------------------------------
 
-                if extracted:
-                    data = extracted.read()
-                    return data.decode("utf-8", errors="replace")
+    manual_icon = ICONS / f"{package}.png"
+
+    if manual_icon.exists():
+
+        print(
+            f"🎨 使用手动图标: "
+            f"{manual_icon.name}"
+        )
+
+        return f"{REPO_URL}/icons/{manual_icon.name}"
+
+
+    # --------------------------------------------------------
+    # 方案 B：从 .deb 自动提取
+    # --------------------------------------------------------
+
+    extracted_icon = ICONS / f"{package}.png"
+
+    try:
+
+        for name, member in read_deb_members(deb_path):
+
+            if not name.startswith("data.tar"):
+                continue
+
+            # 解压 data.tar
+            if name.endswith(".gz"):
+
+                tar_data = gzip.decompress(member)
+
+            elif name.endswith(".xz"):
+
+                tar_data = lzma.decompress(member)
+
+            elif name.endswith(".bz2"):
+
+                tar_data = bz2.decompress(member)
+
+            else:
+
+                tar_data = member
+
+            with tarfile.open(
+                fileobj=io.BytesIO(tar_data),
+                mode="r:"
+            ) as tar:
+
+                candidates = []
+
+                for m in tar.getmembers():
+
+                    if not m.isfile():
+                        continue
+
+                    filename = m.name.lower()
+
+                    if not filename.endswith(".png"):
+                        continue
+
+                    score = 0
+
+                    # .app 中的图片优先
+                    if ".app/" in filename:
+                        score += 50
+
+                    # icon 名称优先
+                    if "icon" in filename:
+                        score += 30
+
+                    # 常见 AppIcon 尺寸
+                    if (
+                        "60x60" in filename
+                        or "120x120" in filename
+                        or "180x180" in filename
+                    ):
+                        score += 20
+
+                    candidates.append(
+                        (score, m.name, m)
+                    )
+
+                if candidates:
+
+                    candidates.sort(
+                        key=lambda x: (
+                            -x[0],
+                            x[1]
+                        )
+                    )
+
+                    _, chosen_name, chosen = candidates[0]
+
+                    source = tar.extractfile(chosen)
+
+                    if source:
+
+                        extracted_icon.write_bytes(
+                            source.read()
+                        )
+
+                        print(
+                            f"🎨 自动提取图标: "
+                            f"{chosen_name}"
+                        )
+
+                        return (
+                            f"{REPO_URL}/icons/"
+                            f"{extracted_icon.name}"
+                        )
+
+    except Exception as e:
+
+        print(
+            f"⚠️ 自动提取图标失败 "
+            f"{package}: {e}"
+        )
+
+
+    # --------------------------------------------------------
+    # 方案 C：默认图标
+    # --------------------------------------------------------
+
+    default_icon = ICONS / "default.png"
+
+    if default_icon.exists():
+
+        print(
+            f"🎨 使用默认图标: "
+            f"default.png"
+        )
+
+        return (
+            f"{REPO_URL}/icons/"
+            f"default.png"
+        )
+
+
+    # 没有任何图标
+    print(
+        f"⚠️ {package}: "
+        f"没有找到图标"
+    )
 
     return ""
 
 
-def parse_control(control_text):
-    """
-    简单解析 Debian control 文件
-    """
+# ============================================================
+# Depiction
+# ============================================================
 
-    data = {}
-    current_key = None
+def write_depictions(info, icon_url):
 
-    for line in control_text.splitlines():
-
-        if not line.strip():
-            continue
-
-        if line[0].isspace():
-            if current_key:
-                data[current_key] += "\n" + line.strip()
-            continue
-
-        if ":" not in line:
-            continue
-
-        key, value = line.split(":", 1)
-
-        key = key.strip()
-        value = value.strip()
-
-        data[key] = value
-        current_key = key
-
-    return data
-
-
-def extract_icon_from_deb(deb_path, package_name):
-    """
-    尝试从 .deb 的 data.tar.* 中自动寻找 PNG 图标。
-    """
-
-    try:
-        with tarfile.open(deb_path, mode="r:*") as deb:
-
-            members = deb.getmembers()
-
-            data_members = [
-                m for m in members
-                if "/data.tar" in m.name or m.name.startswith("data.tar")
-            ]
-
-            # 某些 Python tarfile 不能直接读取嵌套 tar，
-            # 所以先寻找真正的 data.tar 文件。
-            for data_member in data_members:
-
-                extracted = deb.extractfile(data_member)
-
-                if not extracted:
-                    continue
-
-                with tempfile.NamedTemporaryFile(delete=False) as temp:
-                    temp.write(extracted.read())
-                    temp_path = temp.name
-
-                try:
-                    with tarfile.open(temp_path, mode="r:*") as data_tar:
-
-                        candidates = []
-
-                        for member in data_tar.getmembers():
-
-                            if not member.isfile():
-                                continue
-
-                            name = member.name.lower()
-
-                            if not name.endswith(".png"):
-                                continue
-
-                            score = 0
-
-                            if ".app/" in name:
-                                score += 100
-
-                            if "icon" in name:
-                                score += 80
-
-                            if "icon@" in name:
-                                score += 20
-
-                            if "120x120" in name:
-                                score += 60
-
-                            if "180x180" in name:
-                                score += 50
-
-                            if "1024x1024" in name:
-                                score += 40
-
-                            candidates.append((score, member))
-
-                        if not candidates:
-                            continue
-
-                        candidates.sort(
-                            key=lambda x: x[0],
-                            reverse=True
-                        )
-
-                        _, best_member = candidates[0]
-
-                        icon_data = data_tar.extractfile(best_member)
-
-                        if icon_data:
-
-                            os.makedirs(ICONS_DIR, exist_ok=True)
-
-                            output_path = os.path.join(
-                                ICONS_DIR,
-                                package_name + ".png"
-                            )
-
-                            with open(output_path, "wb") as f:
-                                f.write(icon_data.read())
-
-                            print(
-                                f"自动提取图标: {package_name}.png"
-                            )
-
-                            return output_path
-
-                finally:
-                    try:
-                        os.remove(temp_path)
-                    except Exception:
-                        pass
-
-    except Exception as e:
-        print(f"图标提取失败 {package_name}: {e}")
-
-    return None
-
-
-def get_icon(package_name, deb_path):
-    """
-    图标优先级：
-
-    1. icons/Package.png
-    2. 从 .deb 自动提取
-    3. icons/default.png
-    """
-
-    os.makedirs(ICONS_DIR, exist_ok=True)
-
-    manual_icon = os.path.join(
-        ICONS_DIR,
-        package_name + ".png"
+    package = info.get(
+        "Package",
+        "unknown"
     )
 
-    if os.path.isfile(manual_icon):
-        return manual_icon
+    safe = safe_package_name(package)
 
-    extracted_icon = extract_icon_from_deb(
-        deb_path,
-        package_name
+    name = info.get(
+        "Name",
+        package
     )
 
-    if extracted_icon:
-        return extracted_icon
-
-    default_icon = os.path.join(
-        ICONS_DIR,
-        "default.png"
+    version = info.get(
+        "Version",
+        ""
     )
 
-    if os.path.isfile(default_icon):
-        return default_icon
+    arch = info.get(
+        "Architecture",
+        ""
+    )
 
-    return None
+    desc = info.get(
+        "Description",
+        "暂无描述"
+    )
+
+    author = (
+        info.get("Author")
+        or info.get("Maintainer")
+        or "未知"
+    )
+
+    section = info.get(
+        "Section",
+        "Tweaks"
+    )
 
 
-def read_old_packages():
-    """
-    读取上一次生成的 Packages。
-    用来判断：
-    - 新增插件
-    - 插件版本升级
-    """
+    # ========================================================
+    # JSON Depiction
+    # ========================================================
 
-    if not os.path.isfile(PACKAGES_FILE):
-        return {}
+    depiction_json = {
 
-    try:
-        with open(PACKAGES_FILE, "r", encoding="utf-8") as f:
-            content = f.read()
-    except Exception:
-        return {}
+        "class": "DepictionTabView",
 
-    packages = {}
+        "minVersion": "0.3",
 
-    blocks = content.split("\n\n")
+        "tabs": [
 
-    for block in blocks:
+            {
 
-        package = None
-        version = None
-        name = None
+                "class": "DepictionStackView",
 
-        for line in block.splitlines():
+                "tabname": "描述",
 
-            if line.startswith("Package: "):
-                package = line[9:].strip()
+                "views": [
 
-            elif line.startswith("Version: "):
-                version = line[9:].strip()
+                    {
+                        "class":
+                            "DepictionHeaderView",
 
-            elif line.startswith("Name: "):
-                name = line[6:].strip()
+                        "title": name,
 
-        if package:
-            packages[package] = {
-                "version": version or "",
-                "name": name or package
+                        "useBoldText": True
+                    },
+
+                    {
+                        "class":
+                            "DepictionMarkdownView",
+
+                        "markdown":
+                            f"## {name}\n\n{desc}",
+
+                        "useSpacing": True
+                    },
+
+                    {
+                        "class":
+                            "DepictionSeparatorView"
+                    },
+
+                    {
+                        "class":
+                            "DepictionHeaderView",
+
+                        "title": "信息",
+
+                        "useBoldText": True
+                    },
+
+                    {
+                        "class":
+                            "DepictionTableTextView",
+
+                        "title": "作者",
+
+                        "text": author
+                    },
+
+                    {
+                        "class":
+                            "DepictionTableTextView",
+
+                        "title": "版本",
+
+                        "text": version
+                    },
+
+                    {
+                        "class":
+                            "DepictionTableTextView",
+
+                        "title": "架构",
+
+                        "text": arch
+                    },
+
+                    {
+                        "class":
+                            "DepictionTableTextView",
+
+                        "title": "分类",
+
+                        "text": section
+                    }
+
+                ]
             }
-
-    return packages
-
-
-def read_news():
-    """
-    读取已有 news.json。
-    """
-
-    if not os.path.isfile(NEWS_JSON):
-        return []
-
-    try:
-        with open(NEWS_JSON, "r", encoding="utf-8") as f:
-            data = json.load(f)
-
-        if isinstance(data, list):
-            return data
-
-    except Exception:
-        pass
-
-    return []
+        ]
+    }
 
 
-def save_news(news):
-    """
-    保存 News。
-    """
+    (
+        DEPICTIONS /
+        f"{safe}.json"
+    ).write_text(
 
-    news = news[:MAX_NEWS]
-
-    with open(
-        NEWS_JSON,
-        "w",
-        encoding="utf-8"
-    ) as f:
-
-        json.dump(
-            news,
-            f,
+        json.dumps(
+            depiction_json,
             ensure_ascii=False,
             indent=2
-        )
+        ),
 
-        f.write("\n")
+        encoding="utf-8"
+    )
 
 
-# =========================
-# 主程序
-# =========================
+    # ========================================================
+    # HTML Depiction
+    # ========================================================
 
-def main():
+    h = html.escape
 
-    os.makedirs(DEBS_DIR, exist_ok=True)
-    os.makedirs(DEPICTIONS_DIR, exist_ok=True)
-    os.makedirs(ICONS_DIR, exist_ok=True)
+    icon_html = ""
 
-    print("读取旧 Packages...")
+    if icon_url:
 
-    old_packages = read_old_packages()
+        icon_html = f"""
+<img
+src="{h(icon_url)}"
+style="
+width:80px;
+height:80px;
+border-radius:18px;
+object-fit:cover;
+margin-bottom:15px;
+">
+"""
 
-    packages = []
 
-    # =========================
-    # 扫描 deb
-    # =========================
+    html_doc = f"""<!doctype html>
 
-    for filename in sorted(os.listdir(DEBS_DIR)):
-
-        if not filename.endswith(".deb"):
-            continue
-
-        deb_path = os.path.join(
-            DEBS_DIR,
-            filename
-        )
-
-        try:
-            control_text = read_control_from_deb(
-                deb_path
-            )
-
-            control = parse_control(
-                control_text
-            )
-
-            if not control.get("Package"):
-                print(
-                    f"跳过无 Package 字段: {filename}"
-                )
-                continue
-
-            package_name = control["Package"]
-
-            version = control.get(
-                "Version",
-                ""
-            )
-
-            name = control.get(
-                "Name",
-                package_name
-            )
-
-            description = control.get(
-                "Description",
-                ""
-            )
-
-            architecture = control.get(
-                "Architecture",
-                "iphoneos-arm64"
-            )
-
-            maintainer = control.get(
-                "Maintainer",
-                SOURCE_NAME
-            )
-
-            section = control.get(
-                "Section",
-                "Tweaks"
-            )
-
-            author = control.get(
-                "Author",
-                maintainer
-            )
-
-            homepage = control.get(
-                "Homepage",
-                SOURCE_CONTACT
-            )
-
-            icon_path = get_icon(
-                package_name,
-                deb_path
-            )
-
-            if icon_path:
-                icon_url = (
-                    REPO_URL
-                    + "/"
-                    + icon_path.replace("\\", "/")
-                )
-            else:
-                icon_url = ""
-
-            depiction_url = (
-                f"{REPO_URL}/depictions/"
-                f"{package_name}.html"
-            )
-
-            sileo_depiction_url = (
-                f"{REPO_URL}/depictions/"
-                f"{package_name}.json"
-            )
-
-            package_data = {
-                "Package": package_name,
-                "Name": name,
-                "Version": version,
-                "Architecture": architecture,
-                "Description": description,
-                "Maintainer": maintainer,
-                "Author": author,
-                "Section": section,
-                "Filename": f"debs/{filename}",
-                "Size": os.path.getsize(deb_path),
-                "Homepage": homepage,
-                "Depiction": depiction_url,
-                "Sileodepiction": sileo_depiction_url
-            }
-
-            if icon_url:
-                package_data["Icon"] = icon_url
-
-            packages.append(package_data)
-
-            # =========================
-            # 生成 HTML Depiction
-            # =========================
-
-            html = f"""<!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{name}</title>
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+>
+
+<title>{h(name)}</title>
+
 <style>
+
 body {{
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    margin: 0;
-    padding: 30px;
-    background: #f5f5f7;
-    color: #111;
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+sans-serif;
+
+margin:0;
+
+padding:24px;
+
+background:#f2f2f7;
+
+color:#1c1c1e;
 }}
+
 .card {{
-    max-width: 700px;
-    margin: auto;
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+
+max-width:680px;
+
+margin:auto;
+
+background:white;
+
+border-radius:20px;
+
+padding:24px;
+
+box-shadow:
+0 4px 20px #0001;
+
 }}
+
 .icon {{
-    width: 100px;
-    height: 100px;
-    border-radius: 22px;
+
+width:80px;
+
+height:80px;
+
+border-radius:18px;
+
 }}
+
 h1 {{
-    margin-bottom: 5px;
+
+margin-top:8px;
+
+margin-bottom:10px;
+
 }}
-.version {{
-    color: #777;
+
+.desc {{
+
+line-height:1.6;
+
+color:#444;
+
 }}
-.description {{
-    margin-top: 25px;
-    white-space: pre-wrap;
+
+.meta {{
+
+display:grid;
+
+grid-template-columns:
+100px 1fr;
+
+gap:10px 12px;
+
+color:#555;
+
 }}
+
+hr {{
+
+border:0;
+
+border-top:
+1px solid #eee;
+
+margin:20px 0;
+
+}}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="card">
 
-{"<img class='icon' src='" + icon_url + "'>" if icon_url else ""}
+{icon_html}
 
-<h1>{name}</h1>
+<h1>{h(name)}</h1>
 
-<div class="version">
-版本 {version}
+<div class="desc">
+
+{h(desc).replace(chr(10), "<br>")}
+
 </div>
 
-<div class="description">
-{description}
+<hr>
+
+<div class="meta">
+
+<div>版本</div>
+<div>{h(version)}</div>
+
+<div>架构</div>
+<div>{h(arch)}</div>
+
+<div>作者</div>
+<div>{h(author)}</div>
+
+<div>分类</div>
+<div>{h(section)}</div>
+
 </div>
 
 </div>
 
 </body>
+
 </html>
 """
 
-            with open(
-                os.path.join(
-                    DEPICTIONS_DIR,
-                    package_name + ".html"
-                ),
-                "w",
-                encoding="utf-8"
-            ) as f:
-                f.write(html)
 
-            # =========================
-            # Sileo Native Depiction
-            # =========================
+    (
+        DEPICTIONS /
+        f"{safe}.html"
+    ).write_text(
+        html_doc,
+        encoding="utf-8"
+    )
 
-            depiction_json = {
-                "class": "DepictionTabView",
-                "tintColor": "#007AFF",
-                "tabs": [
-                    {
-                        "tabname": "详情",
-                        "views": [
-                            {
-                                "class": "DepictionMarkdownView",
-                                "markdown": (
-                                    f"# {name}\n\n"
-                                    f"{description}"
-                                )
-                            },
-                            {
-                                "class": "DepictionTableTextView",
-                                "title": "版本",
-                                "text": version
-                            }
-                        ]
-                    }
-                ]
+
+# ============================================================
+# 主程序
+# ============================================================
+
+def main():
+
+    DEBS.mkdir(exist_ok=True)
+
+    DEPICTIONS.mkdir(exist_ok=True)
+
+    ICONS.mkdir(exist_ok=True)
+
+
+    entries = []
+
+    sileo_packages = []
+
+
+    # ========================================================
+    # 扫描 deb
+    # ========================================================
+
+    for deb in sorted(
+        DEBS.glob("*.deb")
+    ):
+
+        try:
+
+            info = read_control_from_deb(
+                deb
+            )
+
+
+            package = info.get(
+                "Package"
+            )
+
+            version = info.get(
+                "Version"
+            )
+
+            arch = info.get(
+                "Architecture"
+            )
+
+
+            if not package:
+                raise ValueError(
+                    "缺少 Package"
+                )
+
+            if not version:
+                raise ValueError(
+                    "缺少 Version"
+                )
+
+            if not arch:
+                raise ValueError(
+                    "缺少 Architecture"
+                )
+
+
+            # =================================================
+            # rootless 架构提醒
+            # =================================================
+
+            if arch not in (
+                "iphoneos-arm64",
+                "iphoneos-arm64e",
+                "all",
+                "any"
+            ):
+
+                print(
+                    f"⚠️ {deb.name}: "
+                    f"Architecture={arch}，"
+                    f"请确认是否适合 rootless"
+                )
+
+
+            # =================================================
+            # 文件信息
+            # =================================================
+
+            info["Filename"] = (
+                f"debs/{deb.name}"
+            )
+
+            info["Size"] = str(
+                deb.stat().st_size
+            )
+
+
+            # =================================================
+            # 图标
+            # =================================================
+
+            icon_url = find_icon(
+                package,
+                deb
+            )
+
+            if icon_url:
+
+                info["Icon"] = icon_url
+
+
+            # =================================================
+            # Depiction
+            # =================================================
+
+            write_depictions(
+                info,
+                icon_url
+            )
+
+
+            stem = safe_package_name(
+                package
+            )
+
+
+            info["Depiction"] = (
+                f"{REPO_URL}/"
+                f"depictions/"
+                f"{stem}.html"
+            )
+
+
+            info["Sileodepiction"] = (
+                f"{REPO_URL}/"
+                f"depictions/"
+                f"{stem}.json"
+            )
+
+
+            info["MD5sum"] = digest(
+                deb,
+                "md5"
+            )
+
+            info["SHA256"] = digest(
+                deb,
+                "sha256"
+            )
+
+
+            entries.append(info)
+
+
+            # =================================================
+            # sileo.json
+            # =================================================
+
+            description = info.get(
+                "Description",
+                ""
+            )
+
+            # Sileo 页面通常只需要首行简介
+            short_description = (
+                description
+                .split("\n")[0]
+                .strip()
+            )
+
+
+            author = (
+                info.get("Author")
+                or info.get("Maintainer")
+                or "未知"
+            )
+
+
+            sileo_entry = {
+
+                "name":
+                    info.get(
+                        "Name",
+                        package
+                    ),
+
+                "package":
+                    package,
+
+                "version":
+                    version,
+
+                "description":
+                    short_description,
+
+                "section":
+                    info.get(
+                        "Section",
+                        ""
+                    ),
+
+                "author": {
+                    "name":
+                        author
+                },
+
+                "depiction":
+                    info["Depiction"]
             }
 
-            with open(
-                os.path.join(
-                    DEPICTIONS_DIR,
-                    package_name + ".json"
-                ),
-                "w",
-                encoding="utf-8"
-            ) as f:
 
-                json.dump(
-                    depiction_json,
-                    f,
-                    ensure_ascii=False,
-                    indent=2
+            if icon_url:
+
+                sileo_entry["icon"] = (
+                    icon_url
                 )
+
+
+            sileo_packages.append(
+                sileo_entry
+            )
+
+
+            print(
+                f"✅ {deb.name} "
+                f"[{package} "
+                f"{version} "
+                f"{arch}]"
+            )
+
 
         except Exception as e:
 
             print(
-                f"处理 {filename} 失败: {e}"
+                f"⚠️ 跳过 "
+                f"{deb.name}: {e}"
             )
 
-    # =========================
-    # Packages
-    # =========================
 
-    packages.sort(
-        key=lambda x: x["Package"]
-    )
+    # ========================================================
+    # Packages
+    # ========================================================
 
     lines = []
 
-    for pkg in packages:
 
-        for key, value in pkg.items():
+    output_fields = [
 
-            if value is None:
-                continue
+        "Package",
+        "Name",
+        "Version",
+        "Architecture",
+        "Description",
 
-            lines.append(
-                f"{key}: {value}"
-            )
+        "Maintainer",
+        "Author",
+
+        "Depiction",
+        "Sileodepiction",
+
+        "Section",
+
+        "Depends",
+        "Pre-Depends",
+        "Recommends",
+
+        "Conflicts",
+        "Provides",
+        "Replaces",
+
+        "Icon",
+
+        "Filename",
+        "Size",
+
+        "MD5sum",
+        "SHA256"
+    ]
+
+
+    for info in entries:
+
+        for key in output_fields:
+
+            if (
+                key in info
+                and info[key] != ""
+            ):
+
+                lines.append(
+                    f"{key}: "
+                    f"{info[key]}"
+                )
 
         lines.append("")
 
-    packages_text = "\n".join(lines)
 
-    with open(
-        PACKAGES_FILE,
-        "w",
-        encoding="utf-8"
-    ) as f:
-
-        f.write(packages_text)
-
-    with open(
-        PACKAGES_GZ,
-        "wb"
-    ) as f:
-
-        f.write(
-            gzip.compress(
-                packages_text.encode("utf-8")
-            )
-        )
-
-    with open(
-        PACKAGES_BZ2,
-        "wb"
-    ) as f:
-
-        f.write(
-            bz2.compress(
-                packages_text.encode("utf-8")
-            )
-        )
-
-    print("Packages 已生成")
-
-    # =========================
-    # sileo.json
-    # =========================
-
-    sileo_packages = []
-
-    for pkg in packages:
-
-        sileo_packages.append({
-            "name": pkg["Name"],
-            "identifier": pkg["Package"],
-            "version": pkg["Version"],
-            "description": pkg["Description"],
-            "section": pkg["Section"]
-        })
-
-    sileo_data = {
-        "name": SOURCE_NAME,
-        "identifier": SOURCE_IDENTIFIER,
-        "url": REPO_URL,
-        "version": "1.0",
-        "contact": SOURCE_CONTACT,
-        "packages": sileo_packages
-    }
-
-    with open(
-        SILEO_JSON,
-        "w",
-        encoding="utf-8"
-    ) as f:
-
-        json.dump(
-            sileo_data,
-            f,
-            ensure_ascii=False,
-            indent=2
-        )
-
-        f.write("\n")
-
-    print("sileo.json 已生成")
-
-    # =========================
-    # 自动 News
-    # =========================
-
-    current_packages = {}
-
-    for pkg in packages:
-
-        current_packages[pkg["Package"]] = {
-            "version": pkg["Version"],
-            "name": pkg["Name"]
-        }
-
-    news = read_news()
-
-    today = datetime.now(
-        timezone.utc
-    ).strftime("%Y-%m-%d")
-
-    new_news = []
-
-    for package_id, current in current_packages.items():
-
-        old = old_packages.get(
-            package_id
-        )
-
-        # 新插件
-        if old is None:
-
-            new_news.append({
-                "title": f"新增插件：{current['name']}",
-                "subtitle": (
-                    f"版本 {current['version']}"
-                ),
-                "date": today,
-                "url": (
-                    f"{REPO_URL}/depictions/"
-                    f"{package_id}.html"
-                )
-            })
-
-            print(
-                f"News：发现新插件 {package_id}"
-            )
-
-        # 版本升级
-        elif old.get("version") != current["version"]:
-
-            new_news.append({
-                "title": (
-                    f"更新插件：{current['name']}"
-                ),
-                "subtitle": (
-                    f"{old.get('version', '')} → "
-                    f"{current['version']}"
-                ),
-                "date": today,
-                "url": (
-                    f"{REPO_URL}/depictions/"
-                    f"{package_id}.html"
-                )
-            })
-
-            print(
-                f"News：发现版本更新 {package_id}"
-            )
-
-    # 新消息放最前面
-    news = new_news + news
-
-    # 最多保留 10 条
-    news = news[:MAX_NEWS]
-
-    save_news(news)
-
-    print(
-        f"News 已更新，共 {len(news)} 条"
+    packages = "\n".join(
+        lines
     )
 
-    print("")
-    print("================================")
-    print("源索引生成完成")
-    print("================================")
+
+    (
+        ROOT / "Packages"
+    ).write_text(
+        packages,
+        encoding="utf-8"
+    )
+
+
+    data = packages.encode(
+        "utf-8"
+    )
+
+
+    (
+        ROOT / "Packages.gz"
+    ).write_bytes(
+        gzip.compress(
+            data,
+            compresslevel=9
+        )
+    )
+
+
+    (
+        ROOT / "Packages.bz2"
+    ).write_bytes(
+        bz2.compress(
+            data,
+            compresslevel=9
+        )
+    )
+
+
+    # ========================================================
+    # 自动生成 sileo.json
+    # ========================================================
+
+    sileo = {
+
+        "name":
+            SOURCE_NAME,
+
+        "identifier":
+            SOURCE_IDENTIFIER,
+
+        "url":
+            REPO_URL,
+
+        "version":
+            "1.0",
+
+        "contact":
+            SOURCE_CONTACT,
+
+        "packages":
+            sileo_packages
+    }
+
+
+    (
+        ROOT / "sileo.json"
+    ).write_text(
+
+        json.dumps(
+            sileo,
+            ensure_ascii=False,
+            indent=2
+        ) + "\n",
+
+        encoding="utf-8"
+    )
+
+
+    # ========================================================
+    # 完成
+    # ========================================================
+
+    print(
+        f"\n🎉 完成："
+        f"{len(entries)} 个软件包"
+    )
+
+    print(
+        "📦 Packages 已生成"
+    )
+
+    print(
+        "📦 Packages.gz 已生成"
+    )
+
+    print(
+        "📦 Packages.bz2 已生成"
+    )
+
+    print(
+        "📱 sileo.json 已自动更新"
+    )
+
+    print(
+        "🎨 图标系统已处理"
+    )
 
 
 if __name__ == "__main__":
+
     main()
