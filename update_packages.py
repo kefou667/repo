@@ -31,7 +31,7 @@ from pathlib import Path
 # 基本配置
 # ============================================================
 
-REPO_URL = "https://kefou667.github.io/repo"
+REPO_URL = "https://repo.xxtt.pp.ua/"
 
 SOURCE_NAME = "kefou"
 SOURCE_IDENTIFIER = "com.kefou.repo"
