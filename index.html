@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>kefou · iOS 软件源</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        sans-serif;
+      background:
+        linear-gradient(135deg, #eef2ff 0%, #f8f9ff 45%, #ffffff 100%);
+      color: #171717;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(100% - 32px, 900px);
+      margin: auto;
+    }
+
+    header {
+      padding: 70px 0 45px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 0 12px 35px rgba(60, 60, 100, 0.18);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      color: #666;
+      font-size: 17px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 21px;
+    }
+
+    .source-url {
+      background: #f4f5f8;
+      border-radius: 12px;
+      padding: 14px;
+      word-break: break-all;
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: #111;
+      color: white;
+      font-weight: 600;
+    }
+
+    .button.secondary {
+      background: #eef0f5;
+      color: #222;
+    }
+
+    .news-item {
+      padding: 16px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-title {
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .news-date {
+      color: #888;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .news-description {
+      color: #666;
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0 50px;
+      color: #999;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 45px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <img
+        class="logo"
+        src="icons/default.png"
+        alt="kefou"
+      >
+
+      <h1>kefou</h1>
+
+      <div class="subtitle">
+        Personal iOS Rootless Repository
+      </div>
+    </header>
+
+    <section class="card">
+
+      <h2>📦 软件源</h2>
+
+      <p>
+        欢迎来到 kefou 的个人 iOS 软件源。
+        本源主要提供 Rootless 越狱环境使用的软件包。
+      </p>
+
+      <div class="source-url">
+        https://kefou667.github.io/repo
+      </div>
+
+      <div class="buttons">
+
+        <a
+          class="button"
+          href="sileo://source/https://kefou667.github.io/repo"
+        >
+          添加到 Sileo
+        </a>
+
+        <a
+          class="button secondary"
+          href="news/"
+        >
+          查看 News
+        </a>
+
+        <a
+          class="button secondary"
+          href="https://github.com/kefou667"
+        >
+          GitHub
+        </a>
+
+      </div>
+
+    </section>
+
+    <section class="card">
+
+      <h2>📰 最新动态</h2>
+
+      <div id="news">
+        正在加载……
+      </div>
+
+    </section>
+
+    <section class="card">
+
+      <h2>🔧 软件源信息</h2>
+
+      <p><strong>名称：</strong> kefou</p>
+      <p><strong>Identifier：</strong> com.kefou.repo</p>
+      <p><strong>类型：</strong> Rootless</p>
+      <p><strong>平台：</strong> iOS / iPadOS</p>
+
+    </section>
+
+    <footer>
+      © 2026 kefou · Powered by GitHub Pages
+    </footer>
+
+  </div>
+
+  <script>
+    fetch("news.json")
+      .then(response => response.json())
+      .then(news => {
+
+        const container = document.getElementById("news");
+
+        if (!news.length) {
+          container.innerHTML = "暂无新闻";
+          return;
+        }
+
+        container.innerHTML = news
+          .slice(0, 5)
+          .map(item => `
+            <div class="news-item">
+              <div class="news-title">
+                ${item.title}
+              </div>
+
+              <div class="news-date">
+                ${item.date}
+              </div>
+
+              <div class="news-description">
+                ${item.description}
+              </div>
+            </div>
+          `)
+          .join("");
+
+      })
+      .catch(() => {
+        document.getElementById("news").innerHTML =
+          "暂时无法加载新闻。";
+      });
+  </script>
+
+</body>
+</html>
