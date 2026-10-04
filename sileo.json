@@ -126,6 +126,174 @@
       "icon": "https://repo.xxtt.pp.ua//icons/com.82flex.kayoko.png"
     },
     {
+      "name": "PKC",
+      "package": "com.curtin.pkc",
+      "version": "0.9-8",
+      "description": "群管理Pro、标签Pro、显示群友真名字、群管标识、艾特提醒、动态群昵称、自定义API(图、文本、视频)、消息统计、加密对话、Bark消息推送、定时问候、JD自动签到、好友分析、会话分析、每天60s新闻快报、防撤回、退群监控、步数定时修改、朋友圈特别关注、自动更新微信状态、长头像、消息二次确认、拍一拍二次确认、艾特列表置顶群管理、按群员查找列表置顶群管理、群性别统计、关键词自动回复、转账自动收款、收款自动回复、批量退群、批量修改群昵称、自动通过好友请求、自动互删好友、id加好友、匿名艾特等。",
+      "section": "微信插件",
+      "author": {
+        "name": "Curtin"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.curtin.pkc.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "Patches for Filza 64bit",
+      "package": "roothide.patches.filza",
+      "version": "0.5-4",
+      "description": "RootHide Dynamic Patches For Filza",
+      "section": "RootHide Patches",
+      "author": {
+        "name": "roothide"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/roothide.patches.filza.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "QQ 防撤回图层",
+      "package": "com.xx.qqhooks",
+      "version": "1.6",
+      "description": "QQ 多功能插件",
+      "section": "应用破解",
+      "author": {
+        "name": "𝙓"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.xx.qqhooks.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "QQFullscreenFix",
+      "package": "com.karma.qqfullscreenfix",
+      "version": "2.0.1",
+      "description": "QQ 全屏黑边修复，旨在解决各种分屏修改 QQ 比例的行为导致全屏窗口下出现底部黑框的状况，由 QAQ 发布。反馈问题QQ：2052700050",
+      "section": "",
+      "author": {
+        "name": "QAQ"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.karma.qqfullscreenfix.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "RootHide Patcher",
+      "package": "com.roothide.patcher",
+      "version": "2.1.4-1+debug",
+      "description": "patch rootless package to roothide, not work for all packages.",
+      "section": "Utilities",
+      "author": {
+        "name": "roothide"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.roothide.patcher.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.roothide.patcher.png"
+    },
+    {
+      "name": "Safari X 简体中文",
+      "package": "com.safarixs.zh-hans",
+      "version": "1.3.0",
+      "description": "Safari X 汉化",
+      "section": "汉化",
+      "author": {
+        "name": "Super TrollStore"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.safarixs.zh-hans.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "SafariX",
+      "package": "com.0xkuj.safarixs",
+      "version": "1.9.9",
+      "description": "Safari 浏览器增强插件",
+      "section": "Bootstrap",
+      "author": {
+        "name": "0xkuj"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.0xkuj.safarixs.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.0xkuj.safarixs.png"
+    },
+    {
+      "name": "Saily(RootHide)",
+      "package": "com.dao.saily",
+      "version": "3.0.1",
+      "description": "现代化、美观、简洁的越狱软件包管理器！",
+      "section": "嗨-系统",
+      "author": {
+        "name": "Saily Team"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.dao.saily.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.dao.saily.png"
+    },
+    {
+      "name": "SettingsRevamp 简体中文包(RootHide)",
+      "package": "com.hk.settingsrevamp.cn.rl",
+      "version": "3.0.1",
+      "description": "SettingsRevamp 简体中文包(RootHide)。",
+      "section": "嗨-汉化",
+      "author": {
+        "name": "妖刀"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.hk.settingsrevamp.cn.rl.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "SettingsRevamp(RootHide)",
+      "package": "com.dao.settingsrevamp",
+      "version": "3.0.1.1",
+      "description": "设置自定义、归类插件，源内有汉化包；v3.0.x版本，功能大体和之前v2.1.1差不多，就改了个插件首页。",
+      "section": "嗨-工具",
+      "author": {
+        "name": "SOPPPra"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.dao.settingsrevamp.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.dao.settingsrevamp.png"
+    },
+    {
+      "name": "Single Mute 静音图标",
+      "package": "com.82flex.singlemutes",
+      "version": "1.7",
+      "description": "状态栏左上角显示静音图标",
+      "section": "乌龙工作室",
+      "author": {
+        "name": "82Flex"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.82flex.singlemutes.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.82flex.singlemutes.png"
+    },
+    {
+      "name": "StayShot Edit",
+      "package": "com.susudear.stayshot.markup",
+      "version": "1.6.1",
+      "description": "StayShot Edit 的冻结截图编辑扩展，支持箭头、涂鸦、高亮、马赛克和方框，并支持复制或保存编辑结果。",
+      "section": "Tweaks",
+      "author": {
+        "name": "SuSuDear"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.susudear.stayshot.markup.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.susudear.stayshot.markup.png"
+    },
+    {
+      "name": "StayShot Long Screenshot",
+      "package": "com.susudear.stayshot.long-screenshot",
+      "version": "1.5.0",
+      "description": "Long screenshot action and capture controller for StayShot.",
+      "section": "Tweaks",
+      "author": {
+        "name": "SuSuDear"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.susudear.stayshot.long-screenshot.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.susudear.stayshot.long-screenshot.png"
+    },
+    {
+      "name": "StayShot",
+      "package": "com.susudear.stayshot",
+      "version": "0.5.5",
+      "description": "StayShot 独立的 iOS 截图工具，支持普通模式、冻结模式、区域截图、截图历史和屏幕浮窗。",
+      "section": "Tweaks",
+      "author": {
+        "name": "SuSuDear"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.susudear.stayshot.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.susudear.stayshot.png"
+    },
+    {
       "name": "Stheno",
       "package": "com.nx.stheno",
       "version": "0.1.23-1",
@@ -136,6 +304,78 @@
       },
       "depiction": "https://repo.xxtt.pp.ua//depictions/com.nx.stheno.html",
       "icon": "https://repo.xxtt.pp.ua//icons/com.nx.stheno.png"
+    },
+    {
+      "name": "StoreSwitchAccounts",
+      "package": "com.netskao.storeswitchaccounts.roothide",
+      "version": "1.1-4",
+      "description": "方便登录帐户在不同地区之间切换，长按桌面AppStore图标即可切换！",
+      "section": "Tweaks",
+      "author": {
+        "name": "Netskao <xuanhua880@gmail.com>"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.netskao.storeswitchaccounts.roothide.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "SuSuOCR",
+      "package": "com.susudear.susuocr",
+      "version": "1.1.1",
+      "description": "内置百度 OCR、GLM 和 Qwen 流式普通翻译；保留自定义 OCR、百度翻译及 AI 截图处理。",
+      "section": "Tweaks",
+      "author": {
+        "name": "SuSuDear"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.susudear.susuocr.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.susudear.susuocr.png"
+    },
+    {
+      "name": "Swiftgram Crack",
+      "package": "com.netskao.swiftgramcracks",
+      "version": "1.1-7",
+      "description": "Swiftgram Pro",
+      "section": "应用破解",
+      "author": {
+        "name": "Netskao"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.netskao.swiftgramcracks.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "Touch-Viz",
+      "package": "com.82flex.touchvis",
+      "version": "4.1.1",
+      "description": "Display your touch interactions!",
+      "section": "Tweaks",
+      "author": {
+        "name": "Lessica <82flex@gmail.com>"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.82flex.touchvis.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.82flex.touchvis.png"
+    },
+    {
+      "name": "WCPulse",
+      "package": "com.huami.wcpulse",
+      "version": "1.7-5",
+      "description": "WCPulse",
+      "section": "Tweaks",
+      "author": {
+        "name": "huami"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.huami.wcpulse.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "Write Now",
+      "package": "wiki.qaq.writenow",
+      "version": "2.3",
+      "description": "AI tool within your hands.",
+      "section": "Tweaks",
+      "author": {
+        "name": "Lessica <82flex@gmail.com>"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/wiki.qaq.writenow.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/wiki.qaq.writenow.png"
     },
     {
       "name": "iCleaner Pro",
@@ -162,6 +402,42 @@
       "icon": "https://repo.xxtt.pp.ua//icons/com.be-huge.insulation.png"
     },
     {
+      "name": "一键备份和恢复工具",
+      "package": "com.wkk.tweaktool",
+      "version": "2.0.0-beta",
+      "description": "使用方法：Filza进入/var/mobile/Documents/tweak_tool/目录，运行“一键备份和恢复工具.sh”文件。",
+      "section": "插件配置",
+      "author": {
+        "name": "预言小猫"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.wkk.tweaktool.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "微信净化",
+      "package": "com.wkk.wcpureextension",
+      "version": "2026.04",
+      "description": "免费公开无限制版本，带抢🧧",
+      "section": "微信插件",
+      "author": {
+        "name": "Netskao"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.wkk.wcpureextension.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "微信插件管理",
+      "package": "com.25mao.wcplugins.rootlesss",
+      "version": "0.1-7",
+      "description": "微信插件管理",
+      "section": "微信插件",
+      "author": {
+        "name": "Mao"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.25mao.wcplugins.rootlesss.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
       "name": "快捷指令闪退修复ios16",
       "package": "com.eason.shortcutsintentguard",
       "version": "1.0.2",
@@ -171,6 +447,30 @@
         "name": "eason"
       },
       "depiction": "https://repo.xxtt.pp.ua//depictions/com.eason.shortcutsintentguard.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "电话助手iOS16-正式版(Roothide)",
+      "package": "com.xybp888.callassist16.dopamine.roothide",
+      "version": "3.1.9",
+      "description": "电话助手授权版本,通话录音,通话记录合并,T9双卡选卡拨号键盘,短信双卡选卡,来去电归属地,黑名单,骚扰拦截,状态栏图标替换,时间格式修改,常用小功能等强大插件",
+      "section": "Tweaks",
+      "author": {
+        "name": "xybp888"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.xybp888.callassist16.dopamine.roothide.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.xybp888.callassist16.dopamine.roothide.png"
+    },
+    {
+      "name": "白名单注入之长按图标 (RootHide)",
+      "package": "cn.zqbb.3dtouch.inject.roothide",
+      "version": "2.1",
+      "description": "roothide白名单版 控制是否注入（也是操作plist文件，官方版不支持）",
+      "section": "Tweaks",
+      "author": {
+        "name": "zqbb"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/cn.zqbb.3dtouch.inject.roothide.html",
       "icon": "https://repo.xxtt.pp.ua//icons/default.png"
     }
   ]

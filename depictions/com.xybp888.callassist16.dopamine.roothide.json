@@ -1,0 +1,45 @@
+{
+  "class": "DepictionTabView",
+  "minVersion": "0.3",
+  "tabs": [
+    {
+      "class": "DepictionStackView",
+      "tabname": "描述",
+      "views": [
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "电话助手授权版本,通话录音,通话记录合并,T9双卡选卡拨号键盘,短信双卡选卡,来去电归属地,黑名单,骚扰拦截,状态栏图标替换,时间格式修改,常用小功能等强大插件",
+          "useSpacing": true
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "信息",
+          "useBoldText": true
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "作者",
+          "text": "xybp888"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "3.1.9"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "架构",
+          "text": "iphoneos-arm64e"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "分类",
+          "text": "Tweaks"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "class": "DepictionTabView",
+  "minVersion": "0.3",
+  "tabs": [
+    {
+      "class": "DepictionStackView",
+      "tabname": "描述",
+      "views": [
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "使用方法：Filza进入/var/mobile/Documents/tweak_tool/目录，运行“一键备份和恢复工具.sh”文件。",
+          "useSpacing": true
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "信息",
+          "useBoldText": true
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "作者",
+          "text": "预言小猫"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "2.0.0-beta"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "架构",
+          "text": "iphoneos-arm64e"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "分类",
+          "text": "插件配置"
+        }
+      ]
+    }
+  ]
+}

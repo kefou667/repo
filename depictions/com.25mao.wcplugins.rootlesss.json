@@ -1,0 +1,45 @@
+{
+  "class": "DepictionTabView",
+  "minVersion": "0.3",
+  "tabs": [
+    {
+      "class": "DepictionStackView",
+      "tabname": "描述",
+      "views": [
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "微信插件管理\n* 收纳第三方微信插件\n* 位于微信右下角“我”-“插件”\n* 部分微信插件不支持收纳\n* 最后更新日期 2026.09.01",
+          "useSpacing": true
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "信息",
+          "useBoldText": true
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "作者",
+          "text": "Mao"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "0.1-7"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "架构",
+          "text": "iphoneos-arm64e"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "分类",
+          "text": "微信插件"
+        }
+      ]
+    }
+  ]
+}

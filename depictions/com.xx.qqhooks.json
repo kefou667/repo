@@ -1,0 +1,45 @@
+{
+  "class": "DepictionTabView",
+  "minVersion": "0.3",
+  "tabs": [
+    {
+      "class": "DepictionStackView",
+      "tabname": "描述",
+      "views": [
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "QQ 多功能插件\n* 插件位于 QQ 设置内\n* 支持防撤回/机型伪装/语音娱乐/闪照",
+          "useSpacing": true
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "信息",
+          "useBoldText": true
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "作者",
+          "text": "𝙓"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "1.6"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "架构",
+          "text": "iphoneos-arm64e"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "分类",
+          "text": "应用破解"
+        }
+      ]
+    }
+  ]
+}

@@ -183,6 +183,263 @@ Size: 366776
 MD5sum: fdd410826c7d534f27092f6595803347
 SHA256: 854fb33ed3d2120b92769fb490be27bdff692575990fe7171c07eb73674ba95a
 
+Package: com.curtin.pkc
+Name: PKC
+Version: 0.9-8
+Architecture: iphoneos-arm64e
+Description: 群管理Pro、标签Pro、显示群友真名字、群管标识、艾特提醒、动态群昵称、自定义API(图、文本、视频)、消息统计、加密对话、Bark消息推送、定时问候、JD自动签到、好友分析、会话分析、每天60s新闻快报、防撤回、退群监控、步数定时修改、朋友圈特别关注、自动更新微信状态、长头像、消息二次确认、拍一拍二次确认、艾特列表置顶群管理、按群员查找列表置顶群管理、群性别统计、关键词自动回复、转账自动收款、收款自动回复、批量退群、批量修改群昵称、自动通过好友请求、自动互删好友、id加好友、匿名艾特等。
+Maintainer: someone
+Author: Curtin
+Depiction: https://repo.xxtt.pp.ua//depictions/com.curtin.pkc.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.curtin.pkc.json
+Section: 微信插件
+Depends: firmware (>= 5.0)
+Pre-Depends: rootless-compat (>= 0.9)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/PKC_0.9-8_iphoneos-arm64e.deb
+Size: 1380852
+MD5sum: b40f661ba2ec69044308fccb3001ca53
+SHA256: 0f971d3715c3be538f90bd1db5cba18278e519e6ab31d66582acfcf53f9ae760
+
+Package: roothide.patches.filza
+Name: Patches for Filza 64bit
+Version: 0.5-4
+Architecture: iphoneos-arm64e
+Description: RootHide Dynamic Patches For Filza
+Maintainer: roothide
+Author: roothide
+Depiction: https://repo.xxtt.pp.ua//depictions/roothide.patches.filza.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/roothide.patches.filza.json
+Section: RootHide Patches
+Depends: com.roothide.patchloader
+Recommends: com.tigisoftware.filza64bit (= 4.0.1-4~roothide)
+Conflicts: com.tigisoftware.filza64bit (>> 4.0.1-4~roothide), com.tigisoftware.filza64bit (<< 4.0.1-4~roothide)
+Provides: patches-com.tigisoftware.filza64bit (= 4.0.1-4~roothide)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/Patches for Filza 64bit_0.5-4_iphoneos-arm64e.deb
+Size: 31060
+MD5sum: a47662270c8e4e6d26ba5303148ab3a3
+SHA256: a70a097cbcb56a9f7bca0567d8f0368df1e69b2965010a732ef24cedeae7a1ae
+
+Package: com.xx.qqhooks
+Name: QQ 防撤回图层
+Version: 1.6
+Architecture: iphoneos-arm64e
+Description: QQ 多功能插件
+* 插件位于 QQ 设置内
+* 支持防撤回/机型伪装/语音娱乐/闪照
+Maintainer: 𝙓
+Author: 𝙓
+Depiction: https://repo.xxtt.pp.ua//depictions/com.xx.qqhooks.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.xx.qqhooks.json
+Section: 应用破解
+Depends: mobilesubstrate (>= 0.9.5000)
+Pre-Depends: rootless-compat (>= 0.9)
+Conflicts: com.xx.qqhook
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/QQ 防撤回图层_1.6_iphoneos-arm64e.deb
+Size: 1334876
+MD5sum: 8254409ff491a87c920daa21156a84ee
+SHA256: c253c10a93fd952ea1cf54f43224524a9c54a5488afcffebc4f89892b58fdc5d
+
+Package: com.karma.qqfullscreenfix
+Name: QQFullscreenFix
+Version: 2.0.1
+Architecture: iphoneos-arm64e
+Description: QQ 全屏黑边修复，旨在解决各种分屏修改 QQ 比例的行为导致全屏窗口下出现底部黑框的状况，由 QAQ 发布。反馈问题QQ：2052700050
+Maintainer: QAQ
+Author: QAQ
+Depiction: https://repo.xxtt.pp.ua//depictions/com.karma.qqfullscreenfix.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.karma.qqfullscreenfix.json
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 13.0)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/QQFullscreenFix_2.0.1_iphoneos-arm64e.deb
+Size: 11088
+MD5sum: 3c9586c3fe7382cbd0a88b6a7d7e9e20
+SHA256: 3c06bb39901d1519aadc6f357eb918e048e2be63146d6fe2bfe468777b19fe8a
+
+Package: com.roothide.patcher
+Name: RootHide Patcher
+Version: 2.1.4-1+debug
+Architecture: iphoneos-arm64e
+Description: patch rootless package to roothide, not work for all packages.
+Maintainer: roothide
+Author: roothide
+Depiction: https://repo.xxtt.pp.ua//depictions/com.roothide.patcher.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.roothide.patcher.json
+Section: Utilities
+Depends: firmware (>= 15.0), libxar1, ldid, file, dpkg, gawk, plutil (>= 0.2.2-1), uikittools (>= 2.1.6-4)
+Icon: https://repo.xxtt.pp.ua//icons/com.roothide.patcher.png
+Filename: debs/RootHide Patcher_2.1.4-1+debug_iphoneos-arm64e.deb
+Size: 1169312
+MD5sum: 3e52a8f0377172b61fa5a0fa5386020c
+SHA256: 9de69e7d721a2043ca7d543c82a9db6bc79a6ed3ca19b81928fa53f8be0d90b3
+
+Package: com.safarixs.zh-hans
+Name: Safari X 简体中文
+Version: 1.3.0
+Architecture: iphoneos-arm64e
+Description: Safari X 汉化
+* 设置内按钮未汉化
+Maintainer: 0xkuj
+Author: Super TrollStore
+Depiction: https://repo.xxtt.pp.ua//depictions/com.safarixs.zh-hans.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.safarixs.zh-hans.json
+Section: 汉化
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, firmware (>= 15.0)
+Pre-Depends: rootless-compat (>= 0.9)
+Replaces: com.0xkuj.safarix, byg.iosios.net.safarix, com.dao.safarix, com.0xkuj.safarixs
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/Safari X 简体中文_1.3.0_iphoneos-arm64e.deb
+Size: 2716
+MD5sum: 91f20833a6d2a1afa943f2f513e65ee0
+SHA256: 756c3787fffc6af54583ecda7e3b4ce532e033ac20c1345a51333e392f7d133a
+
+Package: com.0xkuj.safarixs
+Name: SafariX
+Version: 1.9.9
+Architecture: iphoneos-arm64e
+Description: Safari 浏览器增强插件
+Maintainer: 0xkuj
+Author: 0xkuj
+Depiction: https://repo.xxtt.pp.ua//depictions/com.0xkuj.safarixs.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.0xkuj.safarixs.json
+Section: Bootstrap
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, firmware (>= 15.0)
+Pre-Depends: rootless-compat (>= 0.9)
+Conflicts: com.0xkuj.safarix, byg.iosios.net.safarix, com.dao.safarix
+Icon: https://repo.xxtt.pp.ua//icons/com.0xkuj.safarixs.png
+Filename: debs/SafariX_1.9.9_iphoneos-arm64e.deb
+Size: 326084
+MD5sum: f31196667262cfba4177b497147b8079
+SHA256: e95b0868bb034af6ed8f3201a9e711d8f1642261464c06c4dc24dd91ab2816c8
+
+Package: com.dao.saily
+Name: Saily(RootHide)
+Version: 3.0.1
+Architecture: iphoneos-arm64e
+Description: 现代化、美观、简洁的越狱软件包管理器！
+Maintainer: Saily Team
+Author: Saily Team
+Depiction: https://repo.xxtt.pp.ua//depictions/com.dao.saily.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.dao.saily.json
+Section: 嗨-系统
+Pre-Depends: firmware (>= 13.0), dpkg, uikittools
+Conflicts: wiki.qaq.chromatic, wiki.qaq.chromatic.roothide, wiki.qaq.chromatic.rootless
+Icon: https://repo.xxtt.pp.ua//icons/com.dao.saily.png
+Filename: debs/Saily(RootHide)_3.0.1_iphoneos-arm64e.deb
+Size: 3404844
+MD5sum: f09289475f42485fc1490381ab37d657
+SHA256: d8766b21a5b208e3e6c82ca3e684ee6e47d58b200c8aae8a950d3a958210c799
+
+Package: com.hk.settingsrevamp.cn.rl
+Name: SettingsRevamp 简体中文包(RootHide)
+Version: 3.0.1
+Architecture: iphoneos-arm64e
+Description: SettingsRevamp 简体中文包(RootHide)。
+Maintainer: 妖刀
+Author: 妖刀
+Depiction: https://repo.xxtt.pp.ua//depictions/com.hk.settingsrevamp.cn.rl.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.hk.settingsrevamp.cn.rl.json
+Section: 嗨-汉化
+Depends: mobilesubstrate
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/SettingsRevamp 简体中文包(RootHide)_3.0.1_iphoneos-arm64e.deb
+Size: 8620
+MD5sum: 4be338579b9590ced50a9f002ff4987e
+SHA256: 621d1af4565317016d08df73eb94e8ff633512704d843974ac132110290244e9
+
+Package: com.dao.settingsrevamp
+Name: SettingsRevamp(RootHide)
+Version: 3.0.1.1
+Architecture: iphoneos-arm64e
+Description: 设置自定义、归类插件，源内有汉化包；v3.0.x版本，功能大体和之前v2.1.1差不多，就改了个插件首页。
+Maintainer: SOPPPra
+Author: SOPPPra
+Depiction: https://repo.xxtt.pp.ua//depictions/com.dao.settingsrevamp.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.dao.settingsrevamp.json
+Section: 嗨-工具
+Depends: mobilesubstrate, preferenceloader, com.mrgcgamer.libgcuniversal, firmware (>= 14), com.hk.settingsrevamp.cn.rl
+Conflicts: com.creaturecoding.shuffle, com.trappledestek.ikset, pro.ikghd.iksettings, xyz.cypwn.settingswidgets, org.mr.settingswidgets, com.trappledestek.settingswidgets, com.shepgoba.settingswidgets, com.sop.settingsrevamp
+Icon: https://repo.xxtt.pp.ua//icons/com.dao.settingsrevamp.png
+Filename: debs/SettingsRevamp(RootHide)_3.0.1.1_iphoneos-arm64e.deb
+Size: 407556
+MD5sum: 6da6cd09d6d6b352bf727d5e3a98c3a0
+SHA256: be1667d8694ae78bb58748d4ddf1600b8bb1621677d284c7bb934aa21328c8d3
+
+Package: com.82flex.singlemutes
+Name: Single Mute 静音图标
+Version: 1.7
+Architecture: iphoneos-arm64e
+Description: 状态栏左上角显示静音图标
+* Just a single mute icon on the status bar of iOS
+Maintainer: 82Flex
+Author: 82Flex
+Depiction: https://repo.xxtt.pp.ua//depictions/com.82flex.singlemutes.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.82flex.singlemutes.json
+Section: 乌龙工作室
+Depends: firmware (>= 14.0)
+Conflicts: com.82flex.singlemute
+Icon: https://repo.xxtt.pp.ua//icons/com.82flex.singlemutes.png
+Filename: debs/Single Mute 静音图标_1.7_iphoneos-arm64e.deb
+Size: 27736
+MD5sum: 7a8b56896679a43d623d4d5688c51cf1
+SHA256: f73b023f04b5babbcf9878ee964dfafe70b9ef6cd95f5975e43a02a282bfec65
+
+Package: com.susudear.stayshot.markup
+Name: StayShot Edit
+Version: 1.6.1
+Architecture: iphoneos-arm64e
+Description: StayShot Edit 的冻结截图编辑扩展，支持箭头、涂鸦、高亮、马赛克和方框，并支持复制或保存编辑结果。
+Maintainer: SuSuDear
+Author: SuSuDear
+Depiction: https://repo.xxtt.pp.ua//depictions/com.susudear.stayshot.markup.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.susudear.stayshot.markup.json
+Section: Tweaks
+Depends: com.susudear.stayshot (>= 0.5.1), mobilesubstrate, firmware (>= 15.1)
+Icon: https://repo.xxtt.pp.ua//icons/com.susudear.stayshot.markup.png
+Filename: debs/StayShot Edit_1.6.1_iphoneos-arm64e.deb
+Size: 153456
+MD5sum: d982ca5fb89c66f49f7d08b73f5ae581
+SHA256: 555d521c69e10c47fa591be1d115b145f6c69cb0cf07b485ff90b1b2c2717feb
+
+Package: com.susudear.stayshot.long-screenshot
+Name: StayShot Long Screenshot
+Version: 1.5.0
+Architecture: iphoneos-arm64e
+Description: Long screenshot action and capture controller for StayShot.
+Maintainer: SuSuDear
+Author: SuSuDear
+Depiction: https://repo.xxtt.pp.ua//depictions/com.susudear.stayshot.long-screenshot.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.susudear.stayshot.long-screenshot.json
+Section: Tweaks
+Depends: com.susudear.stayshot (>= 0.2.4), mobilesubstrate, firmware (>= 15.1), dev.theos.orion (>= 1.0.0)
+Icon: https://repo.xxtt.pp.ua//icons/com.susudear.stayshot.long-screenshot.png
+Filename: debs/StayShot Long Screenshot_1.5.0_iphoneos-arm64e.deb
+Size: 156008
+MD5sum: a98103399fe37c4d5bca166e1ed5fe33
+SHA256: a4c0a262987ab3f4cb5482926625c3626e3caf924fee530a23d96536b1670a53
+
+Package: com.susudear.stayshot
+Name: StayShot
+Version: 0.5.5
+Architecture: iphoneos-arm64e
+Description: StayShot 独立的 iOS 截图工具，支持普通模式、冻结模式、区域截图、截图历史和屏幕浮窗。
+Maintainer: SuSuDear
+Author: SuSuDear
+Depiction: https://repo.xxtt.pp.ua//depictions/com.susudear.stayshot.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.susudear.stayshot.json
+Section: Tweaks
+Depends: mobilesubstrate, preferenceloader, firmware (>= 15.1)
+Conflicts: com.jontelang.snapper3
+Provides: com.jontelang.snapper3 (= 1.2.1)
+Replaces: com.jontelang.snapper3
+Icon: https://repo.xxtt.pp.ua//icons/com.susudear.stayshot.png
+Filename: debs/StayShot_0.5.5_iphoneos-arm64e.deb
+Size: 229816
+MD5sum: 4d93f5ecdecfbdf9fc976b9f019f9d2d
+SHA256: 2c1300e14a30d6e79eaa4655b83c2b7a7cf4acd473f2d58df91230d92c2946bc
+
 Package: com.nx.stheno
 Name: Stheno
 Version: 0.1.23-1
@@ -202,6 +459,116 @@ Filename: debs/Stheno_0.1.23-1_Official_NoProbeLogs_iphoneos-arm.deb
 Size: 551004
 MD5sum: 06b38ca76d64a00e5b3fa72107e3ea2a
 SHA256: bc6a143df8dc8c555919df646a5323847b3f3dc6f877255e32b604955757986f
+
+Package: com.netskao.storeswitchaccounts.roothide
+Name: StoreSwitchAccounts
+Version: 1.1-4
+Architecture: iphoneos-arm64e
+Description: 方便登录帐户在不同地区之间切换，长按桌面AppStore图标即可切换！
+Maintainer: Nets <xuanhua880@gmail.com>
+Author: Netskao <xuanhua880@gmail.com>
+Depiction: https://repo.xxtt.pp.ua//depictions/com.netskao.storeswitchaccounts.roothide.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.netskao.storeswitchaccounts.roothide.json
+Section: Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate
+Pre-Depends: rootless-compat (>= 0.9)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/StoreSwitchAccounts_1.1-4_iphoneos-arm64e.deb
+Size: 103128
+MD5sum: 4a6fed7fa71b13b3db7dee1b60fba0a9
+SHA256: 7ff17173464b6f4f860cc5a867e2c72ab2685615089dbadcc3ae1b0ef81d03d8
+
+Package: com.susudear.susuocr
+Name: SuSuOCR
+Version: 1.1.1
+Architecture: iphoneos-arm64e
+Description: 内置百度 OCR、GLM 和 Qwen 流式普通翻译；保留自定义 OCR、百度翻译及 AI 截图处理。
+Maintainer: SuSuDear
+Author: SuSuDear
+Depiction: https://repo.xxtt.pp.ua//depictions/com.susudear.susuocr.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.susudear.susuocr.json
+Section: Tweaks
+Depends: mobilesubstrate, preferenceloader
+Icon: https://repo.xxtt.pp.ua//icons/com.susudear.susuocr.png
+Filename: debs/SuSuOCR_1.1.1_iphoneos-arm64e.deb
+Size: 196776
+MD5sum: 9a8c54795b10ca9b42504e2cfb90a8df
+SHA256: bb00991709a14df914f7a896d00a751a489ffd396ad1a0c79769e0122cddfc69
+
+Package: com.netskao.swiftgramcracks
+Name: Swiftgram Crack
+Version: 1.1-7
+Architecture: iphoneos-arm64e
+Description: Swiftgram Pro
+* 附加解除下载保护
+* 解除截图保护
+* 去除官方广告
+* 解锁 Pro 首次登录需重启一次应用
+* 最后在 Swiftgram 12.2 进行测试
+Maintainer: Nets
+Author: Netskao
+Depiction: https://repo.xxtt.pp.ua//depictions/com.netskao.swiftgramcracks.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.netskao.swiftgramcracks.json
+Section: 应用破解
+Depends: firmware (>= 13.0), mobilesubstrate
+Pre-Depends: rootless-compat (>= 0.9)
+Conflicts: com.netskao.swiftgramcrack
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/Swiftgram Crack_1.1-7_iphoneos-arm64e.deb
+Size: 425020
+MD5sum: 3a376f9465a5a5dbb448beb3f9b40afc
+SHA256: 7612b5e6ce9873198e22a041b884b18c76c5682c67539ea769fb352c254d39d5
+
+Package: com.82flex.touchvis
+Name: Touch-Viz
+Version: 4.1.1
+Architecture: iphoneos-arm64e
+Description: Display your touch interactions!
+Maintainer: Lessica <82flex@gmail.com>
+Author: Lessica <82flex@gmail.com>
+Depiction: https://repo.xxtt.pp.ua//depictions/com.82flex.touchvis.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.82flex.touchvis.json
+Section: Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate, preferenceloader
+Icon: https://repo.xxtt.pp.ua//icons/com.82flex.touchvis.png
+Filename: debs/Touch-Viz_4.1.1_iphoneos-arm64e.deb
+Size: 939488
+MD5sum: 485ff1e9c4bde8014ca46097741edd4f
+SHA256: d6ff218cc6212d1030ffe4e659349a029c380c6c22685aa6a5b015024c615674
+
+Package: com.huami.wcpulse
+Name: WCPulse
+Version: 1.7-5
+Architecture: iphoneos-arm64e
+Description: WCPulse
+Maintainer: huami
+Author: huami
+Depiction: https://repo.xxtt.pp.ua//depictions/com.huami.wcpulse.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.huami.wcpulse.json
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/WCPulse_1.7-5_iphoneos-arm64e.deb
+Size: 3571656
+MD5sum: 8722ae7721d1718019f27e565eb9cf63
+SHA256: f135ebc9cd6fda10b2bb6e29bc1ad7217cfc21e89c150fd4788968d0fe029f86
+
+Package: wiki.qaq.writenow
+Name: Write Now
+Version: 2.3
+Architecture: iphoneos-arm64e
+Description: AI tool within your hands.
+Maintainer: Lessica <82flex@gmail.com>
+Author: Lessica <82flex@gmail.com>
+Depiction: https://repo.xxtt.pp.ua//depictions/wiki.qaq.writenow.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/wiki.qaq.writenow.json
+Section: Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate, preferenceloader
+Icon: https://repo.xxtt.pp.ua//icons/wiki.qaq.writenow.png
+Filename: debs/Write Now_2.3_iphoneos-arm64e.deb
+Size: 3393552
+MD5sum: 4df625805b6f43bcee72286e43d13f17
+SHA256: 3e5b9dd26b0bc79865d02e2fa618e16419eaaa70a50dd8a9f2e758dd40afac21
 
 Package: com.exile90.icleanerpros
 Name: iCleaner Pro
@@ -241,6 +608,69 @@ Size: 57136
 MD5sum: bbb515648b8f6efcbe720d8d49fdc675
 SHA256: e613537679142e60100689ccd29da6b6abc265a274e79e3f98bcddf711fad3c2
 
+Package: com.wkk.tweaktool
+Name: 一键备份和恢复工具
+Version: 2.0.0-beta
+Architecture: iphoneos-arm64e
+Description: 使用方法：Filza进入/var/mobile/Documents/tweak_tool/目录，运行“一键备份和恢复工具.sh”文件。
+Maintainer: 预言小猫
+Author: 预言小猫
+Depiction: https://repo.xxtt.pp.ua//depictions/com.wkk.tweaktool.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.wkk.tweaktool.json
+Section: 插件配置
+Depends: sudo, bash (>= 5.0.3-2), coreutils (>= 8.31-1), grep (>= 3.1-1), sed (>= 4.5-1), gawk (>= 4.2.1-1), tar (>= 1.33-1)
+Pre-Depends: rootless-compat (>= 0.9)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/一键备份和恢复工具_2.0.0-beta_iphoneos-arm64e.deb
+Size: 11132
+MD5sum: 36abde1b847dd562df8f5c8097157576
+SHA256: c010badfa96512e2ded4b20e62db1b7ba07a72c350384a7cf9ac9838d7c1a2b1
+
+Package: com.wkk.wcpureextension
+Name: 微信净化
+Version: 2026.04
+Architecture: iphoneos-arm64e
+Description: 免费公开无限制版本，带抢🧧
+Maintainer: Nets
+Author: Netskao
+Depiction: https://repo.xxtt.pp.ua//depictions/com.wkk.wcpureextension.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.wkk.wcpureextension.json
+Section: 微信插件
+Depends: mobilesubstrate, firmware (>= 12.0)
+Pre-Depends: rootless-compat (>= 0.9)
+Conflicts: netskao.wechatpurification
+Provides: netskao.wechatpurification
+Replaces: netskao.wechatpurification
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/微信净化_2026.04_iphoneos-arm64e.deb
+Size: 15986652
+MD5sum: b8edcd2b0df955bcf3ebd4ff0678725b
+SHA256: 413a26d16a957553280acac55530eee41bc62371cd2515a83ee4912de4ebedf5
+
+Package: com.25mao.wcplugins.rootlesss
+Name: 微信插件管理
+Version: 0.1-7
+Architecture: iphoneos-arm64e
+Description: 微信插件管理
+* 收纳第三方微信插件
+* 位于微信右下角“我”-“插件”
+* 部分微信插件不支持收纳
+* 最后更新日期 2026.09.01
+Maintainer: admin@25mao.com
+Author: Mao
+Depiction: https://repo.xxtt.pp.ua//depictions/com.25mao.wcplugins.rootlesss.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.25mao.wcplugins.rootlesss.json
+Section: 微信插件
+Depends: firmware (>= 5.0)
+Conflicts: com.25mao.wcplugins.rootless
+Provides: com.25mao.wcplugins.rootless
+Replaces: com.25mao.wcplugins.rootless
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/微信插件管理_0.1-7_iphoneos-arm64e.deb
+Size: 15292
+MD5sum: 6c938abcc45dcf40eda02399f9cf5a48
+SHA256: 703a7110f9a484ea80d83b8cc4e6144d9690d94554bc8f9475b020fabed4fc29
+
 Package: com.eason.shortcutsintentguard
 Name: 快捷指令闪退修复ios16
 Version: 1.0.2
@@ -257,3 +687,38 @@ Filename: debs/快捷指令闪退修复ios16_1.0.2_iphoneos-arm64e.deb
 Size: 7496
 MD5sum: 05c4055555f651281b2654a9c45bb6f8
 SHA256: 4b9204c2ba5cd233b3bbf829de5e512d1c7f8414d4c7b8c6dd132e01af2f39bb
+
+Package: com.xybp888.callassist16.dopamine.roothide
+Name: 电话助手iOS16-正式版(Roothide)
+Version: 3.1.9
+Architecture: iphoneos-arm64e
+Description: 电话助手授权版本,通话录音,通话记录合并,T9双卡选卡拨号键盘,短信双卡选卡,来去电归属地,黑名单,骚扰拦截,状态栏图标替换,时间格式修改,常用小功能等强大插件
+Maintainer: xybp888
+Author: xybp888
+Depiction: https://repo.xxtt.pp.ua//depictions/com.xybp888.callassist16.dopamine.roothide.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.xybp888.callassist16.dopamine.roothide.json
+Section: Tweaks
+Depends: firmware (>= 16.0), preferenceloader, com.opa334.libsandy
+Icon: https://repo.xxtt.pp.ua//icons/com.xybp888.callassist16.dopamine.roothide.png
+Filename: debs/电话助手iOS16-正式版(Roothide)_3.1.9_iphoneos-arm64e.deb
+Size: 3582916
+MD5sum: f992cb53e4a20602fd8ce713fc19eafa
+SHA256: 0699e643b6b09ba699992017bf92f6981ef4c99a2a036fcc719bc731287f6845
+
+Package: cn.zqbb.3dtouch.inject.roothide
+Name: 白名单注入之长按图标 (RootHide)
+Version: 2.1
+Architecture: iphoneos-arm64e
+Description: roothide白名单版 控制是否注入（也是操作plist文件，官方版不支持）
+Maintainer: zqbb
+Author: zqbb
+Depiction: https://repo.xxtt.pp.ua//depictions/cn.zqbb.3dtouch.inject.roothide.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/cn.zqbb.3dtouch.inject.roothide.json
+Section: Tweaks
+Depends: mobilesubstrate
+Conflicts: zp.3dtouchtounject
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/白名单注入之长按图标 (RootHide)_2.1_iphoneos-arm64e.deb
+Size: 5776
+MD5sum: e19a4d44b2b527ee39c3cb8b056775e3
+SHA256: de5f6cca02cb3c4918e6c62edf50725114def3c8a519e85bcdd81925859bc50c

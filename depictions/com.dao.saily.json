@@ -1,0 +1,45 @@
+{
+  "class": "DepictionTabView",
+  "minVersion": "0.3",
+  "tabs": [
+    {
+      "class": "DepictionStackView",
+      "tabname": "描述",
+      "views": [
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "现代化、美观、简洁的越狱软件包管理器！",
+          "useSpacing": true
+        },
+        {
+          "class": "DepictionSeparatorView"
+        },
+        {
+          "class": "DepictionHeaderView",
+          "title": "信息",
+          "useBoldText": true
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "作者",
+          "text": "Saily Team"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "版本",
+          "text": "3.0.1"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "架构",
+          "text": "iphoneos-arm64e"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "分类",
+          "text": "嗨-系统"
+        }
+      ]
+    }
+  ]
+}
