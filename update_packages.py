@@ -470,15 +470,6 @@ def write_depictions(info, icon_url):
                 "views": [
 
                     {
-                        "class":
-                            "DepictionHeaderView",
-
-                        "title": name,
-
-                        "useBoldText": True
-                    },
-
-                    {
     "class":
         "DepictionMarkdownView",
 
