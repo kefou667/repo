@@ -6,6 +6,18 @@
   "contact": "https://github.com/kefou667",
   "packages": [
     {
+      "name": "DockX",
+      "package": "com.udevs.dockx",
+      "version": "2.6.2",
+      "description": "Pasteboard shortcuts on your keyboard dock!",
+      "section": "Tweaks",
+      "author": {
+        "name": "udevs"
+      },
+      "depiction": "https://kefou667.github.io/repo/depictions/com.udevs.dockx.html",
+      "icon": "https://kefou667.github.io/repo/icons/com.udevs.dockx.png"
+    },
+    {
       "name": "Stheno",
       "package": "com.nx.stheno",
       "version": "0.1.23-1",

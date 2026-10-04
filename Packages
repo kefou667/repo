@@ -1,3 +1,21 @@
+Package: com.udevs.dockx
+Name: DockX
+Version: 2.6.2
+Architecture: iphoneos-arm64e
+Description: Pasteboard shortcuts on your keyboard dock!
+Maintainer: udevs
+Author: udevs
+Depiction: https://kefou667.github.io/repo/depictions/com.udevs.dockx.html
+Sileodepiction: https://kefou667.github.io/repo/depictions/com.udevs.dockx.json
+Section: Tweaks
+Depends: mobilesubstrate, preferenceloader, firmware (>= 14.0)
+Conflicts: com.restiveconch.actionbar
+Icon: https://kefou667.github.io/repo/icons/com.udevs.dockx.png
+Filename: debs/DockX_2.6.2_iphoneos-arm64e.deb
+Size: 415384
+MD5sum: 7935fa6e456822b0c6cbc6b08ce776bd
+SHA256: 5a65a57b4aa24fba084ae5dd33712f9679d6242e7b6b5af732073a97972b3cdf
+
 Package: com.nx.stheno
 Name: Stheno
 Version: 0.1.23-1
@@ -22,8 +40,7 @@ Package: com.eason.shortcutsintentguard
 Name: 快捷指令闪退修复ios16
 Version: 1.0.2
 Architecture: iphoneos-arm64e
-Description: 快捷指令闪退修复ios16
-修复由iOS 26 VisualIntelligence App Intent元数据引起的iOS 16快捷方式崩溃。使用独立的保护服务，不注入任何进程。
+Description: Repairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.
 Maintainer: eason
 Author: eason
 Depiction: https://kefou667.github.io/repo/depictions/com.eason.shortcutsintentguard.html

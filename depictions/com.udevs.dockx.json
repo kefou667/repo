@@ -8,12 +8,12 @@
       "views": [
         {
           "class": "DepictionHeaderView",
-          "title": "快捷指令闪退修复ios16",
+          "title": "DockX",
           "useBoldText": true
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "## 快捷指令闪退修复ios16\n\nRepairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.",
+          "markdown": "## DockX\n\nPasteboard shortcuts on your keyboard dock!",
           "useSpacing": true
         },
         {
@@ -27,12 +27,12 @@
         {
           "class": "DepictionTableTextView",
           "title": "作者",
-          "text": "eason"
+          "text": "udevs"
         },
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "1.0.2"
+          "text": "2.6.2"
         },
         {
           "class": "DepictionTableTextView",
@@ -42,7 +42,7 @@
         {
           "class": "DepictionTableTextView",
           "title": "分类",
-          "text": "System"
+          "text": "Tweaks"
         }
       ]
     }
