@@ -36,25 +36,22 @@ MAX_NEWS = 10
 
 def read_control_from_deb(deb_path):
     """
-    使用系统自带 dpkg-deb 读取 .deb 的 control 信息。
-    GitHub Actions 的 Ubuntu 环境默认提供 dpkg-deb。
+    从 .deb 中读取 DEBIAN/control
+    支持 control.tar.gz / control.tar.xz / control.tar / control.tar.bz2
     """
 
-    import subprocess
+    with tarfile.open(deb_path, mode="r:*") as tar:
+        for member in tar.getmembers():
+            name = member.name
 
-    try:
-        result = subprocess.run(
-            ["dpkg-deb", "-f", deb_path],
-            capture_output=True,
-            text=True,
-            check=True
-        )
+            if name.endswith("control"):
+                extracted = tar.extractfile(member)
 
-        return result.stdout
+                if extracted:
+                    data = extracted.read()
+                    return data.decode("utf-8", errors="replace")
 
-    except Exception as e:
-        print(f"读取 control 失败 {deb_path}: {e}")
-        return ""
+    return ""
 
 
 def parse_control(control_text):
