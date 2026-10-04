@@ -1,4 +1,4 @@
-name: 更新源索引
+name: 更新并发布源
 
 on:
   push:
@@ -12,6 +12,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -19,9 +21,9 @@ jobs:
 
     steps:
       - name: 检出仓库
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: 生成 Packages、Depiction、sileo.json、News
+      - name: 生成源索引
         run: python3 update_packages.py
 
       - name: 提交自动生成文件
@@ -37,3 +39,36 @@ jobs:
             git commit -m "🤖 自动更新源索引"
             git push
           fi
+
+      - name: 配置 GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: 准备 Pages 文件
+        run: |
+          mkdir -p _site
+
+          cp -r debs _site/
+          cp -r depictions _site/
+          cp -r icons _site/
+
+          cp Packages _site/
+          cp Packages.gz _site/
+          cp Packages.bz2 _site/
+          cp sileo.json _site/
+          cp news.json _site/
+
+          echo "Pages 文件准备完成"
+          find _site -maxdepth 2 -type f | sort
+
+      - name: 上传 Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+
+      - name: 发布到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
