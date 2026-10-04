@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>News · kefou</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        linear-gradient(135deg, #eef2ff, #ffffff);
+
+      color: #171717;
+    }
+
+    .container {
+      width: min(100% - 32px, 850px);
+      margin: auto;
+    }
+
+    header {
+      padding: 60px 0 30px;
+    }
+
+    .back {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin: 25px 0 8px;
+    }
+
+    .subtitle {
+      color: #777;
+    }
+
+    .news {
+      margin-top: 30px;
+    }
+
+    .item {
+      background: rgba(255,255,255,.9);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.06);
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .date {
+      color: #888;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .description {
+      color: #555;
+      line-height: 1.7;
+      margin-top: 14px;
+    }
+
+    footer {
+      text-align: center;
+      color: #999;
+      padding: 40px 0;
+      font-size: 13px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+
+      <a class="back" href="../">
+        ← 返回 kefou
+      </a>
+
+      <h1>📰 News</h1>
+
+      <div class="subtitle">
+        kefou 源最新动态
+      </div>
+
+    </header>
+
+    <main class="news" id="news">
+      正在加载……
+    </main>
+
+    <footer>
+      © 2026 kefou
+    </footer>
+
+  </div>
+
+  <script>
+
+    fetch("../news.json")
+      .then(response => response.json())
+      .then(news => {
+
+        const container = document.getElementById("news");
+
+        if (!news.length) {
+          container.innerHTML = "暂无新闻";
+          return;
+        }
+
+        container.innerHTML = news
+          .map(item => `
+
+            <article class="item">
+
+              <div class="title">
+                ${item.title}
+              </div>
+
+              <div class="date">
+                ${item.date}
+              </div>
+
+              <div class="description">
+                ${item.description}
+              </div>
+
+            </article>
+
+          `)
+          .join("");
+
+      })
+      .catch(() => {
+
+        document.getElementById("news").innerHTML =
+          "新闻加载失败。";
+
+      });
+
+  </script>
+
+</body>
+</html>
