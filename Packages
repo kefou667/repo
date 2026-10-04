@@ -55,6 +55,25 @@ Size: 184540
 MD5sum: ca2bfd7846b8f6d01f47dbe030047f9b
 SHA256: 1daf893467b78c01a7f2bf02083e40b0f8519f373d74c9fcc684a225d72fafd8
 
+Package: com.wkk.crane
+Name: Crane
+Version: 1.3.17
+Architecture: iphoneos-arm64e
+Description: 正版砸壳备份。
+Maintainer: opa334
+Author: opa334
+Depiction: https://repo.xxtt.pp.ua//depictions/com.wkk.crane.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.wkk.crane.json
+Section: Tweaks
+Depends: firmware (>= 11.0), mobilesubstrate, preferenceloader, com.opa334.altlist (>= 1.0.5), com.opa334.libsandy (>= 1.1.6), com.opa334.libundirect (>= 1.1.4) | firmware (<< 14.0)
+Pre-Depends: rootless-compat (>= 0.9)
+Conflicts: com.opa334.cranelite, com.opa334.crane13lite, com.opa334.crane13, com.rpgfarm.slices3, com.subdiox.slices2, com.expetelek.slices
+Icon: https://repo.xxtt.pp.ua//icons/com.wkk.crane.png
+Filename: debs/Crane_1.3.17_iphoneos-arm64e.deb
+Size: 613392
+MD5sum: 60143301bb4b994ecde41eb7391f5c57
+SHA256: 910c2eb6b606baafc77ae2130af0d13153641fbbf20674cc0950eb85fc7d6f50
+
 Package: com.udevs.dockx
 Name: DockX
 Version: 2.6.2
@@ -91,6 +110,79 @@ Size: 41072
 MD5sum: 6a90b36f5993ed7fa1f085ff27c287a0
 SHA256: ebf4674fe9e3996ad04fa8155d822003d35af7d1d39811edcda78308f3407c2f
 
+Package: com.dao.filzacrack
+Name: Filza Crack(RootHide)
+Version: 1.1-9
+Architecture: iphoneos-arm64e
+Description: Filza解锁全部功能，请在官方源安装Filza。Netskao新更的版本，上架备份；转换支持 roothide。
+Maintainer: Nets
+Author: Netskao
+Depiction: https://repo.xxtt.pp.ua//depictions/com.dao.filzacrack.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.dao.filzacrack.json
+Section: 嗨-工具
+Depends: firmware (>= 15.0), mobilesubstrate
+Pre-Depends: rootless-compat (>= 0.9)
+Conflicts: com.netskao.filzacrack, netskao.filzacrack-rootless
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/Filza Crack(RootHide)_1.1-9_iphoneos-arm64e.deb
+Size: 29012
+MD5sum: 81a2dc21e7fb9015ec0cb1481ef5797e
+SHA256: 666ab93a16a3bd7294cf04a04a1eefae7f382516933d536cebf8d9fd502e3e3f
+
+Package: com.sini921.freepip
+Name: FreePIP-roothide
+Version: 0.0.6-3
+Architecture: iphoneos-arm64e
+Description: 任意调整画中画大小和位置，长按画中画窗口切换模式，基于开源重新编译，优化了一些代码，改进了一些细节。
+Maintainer: Soh Satoh & SINI
+Author: Soh Satoh & SINI
+Depiction: https://repo.xxtt.pp.ua//depictions/com.sini921.freepip.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.sini921.freepip.json
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Icon: https://repo.xxtt.pp.ua//icons/com.sini921.freepip.png
+Filename: debs/FreePIP-roothide_0.0.6-3_iphoneos-arm64e.deb
+Size: 43216
+MD5sum: 275c3c78afde0347e9a28a4c2deed973
+SHA256: d9cafa94995c83a028ead675242bad60e28a67a64c8adec8f4ed5eddd50b4429
+
+Package: com.lclrc.hammerit
+Name: Hammer It
+Version: 1.7.1
+Architecture: iphoneos-arm64e
+Description: Control your text or translate as you wish.
+Maintainer: lclrc(SquidForce)
+Author: lclrc(SquidForce)
+Depiction: https://repo.xxtt.pp.ua//depictions/com.lclrc.hammerit.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.lclrc.hammerit.json
+Section: Tweaks
+Depends: mobilesubstrate, preferenceloader, com.opa334.altlist, com.opa334.ccsupport, com.opa334.libsandy, firmware (>= 14.0)
+Pre-Depends: rootless-compat (>= 0.9)
+Icon: https://repo.xxtt.pp.ua//icons/com.lclrc.hammerit.png
+Filename: debs/Hammer It_1.7.1_iphoneos-arm64e.deb
+Size: 969572
+MD5sum: 289a9b616b2a0f09212db145434dcdec
+SHA256: db83e986cc746ea3cc5d4f2cdfb1ff807380716fbddbe4a8b9f697d6cfe0b021
+
+Package: com.82flex.kayoko
+Name: Kayoko
+Version: 4.1.2
+Architecture: iphoneos-arm64e
+Description: A smarter clipboard experience that stays close whenever you need it.
+Maintainer: 82Flex <82flex@gmail.com>
+Author: 82Flex <82flex@gmail.com>
+Depiction: https://repo.xxtt.pp.ua//depictions/com.82flex.kayoko.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.82flex.kayoko.json
+Section: Tweaks
+Depends: firmware (>= 14.0), mobilesubstrate, preferenceloader
+Conflicts: codes.aurora.kayoko, dev.traurige.kayoko
+Replaces: codes.aurora.kayoko, dev.traurige.kayoko
+Icon: https://repo.xxtt.pp.ua//icons/com.82flex.kayoko.png
+Filename: debs/Kayoko_4.1.2_iphoneos-arm64e.deb
+Size: 366776
+MD5sum: fdd410826c7d534f27092f6595803347
+SHA256: 854fb33ed3d2120b92769fb490be27bdff692575990fe7171c07eb73674ba95a
+
 Package: com.nx.stheno
 Name: Stheno
 Version: 0.1.23-1
@@ -110,6 +202,27 @@ Filename: debs/Stheno_0.1.23-1_Official_NoProbeLogs_iphoneos-arm.deb
 Size: 551004
 MD5sum: 06b38ca76d64a00e5b3fa72107e3ea2a
 SHA256: bc6a143df8dc8c555919df646a5323847b3f3dc6f877255e32b604955757986f
+
+Package: com.exile90.icleanerpros
+Name: iCleaner Pro
+Version: 7.10.0
+Architecture: iphoneos-arm64e
+Description: iCleaner Pro
+* 垃圾清理工具，启动项管理等
+* The first real iOS system cleanup and management utility
+Maintainer: Ivano Bilenchi
+Author: Ivano Bilenchi
+Depiction: https://repo.xxtt.pp.ua//depictions/com.exile90.icleanerpros.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.exile90.icleanerpros.json
+Section: Bootstrap
+Depends: firmware (>= 4.0), findutils, apt | apt7
+Pre-Depends: rootless-compat (>= 0.9)
+Conflicts: com.exile90.icleanerpro, org.altervista.exilecom.icleaner
+Icon: https://repo.xxtt.pp.ua//icons/com.exile90.icleanerpros.png
+Filename: debs/iCleaner Pro_7.10.0_iphoneos-arm64e.deb
+Size: 982132
+MD5sum: ea0817a5676ec5bb0ee2ed857db136e5
+SHA256: 4ff3949a90fa0077ca55649075a71de4a5de294c3593912622f6b3bdb4fb8b8f
 
 Package: com.be-huge.insulation
 Name: insulation
