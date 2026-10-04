@@ -58,6 +58,22 @@ Size: 551004
 MD5sum: 06b38ca76d64a00e5b3fa72107e3ea2a
 SHA256: bc6a143df8dc8c555919df646a5323847b3f3dc6f877255e32b604955757986f
 
+Package: com.opa334.trollstorelite
+Name: TrollStore Lite (RootHide)
+Version: 2.1.1-1
+Architecture: iphoneos-arm64e
+Description: TrollStore for RootHide jailbroken iOS
+Maintainer: opa334
+Author: opa334
+Depiction: https://repo.xxtt.pp.ua//depictions/com.opa334.trollstorelite.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.opa334.trollstorelite.json
+Section: Applications
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/com.opa334.trollstorelite_2.1.1-1_iphoneos-arm64e.deb
+Size: 1739500
+MD5sum: d47682640599305df16c5a29e17bcd08
+SHA256: a606e0576be5d508ff92a4d842b49698088889b85fb3ceeee43f4269ee03e376
+
 Package: com.be-huge.insulation
 Name: insulation
 Version: 0.1.38.1
