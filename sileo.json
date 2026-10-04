@@ -4,18 +4,5 @@
   "url": "https://kefou667.github.io/repo",
   "version": "1.0",
   "contact": "https://github.com/kefou667",
-  "packages": [
-    {
-      "name": "Stheno",
-      "package": "com.nx.stheno",
-      "version": "0.1.23-1",
-      "description": "Stheno分屏正式版（关闭诊断文件日志）",
-      "section": "Tweaks",
-      "author": {
-        "name": "Crassna"
-      },
-      "depiction": "https://kefou667.github.io/repo/depictions/com.nx.stheno.html",
-      "icon": "https://kefou667.github.io/repo/icons/com.nx.stheno.png"
-    }
-  ]
+  "packages": []
 }
