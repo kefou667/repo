@@ -13,8 +13,7 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "## 快捷指令闪退修复ios16\n\n快捷指令闪退修复ios16
-修复由iOS 26 VisualIntelligence App Intent元数据引起的iOS 16快捷方式崩溃。使用独立的保护服务，不注入任何进程。",
+          "markdown": "## 快捷指令闪退修复ios16\n\nRepairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.",
           "useSpacing": true
         },
         {
