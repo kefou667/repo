@@ -1,7 +1,7 @@
 {
   "name": "kefou",
   "identifier": "com.kefou.repo",
-  "url": "https://kefou667.github.io/repo",
+  "url": "https://repo.xxtt.pp.ua/",
   "version": "1.0",
   "contact": "https://github.com/kefou667",
   "packages": [
@@ -14,8 +14,8 @@
       "author": {
         "name": "udevs"
       },
-      "depiction": "https://kefou667.github.io/repo/depictions/com.udevs.dockx.html",
-      "icon": "https://kefou667.github.io/repo/icons/com.udevs.dockx.png"
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.udevs.dockx.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.udevs.dockx.png"
     },
     {
       "name": "Stheno",
@@ -26,8 +26,8 @@
       "author": {
         "name": "Crassna"
       },
-      "depiction": "https://kefou667.github.io/repo/depictions/com.nx.stheno.html",
-      "icon": "https://kefou667.github.io/repo/icons/com.nx.stheno.png"
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.nx.stheno.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.nx.stheno.png"
     },
     {
       "name": "快捷指令闪退修复ios16",
@@ -38,8 +38,8 @@
       "author": {
         "name": "eason"
       },
-      "depiction": "https://kefou667.github.io/repo/depictions/com.eason.shortcutsintentguard.html",
-      "icon": "https://kefou667.github.io/repo/icons/default.png"
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.eason.shortcutsintentguard.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
     }
   ]
 }
