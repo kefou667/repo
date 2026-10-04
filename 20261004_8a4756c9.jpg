@@ -1376,7 +1376,6 @@ def main():
     "url": REPO_URL,
     "version": "1.0",
     "contact": SOURCE_CONTACT,
-    "icon": "https://img.kekezw.nyc.mn/20261004_8a4756c9.jpg",
     "packages": sileo_packages
 }
 
