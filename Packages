@@ -58,23 +58,6 @@ Size: 551004
 MD5sum: 06b38ca76d64a00e5b3fa72107e3ea2a
 SHA256: bc6a143df8dc8c555919df646a5323847b3f3dc6f877255e32b604955757986f
 
-Package: com.hang.squidgesturepro-ios17fix
-Name: 乌贼手势 iOS 17 补丁
-Version: 1.2
-Architecture: iphoneos-arm64e
-Description: 修复 SquidGesturePro 在 iOS 17 状态栏不生效与启动快捷指令时导致的安全模式。
-Maintainer: 航
-Author: 航
-Depiction: https://repo.xxtt.pp.ua//depictions/com.hang.squidgesturepro-ios17fix.html
-Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.hang.squidgesturepro-ios17fix.json
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 17.0)
-Icon: https://repo.xxtt.pp.ua//icons/default.png
-Filename: debs/com.hang.squidgesturepro-ios17fix_1.2_iphoneos-arm64e.deb
-Size: 12462
-MD5sum: 49e62cec08d16c9309de4ea7499bc61e
-SHA256: 508c3ea0cdc4a5e5ebaf120f15026cf3893af87fdf63c4de0961792213035c9f
-
 Package: com.be-huge.insulation
 Name: insulation
 Version: 0.1.38.1
