@@ -42,6 +42,18 @@
       "icon": "https://repo.xxtt.pp.ua//icons/com.nx.stheno.png"
     },
     {
+      "name": "乌贼手势 iOS 17 补丁",
+      "package": "com.hang.squidgesturepro-ios17fix",
+      "version": "1.2",
+      "description": "修复 SquidGesturePro 在 iOS 17 状态栏不生效与启动快捷指令时导致的安全模式。",
+      "section": "Tweaks",
+      "author": {
+        "name": "航"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.hang.squidgesturepro-ios17fix.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
       "name": "insulation",
       "package": "com.be-huge.insulation",
       "version": "0.1.38.1",
