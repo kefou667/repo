@@ -559,7 +559,7 @@ def write_depictions(info, icon_url):
     )
 
 
-    # ========================================================
+        # ========================================================
     # HTML Depiction
     # ========================================================
 
@@ -568,116 +568,297 @@ def write_depictions(info, icon_url):
     icon_html = ""
 
     if icon_url:
-
         icon_html = f"""
-<img
-src="{h(icon_url)}"
-style="
-width:80px;
-height:80px;
-border-radius:18px;
-object-fit:cover;
-margin-bottom:15px;
-">
-"""
-
+        <img
+            class="hero-icon"
+            src="{h(icon_url)}"
+            alt="{h(name)}"
+        >
+        """
 
     html_doc = f"""<!doctype html>
-
-<html>
-
+<html lang="zh-CN">
 <head>
 
 <meta charset="utf-8">
 
 <meta
-name="viewport"
-content="width=device-width,initial-scale=1"
+    name="viewport"
+    content="width=device-width,initial-scale=1"
 >
 
-<title>{h(name)}</title>
+<title>{h(name)} - kefou</title>
 
 <style>
 
+* {{
+    box-sizing: border-box;
+}}
+
 body {{
-font-family:
--apple-system,
-BlinkMacSystemFont,
-sans-serif;
+    margin: 0;
+    padding: 24px 16px 50px;
 
-margin:0;
+    background:
+        linear-gradient(
+            180deg,
+            #f7f7fb 0%,
+            #f2f2f7 100%
+        );
 
-padding:24px;
+    color: #1c1c1e;
 
-background:#f2f2f7;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        sans-serif;
+}}
 
-color:#1c1c1e;
+.container {{
+    max-width: 700px;
+    margin: 0 auto;
 }}
 
 .card {{
+    background: rgba(255,255,255,.94);
 
-max-width:680px;
+    border-radius: 28px;
 
-margin:auto;
+    padding: 28px;
 
-background:white;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.08);
 
-border-radius:20px;
-
-padding:24px;
-
-box-shadow:
-0 4px 20px #0001;
-
+    border: 1px solid rgba(0,0,0,.04);
 }}
 
-.icon {{
+.hero {{
+    text-align: center;
 
-width:80px;
+    padding: 10px 0 8px;
+}}
 
-height:80px;
+.hero-icon {{
+    width: 104px;
+    height: 104px;
 
-border-radius:18px;
+    border-radius: 24px;
 
+    object-fit: cover;
+
+    display: block;
+
+    margin: 0 auto 18px;
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.14);
 }}
 
 h1 {{
+    margin: 0;
 
-margin-top:8px;
+    font-size: 30px;
 
-margin-bottom:10px;
+    line-height: 1.2;
 
+    font-weight: 750;
+
+    letter-spacing: -.5px;
 }}
 
-.desc {{
+.version {{
+    margin-top: 8px;
 
-line-height:1.6;
+    color: #777985;
 
-color:#444;
-
+    font-size: 14px;
 }}
 
-.meta {{
+.badges {{
+    display: flex;
 
-display:grid;
+    justify-content: center;
 
-grid-template-columns:
-100px 1fr;
+    flex-wrap: wrap;
 
-gap:10px 12px;
+    gap: 8px;
 
-color:#555;
-
+    margin-top: 16px;
 }}
 
-hr {{
+.badge {{
+    display: inline-flex;
 
-border:0;
+    align-items: center;
 
-border-top:
-1px solid #eee;
+    padding: 7px 12px;
 
-margin:20px 0;
+    border-radius: 999px;
+
+    background: #f0edff;
+
+    color: #6848d8;
+
+    font-size: 13px;
+
+    font-weight: 650;
+}}
+
+.description {{
+    margin-top: 28px;
+
+    padding: 20px;
+
+    background: #f7f7fa;
+
+    border-radius: 18px;
+
+    color: #44444a;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}}
+
+.section-title {{
+    margin: 28px 0 14px;
+
+    font-size: 17px;
+
+    font-weight: 700;
+}}
+
+.info {{
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #f7f7fa;
+}}
+
+.row {{
+    display: grid;
+
+    grid-template-columns: 90px 1fr;
+
+    gap: 14px;
+
+    padding: 14px 16px;
+
+    border-bottom:
+        1px solid rgba(0,0,0,.06);
+
+    font-size: 14px;
+}}
+
+.row:last-child {{
+    border-bottom: 0;
+}}
+
+.label {{
+    color: #88888f;
+}}
+
+.value {{
+    color: #222226;
+
+    word-break: break-word;
+}}
+
+.links {{
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 26px;
+}}
+
+.button {{
+    flex: 1;
+
+    min-width: 130px;
+
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 13px 16px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 650;
+}}
+
+.button.primary {{
+    background: #6d4aff;
+
+    color: white;
+}}
+
+.button.secondary {{
+    background: #f1f1f5;
+
+    color: #333338;
+}}
+
+.footer {{
+    margin-top: 24px;
+
+    text-align: center;
+
+    color: #9999a1;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}}
+
+.footer a {{
+    color: #6d4aff;
+
+    text-decoration: none;
+}}
+
+@media (max-width: 520px) {{
+
+    body {{
+        padding:
+            12px 10px 35px;
+    }}
+
+    .card {{
+        padding:
+            22px 18px;
+
+        border-radius: 24px;
+    }}
+
+    .hero-icon {{
+        width: 92px;
+        height: 92px;
+
+        border-radius: 22px;
+    }}
+
+    h1 {{
+        font-size: 27px;
+    }}
+
+    .row {{
+        grid-template-columns:
+            75px 1fr;
+    }}
 
 }}
 
@@ -687,40 +868,160 @@ margin:20px 0;
 
 <body>
 
-<div class="card">
+<div class="container">
 
-{icon_html}
+    <div class="card">
 
-<h1>{h(name)}</h1>
+        <div class="hero">
 
-<div class="desc">
+            {icon_html}
 
-{h(desc).replace(chr(10), "<br>")}
+            <h1>
+                {h(name)}
+            </h1>
 
-</div>
+            <div class="version">
+                v{h(version)}
+            </div>
 
-<hr>
+            <div class="badges">
 
-<div class="meta">
+                <span class="badge">
+                    Rootless
+                </span>
 
-<div>版本</div>
-<div>{h(version)}</div>
+                <span class="badge">
+                    {h(section)}
+                </span>
 
-<div>架构</div>
-<div>{h(arch)}</div>
+            </div>
 
-<div>作者</div>
-<div>{h(author)}</div>
+        </div>
 
-<div>分类</div>
-<div>{h(section)}</div>
 
-</div>
+        <div class="description">
+
+            {h(desc).replace(chr(10), "<br>")}
+
+        </div>
+
+
+        <div class="section-title">
+            软件信息
+        </div>
+
+
+        <div class="info">
+
+            <div class="row">
+
+                <div class="label">
+                    版本
+                </div>
+
+                <div class="value">
+                    {h(version)}
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="label">
+                    架构
+                </div>
+
+                <div class="value">
+                    {h(arch)}
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="label">
+                    作者
+                </div>
+
+                <div class="value">
+                    {h(author)}
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="label">
+                    分类
+                </div>
+
+                <div class="value">
+                    {h(section)}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="links">
+
+            <a
+                class="button primary"
+                href="{h(REPO_URL)}/"
+            >
+                返回 kefou 源
+            </a>
+
+
+            <a
+                class="button secondary"
+                href="https://kekezw.nyc.mn/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                📝 我的博客
+            </a>
+
+
+            <a
+                class="button secondary"
+                href="{h(SOURCE_CONTACT)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GitHub
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        <div>
+            {h(name)} · kefou
+        </div>
+
+        <div>
+
+            Powered by
+
+            <a href="{h(REPO_URL)}/">
+                kefou Repository
+            </a>
+
+        </div>
+
+    </div>
 
 </div>
 
 </body>
-
 </html>
 """
 
