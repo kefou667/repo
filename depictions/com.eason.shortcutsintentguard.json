@@ -8,12 +8,12 @@
       "views": [
         {
           "class": "DepictionHeaderView",
-          "title": "Stheno",
+          "title": "快捷指令闪退修复ios16",
           "useBoldText": true
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "## Stheno\n\nStheno分屏正式版（关闭诊断文件日志）",
+          "markdown": "## 快捷指令闪退修复ios16\n\nRepairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.",
           "useSpacing": true
         },
         {
@@ -27,22 +27,22 @@
         {
           "class": "DepictionTableTextView",
           "title": "作者",
-          "text": "Crassna"
+          "text": "eason"
         },
         {
           "class": "DepictionTableTextView",
           "title": "版本",
-          "text": "0.1.23-1"
+          "text": "1.0.2"
         },
         {
           "class": "DepictionTableTextView",
           "title": "架构",
-          "text": "iphoneos-arm64"
+          "text": "iphoneos-arm64e"
         },
         {
           "class": "DepictionTableTextView",
           "title": "分类",
-          "text": "Tweaks"
+          "text": "System"
         }
       ]
     }

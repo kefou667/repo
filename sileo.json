@@ -4,5 +4,30 @@
   "url": "https://kefou667.github.io/repo",
   "version": "1.0",
   "contact": "https://github.com/kefou667",
-  "packages": []
+  "packages": [
+    {
+      "name": "Stheno",
+      "package": "com.nx.stheno",
+      "version": "0.1.23-1",
+      "description": "Stheno分屏正式版（关闭诊断文件日志）",
+      "section": "Tweaks",
+      "author": {
+        "name": "Crassna"
+      },
+      "depiction": "https://kefou667.github.io/repo/depictions/com.nx.stheno.html",
+      "icon": "https://kefou667.github.io/repo/icons/com.nx.stheno.png"
+    },
+    {
+      "name": "快捷指令闪退修复ios16",
+      "package": "com.eason.shortcutsintentguard",
+      "version": "1.0.2",
+      "description": "Repairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.",
+      "section": "System",
+      "author": {
+        "name": "eason"
+      },
+      "depiction": "https://kefou667.github.io/repo/depictions/com.eason.shortcutsintentguard.html",
+      "icon": "https://kefou667.github.io/repo/icons/default.png"
+    }
+  ]
 }

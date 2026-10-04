@@ -1,0 +1,36 @@
+Package: com.nx.stheno
+Name: Stheno
+Version: 0.1.23-1
+Architecture: iphoneos-arm64
+Description: Stheno分屏正式版（关闭诊断文件日志）
+Maintainer: Crassna
+Author: Crassna
+Depiction: https://kefou667.github.io/repo/depictions/com.nx.stheno.html
+Sileodepiction: https://kefou667.github.io/repo/depictions/com.nx.stheno.json
+Section: Tweaks
+Depends: dev.theos.orion (>= 1.0.0), mobilesubstrate, firmware (>= 16.0)
+Conflicts: com.h.sthenokb, com.nx.stheno.splitlastownerprobe, com.nx.stheno.splitcycleownerprobe, com.nx.stheno.renderresourceprobe, com.nx.stheno.surfaceownerprobe, com.nx.stheno.splittransitionownerprobe, com.nx.stheno.splitcontextunbindfix, com.nx.stheno.fix.bannerpull80fix1, com.nx.stheno.fix.nativereplycompetition1, com.nx.stheno.fix.nativereplydisable1, com.nx.stheno.fix
+Provides: com.h.sthenokb (= 1.1.2-59), com.nx.stheno.fix (= 0.1.23-1~defaultscache1)
+Replaces: com.h.sthenokb, com.nx.stheno.fix.bannerpull80fix1, com.nx.stheno.fix.nativereplycompetition1, com.nx.stheno.fix.nativereplydisable1, com.nx.stheno.fix
+Icon: https://kefou667.github.io/repo/icons/com.nx.stheno.png
+Filename: debs/Stheno_0.1.23-1_Official_NoProbeLogs_iphoneos-arm.deb
+Size: 551004
+MD5sum: 06b38ca76d64a00e5b3fa72107e3ea2a
+SHA256: bc6a143df8dc8c555919df646a5323847b3f3dc6f877255e32b604955757986f
+
+Package: com.eason.shortcutsintentguard
+Name: 快捷指令闪退修复ios16
+Version: 1.0.2
+Architecture: iphoneos-arm64e
+Description: Repairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.
+Maintainer: eason
+Author: eason
+Depiction: https://kefou667.github.io/repo/depictions/com.eason.shortcutsintentguard.html
+Sileodepiction: https://kefou667.github.io/repo/depictions/com.eason.shortcutsintentguard.json
+Section: System
+Depends: firmware (>= 15.0)
+Icon: https://kefou667.github.io/repo/icons/default.png
+Filename: debs/快捷指令闪退修复ios16_1.0.2_iphoneos-arm64e.deb
+Size: 7496
+MD5sum: 05c4055555f651281b2654a9c45bb6f8
+SHA256: 4b9204c2ba5cd233b3bbf829de5e512d1c7f8414d4c7b8c6dd132e01af2f39bb
