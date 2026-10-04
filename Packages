@@ -5,8 +5,8 @@ Architecture: iphoneos-arm64
 Description: Stheno分屏正式版（关闭诊断文件日志）
 Maintainer: Crassna
 Author: Crassna
-Depiction: https://kefou.github.io/Sileo/depictions/com.nx.stheno.html
-Sileodepiction: https://kefou.github.io/Sileo/depictions/com.nx.stheno.json
+Depiction: https://kefou.github.io/repo/depictions/com.nx.stheno.html
+Sileodepiction: https://kefou.github.io/repo/depictions/com.nx.stheno.json
 Section: Tweaks
 Depends: dev.theos.orion (>= 1.0.0), mobilesubstrate, firmware (>= 16.0)
 Conflicts: com.h.sthenokb, com.nx.stheno.splitlastownerprobe, com.nx.stheno.splitcycleownerprobe, com.nx.stheno.renderresourceprobe, com.nx.stheno.surfaceownerprobe, com.nx.stheno.splittransitionownerprobe, com.nx.stheno.splitcontextunbindfix, com.nx.stheno.fix.bannerpull80fix1, com.nx.stheno.fix.nativereplycompetition1, com.nx.stheno.fix.nativereplydisable1, com.nx.stheno.fix
