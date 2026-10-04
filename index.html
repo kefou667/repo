@@ -4,11 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>kefou · iOS 软件源</title>
+  <title>kefou · iOS Repository</title>
 
   <style>
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -17,94 +21,303 @@
         -apple-system,
         BlinkMacSystemFont,
         "SF Pro Display",
+        "SF Pro Text",
         "Segoe UI",
         sans-serif;
+
+      color: #17171a;
+
       background:
-        linear-gradient(135deg, #eef2ff 0%, #f8f9ff 45%, #ffffff 100%);
-      color: #171717;
+        radial-gradient(
+          circle at 20% 0%,
+          rgba(115, 88, 255, 0.16),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(60, 120, 255, 0.14),
+          transparent 32%
+        ),
+        #f6f7fb;
+
       min-height: 100vh;
     }
 
+    a {
+      color: inherit;
+    }
+
     .container {
-      width: min(100% - 32px, 900px);
+      width: min(100% - 32px, 1000px);
       margin: auto;
     }
 
-    header {
-      padding: 70px 0 45px;
+    /* =========================
+       Hero
+    ========================= */
+
+    .hero {
       text-align: center;
+      padding: 72px 0 48px;
     }
 
     .logo {
-      width: 92px;
-      height: 92px;
-      border-radius: 24px;
+      width: 108px;
+      height: 108px;
+
+      border-radius: 28px;
+
       object-fit: cover;
-      box-shadow: 0 12px 35px rgba(60, 60, 100, 0.18);
-      margin-bottom: 20px;
+
+      box-shadow:
+        0 20px 50px rgba(70, 60, 140, 0.22);
+
+      margin-bottom: 24px;
     }
 
-    h1 {
+    .hero h1 {
       margin: 0;
-      font-size: 42px;
-      letter-spacing: -1px;
+
+      font-size: clamp(42px, 8vw, 64px);
+
+      font-weight: 800;
+
+      letter-spacing: -2px;
     }
 
-    .subtitle {
+    .tagline {
       margin-top: 12px;
-      color: #666;
-      font-size: 17px;
+
+      color: #6f7078;
+
+      font-size: 18px;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 22px;
-      padding: 28px;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
-    }
+    .badge {
+      display: inline-flex;
 
-    .card h2 {
-      margin-top: 0;
-      font-size: 21px;
-    }
+      margin-top: 18px;
 
-    .source-url {
-      background: #f4f5f8;
-      border-radius: 12px;
-      padding: 14px;
-      word-break: break-all;
-      font-family: monospace;
-      font-size: 14px;
-    }
+      padding: 7px 13px;
 
-    .buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
+      border-radius: 999px;
 
-    .button {
-      display: inline-block;
-      text-decoration: none;
-      padding: 12px 18px;
-      border-radius: 12px;
-      background: #111;
-      color: white;
+      background: rgba(255,255,255,.8);
+
+      border: 1px solid rgba(0,0,0,.06);
+
+      color: #5d5e67;
+
+      font-size: 13px;
+
       font-weight: 600;
     }
 
-    .button.secondary {
-      background: #eef0f5;
-      color: #222;
+    /* =========================
+       Buttons
+    ========================= */
+
+    .buttons {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 28px;
     }
+
+    .button {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 46px;
+
+      padding: 0 20px;
+
+      border-radius: 14px;
+
+      text-decoration: none;
+
+      font-size: 15px;
+
+      font-weight: 700;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      background: #17171a;
+
+      color: white;
+
+      box-shadow:
+        0 10px 25px rgba(0,0,0,.15);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,.85);
+
+      border: 1px solid rgba(0,0,0,.07);
+    }
+
+    /* =========================
+       Cards
+    ========================= */
+
+    .card {
+      background: rgba(255,255,255,.82);
+
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      border: 1px solid rgba(0,0,0,.06);
+
+      border-radius: 24px;
+
+      padding: 28px;
+
+      margin-bottom: 20px;
+
+      box-shadow:
+        0 12px 40px rgba(30,30,60,.06);
+    }
+
+    .card-title {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 20px;
+    }
+
+    .card-title h2 {
+      margin: 0;
+
+      font-size: 21px;
+    }
+
+    .card-title a {
+      color: #777985;
+
+      text-decoration: none;
+
+      font-size: 14px;
+    }
+
+    /* =========================
+       Source URL
+    ========================= */
+
+    .source-box {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      background: #f3f4f7;
+
+      border-radius: 14px;
+
+      padding: 5px;
+
+      margin-top: 15px;
+    }
+
+    .source-url {
+      flex: 1;
+
+      padding: 11px;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+
+      font-family: monospace;
+
+      font-size: 13px;
+
+      color: #555660;
+    }
+
+    .copy-button {
+      border: 0;
+
+      border-radius: 10px;
+
+      padding: 10px 13px;
+
+      background: white;
+
+      cursor: pointer;
+
+      font-weight: 700;
+    }
+
+    /* =========================
+       Stats
+    ========================= */
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+    }
+
+    .stat {
+      text-align: center;
+
+      background: #f5f6f9;
+
+      border-radius: 18px;
+
+      padding: 20px 10px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+
+      font-weight: 800;
+    }
+
+    .stat-label {
+      margin-top: 4px;
+
+      color: #7b7c84;
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       News
+    ========================= */
 
     .news-item {
       padding: 16px 0;
-      border-bottom: 1px solid #eee;
+
+      border-bottom:
+        1px solid #eeeeF1;
     }
 
     .news-item:last-child {
@@ -112,42 +325,199 @@
     }
 
     .news-title {
-      font-weight: 700;
+      font-weight: 750;
+
       font-size: 17px;
     }
 
     .news-date {
-      color: #888;
-      font-size: 13px;
       margin-top: 5px;
+
+      color: #9697a0;
+
+      font-size: 12px;
     }
 
     .news-description {
-      color: #666;
       margin-top: 8px;
+
+      color: #666771;
+
       line-height: 1.6;
+
+      font-size: 14px;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px 0 50px;
-      color: #999;
+    /* =========================
+       Packages
+    ========================= */
+
+    .package {
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 13px 0;
+
+      border-bottom:
+        1px solid #eeeeF1;
+    }
+
+    .package:last-child {
+      border-bottom: none;
+    }
+
+    .package-icon {
+      width: 50px;
+      height: 50px;
+
+      border-radius: 13px;
+
+      object-fit: cover;
+
+      flex-shrink: 0;
+
+      background: #eee;
+    }
+
+    .package-info {
+      min-width: 0;
+
+      flex: 1;
+    }
+
+    .package-name {
+      font-weight: 700;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+    }
+
+    .package-id {
+      margin-top: 3px;
+
+      color: #8a8b93;
+
+      font-size: 12px;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+    }
+
+    .package-version {
+      color: #777985;
+
       font-size: 13px;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding-top: 45px;
-      }
+    /* =========================
+       Info
+    ========================= */
 
-      h1 {
-        font-size: 34px;
+    .info-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 12px;
+    }
+
+    .info {
+      padding: 15px;
+
+      border-radius: 16px;
+
+      background: #f5f6f9;
+    }
+
+    .info-label {
+      color: #8b8c94;
+
+      font-size: 12px;
+    }
+
+    .info-value {
+      margin-top: 5px;
+
+      font-size: 14px;
+
+      font-weight: 650;
+
+      word-break: break-word;
+    }
+
+    /* =========================
+       Footer
+    ========================= */
+
+    footer {
+      text-align: center;
+
+      padding: 30px 0 55px;
+
+      color: #999aa2;
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       Mobile
+    ========================= */
+
+    @media (max-width: 650px) {
+
+      .hero {
+        padding-top: 50px;
       }
 
       .card {
-        padding: 22px;
+        padding: 21px;
+
+        border-radius: 20px;
       }
+
+      .stats {
+        grid-template-columns:
+          1fr 1fr 1fr;
+      }
+
+      .stat-number {
+        font-size: 23px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .source-box {
+        display: block;
+
+        padding: 5px;
+      }
+
+      .source-url {
+        display: block;
+
+        padding: 11px;
+      }
+
+      .copy-button {
+        width: 100%;
+
+        margin-bottom: 4px;
+      }
+
     }
+
   </style>
 </head>
 
@@ -155,7 +525,10 @@
 
   <div class="container">
 
-    <header>
+    <!-- Hero -->
+
+    <header class="hero">
+
       <img
         class="logo"
         src="icons/default.png"
@@ -164,38 +537,28 @@
 
       <h1>kefou</h1>
 
-      <div class="subtitle">
-        Personal iOS Rootless Repository
+      <div class="tagline">
+        Personal iOS Repository
       </div>
-    </header>
 
-    <section class="card">
-
-      <h2>📦 软件源</h2>
-
-      <p>
-        欢迎来到 kefou 的个人 iOS 软件源。
-        本源主要提供 Rootless 越狱环境使用的软件包。
-      </p>
-
-      <div class="source-url">
-        https://kefou667.github.io/repo
+      <div class="badge">
+         Rootless · iOS / iPadOS
       </div>
 
       <div class="buttons">
 
         <a
-          class="button"
+          class="button primary"
           href="sileo://source/https://kefou667.github.io/repo"
         >
-          添加到 Sileo
+          ＋ 添加到 Sileo
         </a>
 
         <a
           class="button secondary"
           href="news/"
         >
-          查看 News
+          📰 News
         </a>
 
         <a
@@ -207,11 +570,113 @@
 
       </div>
 
-    </section>
+    </header>
+
+
+    <!-- Source -->
 
     <section class="card">
 
-      <h2>📰 最新动态</h2>
+      <div class="card-title">
+
+        <h2>📦 软件源</h2>
+
+      </div>
+
+      <div>
+        将下面的地址添加到 Sileo，即可获取本源软件包。
+      </div>
+
+      <div class="source-box">
+
+        <div
+          class="source-url"
+          id="source-url"
+        >
+          https://kefou667.github.io/repo
+        </div>
+
+        <button
+          class="copy-button"
+          onclick="copySource()"
+        >
+          复制
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- Stats -->
+
+    <section class="card">
+
+      <div class="card-title">
+
+        <h2>📊 源信息</h2>
+
+      </div>
+
+      <div class="stats">
+
+        <div class="stat">
+
+          <div
+            class="stat-number"
+            id="package-count"
+          >
+            —
+          </div>
+
+          <div class="stat-label">
+            软件包
+          </div>
+
+        </div>
+
+        <div class="stat">
+
+          <div class="stat-number">
+            Rootless
+          </div>
+
+          <div class="stat-label">
+            架构
+          </div>
+
+        </div>
+
+        <div class="stat">
+
+          <div class="stat-number">
+            iOS
+          </div>
+
+          <div class="stat-label">
+            平台
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- News -->
+
+    <section class="card">
+
+      <div class="card-title">
+
+        <h2>📰 最新动态</h2>
+
+        <a href="news/">
+          查看全部 →
+        </a>
+
+      </div>
 
       <div id="news">
         正在加载……
@@ -219,16 +684,88 @@
 
     </section>
 
+
+    <!-- Packages -->
+
     <section class="card">
 
-      <h2>🔧 软件源信息</h2>
+      <div class="card-title">
 
-      <p><strong>名称：</strong> kefou</p>
-      <p><strong>Identifier：</strong> com.kefou.repo</p>
-      <p><strong>类型：</strong> Rootless</p>
-      <p><strong>平台：</strong> iOS / iPadOS</p>
+        <h2>✨ 最新软件包</h2>
+
+      </div>
+
+      <div id="packages">
+        正在加载……
+      </div>
 
     </section>
+
+
+    <!-- Repository Info -->
+
+    <section class="card">
+
+      <div class="card-title">
+
+        <h2>ℹ️ Repository</h2>
+
+      </div>
+
+      <div class="info-grid">
+
+        <div class="info">
+
+          <div class="info-label">
+            名称
+          </div>
+
+          <div class="info-value">
+            kefou
+          </div>
+
+        </div>
+
+        <div class="info">
+
+          <div class="info-label">
+            Identifier
+          </div>
+
+          <div class="info-value">
+            com.kefou.repo
+          </div>
+
+        </div>
+
+        <div class="info">
+
+          <div class="info-label">
+            类型
+          </div>
+
+          <div class="info-value">
+            Rootless Repository
+          </div>
+
+        </div>
+
+        <div class="info">
+
+          <div class="info-label">
+            GitHub
+          </div>
+
+          <div class="info-value">
+            github.com/kefou667
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
 
     <footer>
       © 2026 kefou · Powered by GitHub Pages
@@ -236,42 +773,239 @@
 
   </div>
 
+
   <script>
+
+    const SOURCE_URL =
+      "https://kefou667.github.io/repo";
+
+
+    /* =========================
+       Copy Source
+    ========================= */
+
+    function copySource() {
+
+      navigator.clipboard
+        .writeText(SOURCE_URL)
+        .then(() => {
+
+          const button =
+            document.querySelector(".copy-button");
+
+          button.textContent = "已复制 ✓";
+
+          setTimeout(() => {
+
+            button.textContent = "复制";
+
+          }, 1800);
+
+        });
+
+    }
+
+
+    /* =========================
+       Load News
+    ========================= */
+
     fetch("news.json")
+
       .then(response => response.json())
+
       .then(news => {
 
-        const container = document.getElementById("news");
+        const container =
+          document.getElementById("news");
 
         if (!news.length) {
-          container.innerHTML = "暂无新闻";
+
+          container.innerHTML =
+            "暂无新闻";
+
           return;
+
         }
 
-        container.innerHTML = news
-          .slice(0, 5)
-          .map(item => `
-            <div class="news-item">
-              <div class="news-title">
-                ${item.title}
+        container.innerHTML =
+          news
+            .slice(0, 3)
+            .map(item => `
+
+              <div class="news-item">
+
+                <div class="news-title">
+                  ${escapeHTML(item.title)}
+                </div>
+
+                <div class="news-date">
+                  ${escapeHTML(item.date)}
+                </div>
+
+                <div class="news-description">
+                  ${escapeHTML(item.description)}
+                </div>
+
               </div>
 
-              <div class="news-date">
-                ${item.date}
-              </div>
-
-              <div class="news-description">
-                ${item.description}
-              </div>
-            </div>
-          `)
-          .join("");
+            `)
+            .join("");
 
       })
+
       .catch(() => {
-        document.getElementById("news").innerHTML =
-          "暂时无法加载新闻。";
+
+        document.getElementById("news")
+          .innerHTML =
+          "暂无新闻";
+
       });
+
+
+    /* =========================
+       Load Packages
+    ========================= */
+
+    fetch("Packages")
+
+      .then(response => response.text())
+
+      .then(text => {
+
+        const blocks =
+          text
+            .split(/\n\n+/)
+            .filter(block =>
+              block.includes("Package:")
+            );
+
+        document.getElementById(
+          "package-count"
+        ).textContent =
+          blocks.length;
+
+
+        const container =
+          document.getElementById("packages");
+
+
+        if (!blocks.length) {
+
+          container.innerHTML =
+            "暂无软件包";
+
+          return;
+
+        }
+
+
+        container.innerHTML =
+          blocks
+            .slice(-5)
+            .reverse()
+            .map(block => {
+
+              const get = key => {
+
+                const match =
+                  block.match(
+                    new RegExp(
+                      "^" +
+                      key +
+                      ":\\s*(.*)$",
+                      "m"
+                    )
+                  );
+
+                return match
+                  ? match[1].trim()
+                  : "";
+
+              };
+
+
+              const pkg =
+                get("Package");
+
+              const name =
+                get("Name") || pkg;
+
+              const version =
+                get("Version");
+
+              const icon =
+                get("Icon") ||
+                "icons/default.png";
+
+
+              return `
+
+                <div class="package">
+
+                  <img
+                    class="package-icon"
+                    src="${escapeAttr(icon)}"
+                    onerror="this.src='icons/default.png'"
+                    alt=""
+                  >
+
+                  <div class="package-info">
+
+                    <div class="package-name">
+                      ${escapeHTML(name)}
+                    </div>
+
+                    <div class="package-id">
+                      ${escapeHTML(pkg)}
+                    </div>
+
+                  </div>
+
+                  <div class="package-version">
+                    ${escapeHTML(version)}
+                  </div>
+
+                </div>
+
+              `;
+
+            })
+            .join("");
+
+      })
+
+      .catch(() => {
+
+        document.getElementById("packages")
+          .innerHTML =
+          "暂时无法读取软件包信息";
+
+      });
+
+
+    /* =========================
+       Safe HTML
+    ========================= */
+
+    function escapeHTML(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    function escapeAttr(value) {
+
+      return escapeHTML(value);
+
+    }
+
   </script>
 
 </body>
