@@ -42,18 +42,6 @@
       "icon": "https://repo.xxtt.pp.ua//icons/com.nx.stheno.png"
     },
     {
-      "name": "TrollStore Lite (RootHide)",
-      "package": "com.opa334.trollstorelite",
-      "version": "2.1.1-1",
-      "description": "TrollStore for RootHide jailbroken iOS",
-      "section": "Applications",
-      "author": {
-        "name": "opa334"
-      },
-      "depiction": "https://repo.xxtt.pp.ua//depictions/com.opa334.trollstorelite.html",
-      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
-    },
-    {
       "name": "insulation",
       "package": "com.be-huge.insulation",
       "version": "0.1.38.1",
