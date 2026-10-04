@@ -479,14 +479,14 @@ def write_depictions(info, icon_url):
                     },
 
                     {
-                        "class":
-                            "DepictionMarkdownView",
+    "class":
+        "DepictionMarkdownView",
 
-                        "markdown":
-                            f"## {name}\n\n{desc}",
+    "markdown":
+        desc,
 
-                        "useSpacing": True
-                    },
+    "useSpacing": True
+},
 
                     {
                         "class":
