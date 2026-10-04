@@ -13,7 +13,7 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "## 快捷指令闪退修复ios16\n\nRepairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.",
+          "markdown": "Repairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.",
           "useSpacing": true
         },
         {
