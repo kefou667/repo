@@ -1,3 +1,25 @@
+Package: com.netskao.appdatas
+Name: AppData
+Version: 1.4.4
+Architecture: iphoneos-arm64e
+Description: 桌面图标增强插件
+* 由 Netskao 汉化修改
+* 桌面图标上滑或下滑或3D长按菜单选择即可唤出图标
+* View & Manage Applications Data from your Home Screen
+Maintainer: Netskao
+Author: Fouad Raheb
+Depiction: https://repo.xxtt.pp.ua//depictions/com.netskao.appdatas.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.netskao.appdatas.json
+Section: Netskao-Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate, preferenceloader
+Pre-Depends: rootless-compat (>= 0.9)
+Conflicts: com.netskao.appdata, byg.iosios.net.appdata-rootless, com.dao.appdata
+Icon: https://repo.xxtt.pp.ua//icons/com.netskao.appdatas.png
+Filename: debs/AppData_1.4.4_iphoneos-arm64e.deb
+Size: 10001552
+MD5sum: a8939b8f4c7a70e3a61dfc34fdae98d4
+SHA256: 90dc14b7509e1e027eac24face108aca1d875f39fdb096e58957cd38b1c7144a
+
 Package: com.udevs.dockx
 Name: DockX
 Version: 2.6.2
