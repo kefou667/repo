@@ -36,6 +36,23 @@ Size: 551004
 MD5sum: 06b38ca76d64a00e5b3fa72107e3ea2a
 SHA256: bc6a143df8dc8c555919df646a5323847b3f3dc6f877255e32b604955757986f
 
+Package: com.be-huge.insulation
+Name: insulation
+Version: 0.1.38.1
+Architecture: iphoneos-arm64e
+Description: 解除温控，一切从简即可。支持命令行切换模式：ins off（原生温控）/ ins low（低功耗）/ ins max（全性能）/ ins status（查看当前模式）
+Maintainer: doimty
+Author: be-huge & doimty
+Depiction: https://repo.xxtt.pp.ua//depictions/com.be-huge.insulation.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.be-huge.insulation.json
+Section: Tweaks
+Depends: firmware (>= 15.0)
+Icon: https://repo.xxtt.pp.ua//icons/com.be-huge.insulation.png
+Filename: debs/insulation_0.1.38.1_iphoneos-arm64e.deb
+Size: 57136
+MD5sum: bbb515648b8f6efcbe720d8d49fdc675
+SHA256: e613537679142e60100689ccd29da6b6abc265a274e79e3f98bcddf711fad3c2
+
 Package: com.eason.shortcutsintentguard
 Name: 快捷指令闪退修复ios16
 Version: 1.0.2

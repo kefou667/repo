@@ -30,6 +30,18 @@
       "icon": "https://repo.xxtt.pp.ua//icons/com.nx.stheno.png"
     },
     {
+      "name": "insulation",
+      "package": "com.be-huge.insulation",
+      "version": "0.1.38.1",
+      "description": "解除温控，一切从简即可。支持命令行切换模式：ins off（原生温控）/ ins low（低功耗）/ ins max（全性能）/ ins status（查看当前模式）",
+      "section": "Tweaks",
+      "author": {
+        "name": "be-huge & doimty"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.be-huge.insulation.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.be-huge.insulation.png"
+    },
+    {
       "name": "快捷指令闪退修复ios16",
       "package": "com.eason.shortcutsintentguard",
       "version": "1.0.2",
