@@ -1,7 +1,7 @@
 {
   "name": "kefou",
   "identifier": "com.kefou.repo",
-  "url": "https://kefou.github.io/repo",
+  "url": "https://kefou667.github.io/repo",
   "version": "1.0",
   "contact": "https://github.com/kefou667",
   "packages": [
@@ -14,8 +14,8 @@
       "author": {
         "name": "Crassna"
       },
-      "depiction": "https://kefou.github.io/repo/depictions/com.nx.stheno.html",
-      "icon": "https://kefou.github.io/repo/icons/com.nx.stheno.png"
+      "depiction": "https://kefou667.github.io/repo/depictions/com.nx.stheno.html",
+      "icon": "https://kefou667.github.io/repo/icons/com.nx.stheno.png"
     }
   ]
 }
