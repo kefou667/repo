@@ -7,11 +7,6 @@
       "tabname": "描述",
       "views": [
         {
-          "class": "DepictionHeaderView",
-          "title": "insulation",
-          "useBoldText": true
-        },
-        {
           "class": "DepictionMarkdownView",
           "markdown": "解除温控，一切从简即可。支持命令行切换模式：ins off（原生温控）/ ins low（低功耗）/ ins max（全性能）/ ins status（查看当前模式）",
           "useSpacing": true

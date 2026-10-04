@@ -7,11 +7,6 @@
       "tabname": "描述",
       "views": [
         {
-          "class": "DepictionHeaderView",
-          "title": "快捷指令闪退修复ios16",
-          "useBoldText": true
-        },
-        {
           "class": "DepictionMarkdownView",
           "markdown": "Repairs the iOS 16 Shortcuts crash caused by iOS 26 VisualIntelligence App Intent metadata. Uses a standalone guard service and injects no process.",
           "useSpacing": true

@@ -7,11 +7,6 @@
       "tabname": "描述",
       "views": [
         {
-          "class": "DepictionHeaderView",
-          "title": "DockX",
-          "useBoldText": true
-        },
-        {
           "class": "DepictionMarkdownView",
           "markdown": "Pasteboard shortcuts on your keyboard dock!",
           "useSpacing": true
