@@ -952,34 +952,38 @@
 
               return `
 
-                <div class="package">
+  <a
+    class="package"
+    href="depictions/${encodeURIComponent(pkg)}.html"
+    style="text-decoration:none;color:inherit;display:flex;"
+  >
 
-                  <img
-                    class="package-icon"
-                    src="${escapeAttr(icon)}"
-                    onerror="this.src='icons/default.png'"
-                    alt=""
-                  >
+    <img
+      class="package-icon"
+      src="${escapeAttr(icon)}"
+      onerror="this.src='icons/default.png'"
+      alt=""
+    >
 
-                  <div class="package-info">
+    <div class="package-info">
 
-                    <div class="package-name">
-                      ${escapeHTML(name)}
-                    </div>
+      <div class="package-name">
+        ${escapeHTML(name)}
+      </div>
 
-                    <div class="package-id">
-                      ${escapeHTML(pkg)}
-                    </div>
+      <div class="package-id">
+        ${escapeHTML(pkg)}
+      </div>
 
-                  </div>
+    </div>
 
-                  <div class="package-version">
-                    ${escapeHTML(version)}
-                  </div>
+    <div class="package-version">
+      ${escapeHTML(version)}
+    </div>
 
-                </div>
+  </a>
 
-              `;
+`;
 
             })
             .join("");
