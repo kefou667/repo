@@ -4,10 +4,10 @@
 
 源地址：
 
-`https://kefou.github.io/repo/`
+`https://kefou667.github.io/repo/`
 
 
 
 在 Sileo / Zebra 中添加：
 
-`https://kefou.github.io/repo/`
+`https://kefou667.github.io/repo/`
