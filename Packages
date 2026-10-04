@@ -38,6 +38,24 @@ Size: 415384
 MD5sum: 7935fa6e456822b0c6cbc6b08ce776bd
 SHA256: 5a65a57b4aa24fba084ae5dd33712f9679d6242e7b6b5af732073a97972b3cdf
 
+Package: com.dao.donut
+Name: Donut(RootHide)
+Version: 2.1
+Architecture: iphoneos-arm64e
+Description: 桌面图标通知角标变成空心小圆圈，自适应颜色。
+Maintainer: daodao
+Author: daodao
+Depiction: https://repo.xxtt.pp.ua//depictions/com.dao.donut.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.dao.donut.json
+Section: 嗨-工具
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, firmware (>= 15.0)
+Conflicts: com.noisyflake.cozybadges, com.yourepo.b4db1r3r3p0.ocd, com.b4db1r3.ocd, com.dao.ocd, com.dao.ocd5lite, com.dao.ocd5, com.sini921.donut
+Icon: https://repo.xxtt.pp.ua//icons/com.dao.donut.png
+Filename: debs/Donut(RootHide)_2.1_iphoneos-arm64e.deb
+Size: 41072
+MD5sum: 6a90b36f5993ed7fa1f085ff27c287a0
+SHA256: ebf4674fe9e3996ad04fa8155d822003d35af7d1d39811edcda78308f3407c2f
+
 Package: com.nx.stheno
 Name: Stheno
 Version: 0.1.23-1

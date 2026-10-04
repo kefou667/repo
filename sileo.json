@@ -30,6 +30,18 @@
       "icon": "https://repo.xxtt.pp.ua//icons/com.udevs.dockx.png"
     },
     {
+      "name": "Donut(RootHide)",
+      "package": "com.dao.donut",
+      "version": "2.1",
+      "description": "桌面图标通知角标变成空心小圆圈，自适应颜色。",
+      "section": "嗨-工具",
+      "author": {
+        "name": "daodao"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.dao.donut.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.dao.donut.png"
+    },
+    {
       "name": "Stheno",
       "package": "com.nx.stheno",
       "version": "0.1.23-1",
