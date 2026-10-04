@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-kefou源 Packages 生成器
+kefou Packages 生成器
 - 无需 dpkg-deb
 - 支持 control.tar.gz / control.tar.xz / control.tar
 - 生成 Packages / Packages.gz / Packages.bz2
@@ -17,7 +17,7 @@ import lzma
 import tarfile
 from pathlib import Path
 
-REPO_URL = "https://kefou.github.io/Sileo"
+REPO_URL = "https://kefou.github.io/repo"
 
 ROOT = Path(__file__).resolve().parent
 DEBS = ROOT / "debs"
