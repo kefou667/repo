@@ -123,6 +123,7 @@ Section: 嗨-工具
 Depends: firmware (>= 15.0), mobilesubstrate
 Pre-Depends: rootless-compat (>= 0.9)
 Conflicts: com.netskao.filzacrack, netskao.filzacrack-rootless
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/Filza Crack(RootHide)_1.1-9_iphoneos-arm64e.deb
 Size: 29012
 MD5sum: 81a2dc21e7fb9015ec0cb1481ef5797e
@@ -194,7 +195,7 @@ Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.curtin.pkc.json
 Section: 微信插件
 Depends: firmware (>= 5.0)
 Pre-Depends: rootless-compat (>= 0.9)
-Icon: https://TrollStoreX.Github.io/sileodepiction/PKC/icon.png
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/PKC_0.9-8_iphoneos-arm64e.deb
 Size: 1380852
 MD5sum: b40f661ba2ec69044308fccb3001ca53
@@ -214,6 +215,7 @@ Depends: com.roothide.patchloader
 Recommends: com.tigisoftware.filza64bit (= 4.0.1-4~roothide)
 Conflicts: com.tigisoftware.filza64bit (>> 4.0.1-4~roothide), com.tigisoftware.filza64bit (<< 4.0.1-4~roothide)
 Provides: patches-com.tigisoftware.filza64bit (= 4.0.1-4~roothide)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/Patches for Filza 64bit_0.5-4_iphoneos-arm64e.deb
 Size: 31060
 MD5sum: a47662270c8e4e6d26ba5303148ab3a3
@@ -234,6 +236,7 @@ Section: 应用破解
 Depends: mobilesubstrate (>= 0.9.5000)
 Pre-Depends: rootless-compat (>= 0.9)
 Conflicts: com.xx.qqhook
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/QQ 防撤回图层_1.6_iphoneos-arm64e.deb
 Size: 1334876
 MD5sum: 8254409ff491a87c920daa21156a84ee
@@ -249,6 +252,7 @@ Author: QAQ
 Depiction: https://repo.xxtt.pp.ua//depictions/com.karma.qqfullscreenfix.html
 Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.karma.qqfullscreenfix.json
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 13.0)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/QQFullscreenFix_2.0.1_iphoneos-arm64e.deb
 Size: 11088
 MD5sum: 3c9586c3fe7382cbd0a88b6a7d7e9e20
@@ -285,6 +289,7 @@ Section: 汉化
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, firmware (>= 15.0)
 Pre-Depends: rootless-compat (>= 0.9)
 Replaces: com.0xkuj.safarix, byg.iosios.net.safarix, com.dao.safarix, com.0xkuj.safarixs
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/Safari X 简体中文_1.3.0_iphoneos-arm64e.deb
 Size: 2716
 MD5sum: 91f20833a6d2a1afa943f2f513e65ee0
@@ -338,6 +343,7 @@ Depiction: https://repo.xxtt.pp.ua//depictions/com.hk.settingsrevamp.cn.rl.html
 Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.hk.settingsrevamp.cn.rl.json
 Section: 嗨-汉化
 Depends: mobilesubstrate
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/SettingsRevamp 简体中文包(RootHide)_3.0.1_iphoneos-arm64e.deb
 Size: 8620
 MD5sum: 4be338579b9590ced50a9f002ff4987e
@@ -466,6 +472,7 @@ Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.netskao.storeswitchaccou
 Section: Tweaks
 Depends: firmware (>= 15.0), mobilesubstrate
 Pre-Depends: rootless-compat (>= 0.9)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/StoreSwitchAccounts_1.1-4_iphoneos-arm64e.deb
 Size: 103128
 MD5sum: 4a6fed7fa71b13b3db7dee1b60fba0a9
@@ -506,7 +513,7 @@ Section: 应用破解
 Depends: firmware (>= 13.0), mobilesubstrate
 Pre-Depends: rootless-compat (>= 0.9)
 Conflicts: com.netskao.swiftgramcrack
-Icon: https://TrollStoreX.Github.io/sileodepiction/Swiftgram/icon.png
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/Swiftgram Crack_1.1-7_iphoneos-arm64e.deb
 Size: 425020
 MD5sum: 3a376f9465a5a5dbb448beb3f9b40afc
@@ -540,6 +547,7 @@ Depiction: https://repo.xxtt.pp.ua//depictions/com.huami.wcpulse.html
 Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.huami.wcpulse.json
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/WCPulse_1.7-5_iphoneos-arm64e.deb
 Size: 3571656
 MD5sum: 8722ae7721d1718019f27e565eb9cf63
@@ -612,7 +620,7 @@ Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.wkk.tweaktool.json
 Section: 插件配置
 Depends: sudo, bash (>= 5.0.3-2), coreutils (>= 8.31-1), grep (>= 3.1-1), sed (>= 4.5-1), gawk (>= 4.2.1-1), tar (>= 1.33-1)
 Pre-Depends: rootless-compat (>= 0.9)
-Icon: https://s1.imagehub.cc/images/2025/01/10/0458f7f83190b2b17070085595312c2b.jpeg
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/一键备份和恢复工具_2.0.0-beta_iphoneos-arm64e.deb
 Size: 11132
 MD5sum: 36abde1b847dd562df8f5c8097157576
@@ -633,7 +641,7 @@ Pre-Depends: rootless-compat (>= 0.9)
 Conflicts: netskao.wechatpurification
 Provides: netskao.wechatpurification
 Replaces: netskao.wechatpurification
-Icon: https://s1.imagehub.cc/images/2025/01/01/95a2f7dd7e6f2a540e2f53f95ae214d4.png
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/微信净化_2026.04_iphoneos-arm64e.deb
 Size: 15986652
 MD5sum: b8edcd2b0df955bcf3ebd4ff0678725b
@@ -657,6 +665,7 @@ Depends: firmware (>= 5.0)
 Conflicts: com.25mao.wcplugins.rootless
 Provides: com.25mao.wcplugins.rootless
 Replaces: com.25mao.wcplugins.rootless
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/微信插件管理_0.1-7_iphoneos-arm64e.deb
 Size: 15292
 MD5sum: 6c938abcc45dcf40eda02399f9cf5a48
@@ -673,6 +682,7 @@ Depiction: https://repo.xxtt.pp.ua//depictions/com.eason.shortcutsintentguard.ht
 Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.eason.shortcutsintentguard.json
 Section: System
 Depends: firmware (>= 15.0)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/快捷指令闪退修复ios16_1.0.2_iphoneos-arm64e.deb
 Size: 7496
 MD5sum: 05c4055555f651281b2654a9c45bb6f8
@@ -707,6 +717,7 @@ Sileodepiction: https://repo.xxtt.pp.ua//depictions/cn.zqbb.3dtouch.inject.rooth
 Section: Tweaks
 Depends: mobilesubstrate
 Conflicts: zp.3dtouchtounject
+Icon: https://repo.xxtt.pp.ua//icons/default.png
 Filename: debs/白名单注入之长按图标 (RootHide)_2.1_iphoneos-arm64e.deb
 Size: 5776
 MD5sum: e19a4d44b2b527ee39c3cb8b056775e3
