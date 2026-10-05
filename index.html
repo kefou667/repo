@@ -1,1868 +1,1100 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>kefou · iOS Repository</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Segoe UI",
+        sans-serif;
+
+      color: #17171a;
+
+      background:
+        radial-gradient(
+          circle at 20% 0%,
+          rgba(115, 88, 255, 0.16),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(60, 120, 255, 0.14),
+          transparent 32%
+        ),
+        #f6f7fb;
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+      min-height: 100vh;
+    }
 
-<meta
-  name="theme-color"
-  content="#f5f6ff"
->
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      width: 300px;
+      height: 300px;
+      border-radius: 999px;
+      filter: blur(75px);
+      pointer-events: none;
+    }
 
-<meta
-  name="description"
-  content="kefou · Personal iOS Rootless Repository"
->
+    body::before {
+      left: -120px;
+      top: 20%;
+      background: rgba(70, 140, 255, .13);
+    }
 
-<title>kefou · iOS Repository</title>
+    body::after {
+      right: -130px;
+      top: 55%;
+      background: rgba(125, 85, 255, .13);
+    }
 
-<style>
+    a {
+      color: inherit;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    .container {
+      width: min(100% - 32px, 1000px);
+      margin: auto;
+    }
 
-html {
-  scroll-behavior: smooth;
-}
+    /* =========================
+       Hero
+    ========================= */
 
-body {
+    .hero {
+      text-align: center;
+      padding: 72px 0 48px;
+    }
 
-  margin: 0;
+    .logo {
+      width: 108px;
+      height: 108px;
 
-  color: #17171a;
+      border-radius: 28px;
 
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "SF Pro Text",
-    "Segoe UI",
-    sans-serif;
+      object-fit: cover;
 
-  background:
+      box-shadow:
+        0 20px 50px rgba(70, 60, 140, 0.22),
+        0 0 0 7px rgba(255,255,255,.30),
+        inset 0 1px 0 rgba(255,255,255,.7);
 
-    radial-gradient(
-      circle at 10% -5%,
-      rgba(110, 85, 255, .20),
-      transparent 30%
-    ),
+      margin-bottom: 24px;
+    }
 
-    radial-gradient(
-      circle at 95% 5%,
-      rgba(55, 135, 255, .18),
-      transparent 30%
-    ),
+    .hero h1 {
+      margin: 0;
 
-    radial-gradient(
-      circle at 50% 55%,
-      rgba(170, 160, 255, .08),
-      transparent 38%
-    ),
+      font-size: clamp(42px, 8vw, 64px);
 
-    #f6f7fb;
+      font-weight: 800;
 
-  min-height: 100vh;
-}
+      letter-spacing: -2px;
+    }
 
-a {
-  color: inherit;
-}
+    .tagline {
+      margin-top: 12px;
 
-.container {
+      color: #6f7078;
 
-  width:
-    min(
-      calc(100% - 32px),
-      1040px
-    );
+      font-size: 18px;
+    }
 
-  margin: auto;
-}
+    .badge {
+      display: inline-flex;
 
+      margin-top: 18px;
 
-/* =========================================================
-   顶部导航
-========================================================= */
+      padding: 7px 13px;
 
-.topbar {
+      border-radius: 999px;
 
-  position: sticky;
+      background: rgba(255,255,255,.8);
 
-  top: 12px;
+      border: 1px solid rgba(0,0,0,.06);
 
-  z-index: 50;
+      color: #5d5e67;
 
-  width:
-    min(
-      calc(100% - 32px),
-      1040px
-    );
+      font-size: 13px;
 
-  margin: 12px auto 0;
+      font-weight: 600;
+    }
 
-  padding: 9px 11px;
+    /* =========================
+       Buttons
+    ========================= */
 
-  display: flex;
+    .buttons {
+      display: flex;
 
-  align-items: center;
+      justify-content: center;
 
-  justify-content: space-between;
+      gap: 12px;
 
-  gap: 10px;
+      flex-wrap: wrap;
 
-  background:
-    rgba(255,255,255,.70);
+      margin-top: 28px;
+    }
 
-  border:
-    1px solid rgba(255,255,255,.85);
+    .button {
+      display: inline-flex;
 
-  border-radius: 18px;
+      align-items: center;
 
-  box-shadow:
-    0 10px 35px rgba(35,35,70,.08);
+      justify-content: center;
 
-  backdrop-filter:
-    blur(22px);
+      min-height: 46px;
 
-  -webkit-backdrop-filter:
-    blur(22px);
-}
+      padding: 0 20px;
 
-.brand {
+      border-radius: 16px;
 
-  display: flex;
+      text-decoration: none;
 
-  align-items: center;
+      font-size: 15px;
 
-  gap: 9px;
+      font-weight: 700;
 
-  text-decoration: none;
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
 
-  font-weight: 800;
+    .button:hover {
+      transform: translateY(-2px);
+    }
 
-  font-size: 15px;
-}
+    .button.primary {
+      background: #17171a;
 
-.brand img {
+      color: white;
 
-  width: 34px;
-  height: 34px;
+      box-shadow:
+        0 10px 25px rgba(0,0,0,.15);
+    }
 
-  border-radius: 10px;
+    .button.secondary {
+      background: rgba(255,255,255,.85);
 
-  object-fit: cover;
+      border: 1px solid rgba(0,0,0,.07);
+    }
 
-  box-shadow:
-    0 5px 14px rgba(50,50,120,.14);
-}
+    /* =========================
+       Cards
+    ========================= */
 
-.nav-links {
+    .card {
+      background: rgba(255,255,255,.58);
 
-  display: flex;
+      backdrop-filter: blur(28px) saturate(140%);
+      -webkit-backdrop-filter: blur(28px) saturate(140%);
 
-  align-items: center;
+      border: 1px solid rgba(255,255,255,.72);
 
-  gap: 4px;
-}
+      border-radius: 28px;
 
-.nav-links a {
+      padding: 28px;
 
-  padding:
-    8px 11px;
+      margin-bottom: 20px;
 
-  border-radius: 10px;
+      box-shadow:
+        0 18px 55px rgba(30,30,60,.08),
+        inset 0 1px 0 rgba(255,255,255,.82);
+    }
 
-  color: #656771;
+    .card-title {
+      display: flex;
 
-  text-decoration: none;
+      align-items: center;
 
-  font-size: 13px;
+      justify-content: space-between;
 
-  font-weight: 650;
+      gap: 12px;
 
-  transition:
-    background .18s ease,
-    color .18s ease;
-}
+      margin-bottom: 20px;
+    }
 
-.nav-links a:hover {
+    .card-title h2 {
+      margin: 0;
 
-  background:
-    rgba(0,0,0,.055);
+      font-size: 21px;
+    }
 
-  color: #17171a;
-}
+    .card-title a {
+      color: #777985;
 
+      text-decoration: none;
 
-/* =========================================================
-   Hero
-========================================================= */
+      font-size: 14px;
+    }
 
-.hero {
+    /* =========================
+       Source URL
+    ========================= */
 
-  position: relative;
+    .source-box {
+      display: flex;
 
-  text-align: center;
+      align-items: center;
 
-  padding:
-    72px 0 55px;
-}
+      gap: 10px;
 
-.hero-glow {
+      background: #f3f4f7;
 
-  position: absolute;
+      border-radius: 14px;
 
-  left: 50%;
+      padding: 5px;
 
-  top: 60px;
+      margin-top: 15px;
+    }
 
-  width: 300px;
-  height: 190px;
+    .source-url {
+      flex: 1;
 
-  transform:
-    translateX(-50%);
+      padding: 11px;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(105,82,255,.20),
-      rgba(55,135,255,.15)
-    );
+      overflow: hidden;
 
-  filter:
-    blur(55px);
+      text-overflow: ellipsis;
 
-  border-radius: 50%;
+      white-space: nowrap;
 
-  pointer-events: none;
+      font-family: monospace;
 
-  z-index: -1;
-}
+      font-size: 13px;
 
-.logo {
+      color: #555660;
+    }
 
-  width: 112px;
-  height: 112px;
+    .copy-button {
+      border: 0;
 
-  border-radius: 30px;
+      border-radius: 10px;
 
-  object-fit: cover;
+      padding: 10px 13px;
 
-  margin-bottom: 22px;
+      background: white;
 
-  box-shadow:
-    0 22px 55px rgba(75,65,160,.22),
-    0 4px 12px rgba(0,0,0,.06);
-}
+      cursor: pointer;
 
-.hero h1 {
+      font-weight: 700;
+    }
 
-  margin: 0;
+    /* =========================
+       Stats
+    ========================= */
 
-  font-size:
-    clamp(44px, 8vw, 68px);
+    .stats {
+      display: grid;
 
-  line-height: 1;
+      grid-template-columns:
+        repeat(3, 1fr);
 
-  font-weight: 850;
+      gap: 12px;
+    }
 
-  letter-spacing: -3px;
-}
+    .stat {
+      text-align: center;
 
-.tagline {
+      background: #f5f6f9;
 
-  margin-top: 14px;
+      border-radius: 18px;
 
-  color: #73747d;
+      padding: 20px 10px;
+    }
 
-  font-size: 17px;
-}
+    .stat-number {
+      font-size: 28px;
 
-.hero-description {
+      font-weight: 800;
+    }
 
-  max-width: 570px;
+    .stat-label {
+      margin-top: 4px;
 
-  margin:
-    14px auto 0;
+      color: #7b7c84;
 
-  padding: 0 12px;
+      font-size: 13px;
+    }
 
-  color: #858690;
+    /* =========================
+       News
+    ========================= */
 
-  font-size: 14px;
+    .news-item {
+      padding: 16px 0;
 
-  line-height: 1.7;
-}
+      border-bottom:
+        1px solid #eeeeF1;
+    }
 
-.badge {
+    .news-item:last-child {
+      border-bottom: none;
+    }
 
-  display: inline-flex;
+    .news-title {
+      font-weight: 750;
 
-  align-items: center;
+      font-size: 17px;
+    }
 
-  margin-top: 18px;
+    .news-date {
+      margin-top: 5px;
 
-  padding:
-    8px 13px;
+      color: #9697a0;
 
-  border-radius: 999px;
+      font-size: 12px;
+    }
 
-  background:
-    rgba(255,255,255,.80);
+    .news-description {
+      margin-top: 8px;
 
-  border:
-    1px solid rgba(0,0,0,.055);
+      color: #666771;
 
-  box-shadow:
-    0 7px 20px rgba(30,30,70,.05);
+      line-height: 1.6;
 
-  color: #5d5f68;
+      font-size: 14px;
+    }
 
-  font-size: 13px;
+    /* =========================
+       Packages · horizontal glass carousel
+    ========================= */
 
-  font-weight: 700;
-}
+    .package-scroller {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 3px 2px 10px;
+      margin: 0 -2px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
 
+    .package-scroller::-webkit-scrollbar {
+      display: none;
+    }
 
-/* =========================================================
-   按钮
-========================================================= */
+    .package {
+      flex: 0 0 235px;
+      min-height: 155px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px;
+      border-radius: 24px;
+      text-decoration: none;
+      color: inherit;
+      background: linear-gradient(145deg, rgba(255,255,255,.78), rgba(245,247,252,.52));
+      border: 1px solid rgba(255,255,255,.82);
+      box-shadow: 0 12px 30px rgba(40,45,90,.08), inset 0 1px 0 rgba(255,255,255,.92);
+      scroll-snap-align: start;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
 
-.buttons {
+    .package:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 38px rgba(40,45,90,.12), inset 0 1px 0 rgba(255,255,255,.95);
+    }
 
-  display: flex;
+    .package-top {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  justify-content: center;
+    .package-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 17px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #eee;
+      box-shadow: 0 7px 18px rgba(30,35,70,.12);
+    }
 
-  flex-wrap: wrap;
+    .package-version {
+      margin-left: auto;
+      color: #777985;
+      font-size: 12px;
+      white-space: nowrap;
+    }
 
-  gap: 10px;
+    .package-info {
+      width: 100%;
+      min-width: 0;
+    }
 
-  margin-top: 27px;
-}
+    .package-name {
+      font-size: 17px;
+      font-weight: 750;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-.button {
+    .package-id {
+      margin-top: 5px;
+      color: #8a8b93;
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-  display: inline-flex;
+    .package-open {
+      color: #85868e;
+      font-size: 12px;
+      font-weight: 650;
+    }
 
-  align-items: center;
+    .scroll-hint {
+      margin-top: 10px;
+      color: #999aa2;
+      text-align: right;
+      font-size: 11px;
+    }
 
-  justify-content: center;
+    /* =========================
+       Info
+    ========================= */
 
-  min-height: 46px;
+    .info-grid {
+      display: grid;
 
-  padding:
-    0 18px;
+      grid-template-columns:
+        repeat(2, 1fr);
 
-  border-radius: 14px;
+      gap: 12px;
+    }
 
-  text-decoration: none;
+    .info {
+      padding: 15px;
 
-  font-size: 14px;
+      border-radius: 16px;
 
-  font-weight: 750;
+      background: #f5f6f9;
+    }
 
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease,
-    background .18s ease;
-}
+    .info-label {
+      color: #8b8c94;
 
-.button:hover {
+      font-size: 12px;
+    }
 
-  transform:
-    translateY(-2px);
-}
+    .info-value {
+      margin-top: 5px;
 
-.button.primary {
+      font-size: 14px;
 
-  color: white;
+      font-weight: 650;
 
-  background:
-    linear-gradient(
-      135deg,
-      #17181c,
-      #30313a
-    );
+      word-break: break-word;
+    }
 
-  box-shadow:
-    0 12px 25px rgba(20,20,25,.17);
-}
+    /* =========================
+       Footer
+    ========================= */
 
-.button.secondary {
+    footer {
+      text-align: center;
 
-  background:
-    rgba(255,255,255,.82);
+      padding: 30px 0 55px;
 
-  border:
-    1px solid rgba(0,0,0,.065);
+      color: #999aa2;
 
-  box-shadow:
-    0 7px 20px rgba(30,30,70,.045);
-}
+      font-size: 13px;
+    }
 
-.button.secondary:hover {
+    /* =========================
+       Mobile
+    ========================= */
 
-  background:
-    #ffffff;
-}
+    @media (max-width: 650px) {
 
+      .hero {
+        padding-top: 50px;
+      }
 
-/* =========================================================
-   卡片
-========================================================= */
+      .card {
+        padding: 20px 17px;
 
-.card {
+        border-radius: 25px;
+      }
 
-  position: relative;
+      .stats {
+        grid-template-columns:
+          1fr 1fr 1fr;
+      }
 
-  overflow: hidden;
+      .stat-number {
+        font-size: 23px;
+      }
 
-  padding: 27px;
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
 
-  margin-bottom: 18px;
+      .package {
+        flex-basis: 225px;
+      }
 
-  border-radius: 26px;
+      .source-box {
+        display: block;
 
-  background:
-    rgba(255,255,255,.78);
+        padding: 5px;
+      }
 
-  border:
-    1px solid rgba(255,255,255,.85);
+      .source-url {
+        display: block;
 
-  box-shadow:
-    0 18px 55px rgba(48,45,100,.08);
+        padding: 11px;
+      }
 
-  backdrop-filter:
-    blur(22px);
+      .copy-button {
+        width: 100%;
 
-  -webkit-backdrop-filter:
-    blur(22px);
-}
+        margin-bottom: 4px;
+      }
 
-.card::before {
+    }
 
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  top: 0;
-
-  height: 1px;
-
-  background:
-    rgba(255,255,255,.95);
-}
-
-.card-title {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 12px;
-
-  margin-bottom: 18px;
-}
-
-.card-title h2 {
-
-  margin: 0;
-
-  font-size: 20px;
-
-  letter-spacing: -.3px;
-}
-
-.card-title a {
-
-  color: #6754f6;
-
-  text-decoration: none;
-
-  font-size: 13px;
-
-  font-weight: 700;
-}
-
-.card-description {
-
-  color: #737580;
-
-  font-size: 14px;
-
-  line-height: 1.7;
-}
-
-
-/* =========================================================
-   软件源
-========================================================= */
-
-.source-box {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  margin-top: 15px;
-
-  padding: 5px;
-
-  background:
-    #f3f4f8;
-
-  border:
-    1px solid rgba(0,0,0,.035);
-
-  border-radius: 15px;
-}
-
-.source-url {
-
-  flex: 1;
-
-  min-width: 0;
-
-  padding: 11px;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace;
-
-  font-size: 13px;
-
-  color: #555864;
-}
-
-.copy-button {
-
-  border: 0;
-
-  border-radius: 11px;
-
-  padding:
-    10px 14px;
-
-  background:
-    white;
-
-  color: #292b31;
-
-  cursor: pointer;
-
-  font-weight: 750;
-
-  box-shadow:
-    0 3px 10px rgba(0,0,0,.05);
-}
-
-.copy-button:hover {
-
-  background:
-    #fafafa;
-}
-
-
-/* =========================================================
-   统计
-========================================================= */
-
-.stats {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 12px;
-}
-
-.stat {
-
-  text-align: center;
-
-  padding:
-    21px 10px;
-
-  border-radius: 19px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f8f9fc,
-      #f1f2f6
-    );
-
-  border:
-    1px solid rgba(0,0,0,.035);
-}
-
-.stat-number {
-
-  font-size: 27px;
-
-  font-weight: 850;
-
-  letter-spacing: -.7px;
-}
-
-.stat-label {
-
-  margin-top: 5px;
-
-  color: #858792;
-
-  font-size: 12px;
-}
-
-
-/* =========================================================
-   News
-========================================================= */
-
-.news-item {
-
-  padding:
-    17px 4px;
-
-  border-bottom:
-    1px solid rgba(20,24,40,.07);
-}
-
-.news-item:last-child {
-
-  border-bottom: none;
-}
-
-.news-title {
-
-  font-size: 16px;
-
-  font-weight: 780;
-}
-
-.news-date {
-
-  margin-top: 5px;
-
-  color: #a0a2ab;
-
-  font-size: 12px;
-}
-
-.news-description {
-
-  margin-top: 8px;
-
-  color: #6b6d77;
-
-  line-height: 1.65;
-
-  font-size: 14px;
-}
-
-
-/* =========================================================
-   软件包
-========================================================= */
-
-.package {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 14px;
-
-  padding:
-    13px 6px;
-
-  border-bottom:
-    1px solid rgba(20,24,40,.07);
-
-  border-radius: 15px;
-
-  transition:
-    background .16s ease,
-    transform .16s ease;
-}
-
-.package:hover {
-
-  background:
-    rgba(245,246,250,.85);
-
-  transform:
-    translateX(3px);
-}
-
-.package:last-child {
-
-  border-bottom: none;
-}
-
-.package-icon {
-
-  width: 52px;
-  height: 52px;
-
-  border-radius: 14px;
-
-  object-fit: cover;
-
-  flex-shrink: 0;
-
-  background:
-    #eeeeF3;
-
-  box-shadow:
-    0 5px 14px rgba(0,0,0,.07);
-}
-
-.package-info {
-
-  min-width: 0;
-
-  flex: 1;
-}
-
-.package-name {
-
-  font-size: 15px;
-
-  font-weight: 750;
-
-  white-space: nowrap;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-}
-
-.package-id {
-
-  margin-top: 4px;
-
-  color: #9698a2;
-
-  font-size: 12px;
-
-  white-space: nowrap;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-}
-
-.package-version {
-
-  padding-left: 8px;
-
-  color: #777985;
-
-  font-size: 12px;
-
-  white-space: nowrap;
-}
-
-
-/* =========================================================
-   Repository 信息
-========================================================= */
-
-.info-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, 1fr);
-
-  gap: 11px;
-}
-
-.info {
-
-  padding:
-    15px 16px;
-
-  border-radius: 16px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f8f9fc,
-      #f1f2f6
-    );
-
-  border:
-    1px solid rgba(0,0,0,.035);
-}
-
-.info-label {
-
-  color: #90929c;
-
-  font-size: 12px;
-}
-
-.info-value {
-
-  margin-top: 5px;
-
-  font-size: 14px;
-
-  font-weight: 700;
-
-  word-break: break-word;
-}
-
-
-/* =========================================================
-   Footer
-========================================================= */
-
-footer {
-
-  text-align: center;
-
-  padding:
-    27px 0 58px;
-
-  color: #a0a2ab;
-
-  font-size: 12px;
-
-  line-height: 1.8;
-}
-
-footer a {
-
-  color: #6754f6;
-
-  text-decoration: none;
-}
-
-
-/* =========================================================
-   手机端
-========================================================= */
-
-@media (max-width: 650px) {
-
-  .container {
-
-    width:
-      calc(100% - 20px);
-  }
-
-  .topbar {
-
-    width:
-      calc(100% - 20px);
-
-    top: 8px;
-
-    margin-top: 8px;
-  }
-
-  .nav-links a:nth-child(n+3) {
-
-    display: none;
-  }
-
-  .hero {
-
-    padding:
-      55px 0 42px;
-  }
-
-  .logo {
-
-    width: 96px;
-    height: 96px;
-
-    border-radius: 25px;
-  }
-
-  .hero h1 {
-
-    font-size: 48px;
-  }
-
-  .card {
-
-    padding:
-      21px 18px;
-
-    border-radius: 21px;
-  }
-
-  .stats {
-
-    gap: 8px;
-  }
-
-  .stat {
-
-    padding:
-      18px 6px;
-  }
-
-  .stat-number {
-
-    font-size: 21px;
-  }
-
-  .info-grid {
-
-    grid-template-columns: 1fr;
-  }
-
-  .source-box {
-
-    display: block;
-  }
-
-  .source-url {
-
-    display: block;
-  }
-
-  .copy-button {
-
-    width: 100%;
-
-    margin-bottom: 3px;
-  }
-
-}
-
-
-/* =========================================================
-   更小屏幕
-========================================================= */
-
-@media (max-width: 420px) {
-
-  .hero h1 {
-
-    font-size: 43px;
-  }
-
-  .buttons {
-
-    gap: 8px;
-  }
-
-  .button {
-
-    min-height: 43px;
-
-    padding:
-      0 14px;
-
-    font-size: 13px;
-  }
-
-  .package-version {
-
-    display: none;
-  }
-
-}
-
-</style>
+  </style>
 </head>
-
 
 <body>
 
+  <div class="container">
 
-<!-- =======================================================
-     顶部导航
-======================================================= -->
+    <!-- Hero -->
 
-<nav class="topbar">
+    <header class="hero">
+
+      <img
+        class="logo"
+        src="icons/default.png"
+        alt="kefou"
+      >
+
+      <h1>kefou</h1>
+
+      <div class="tagline">
+        Personal iOS Repository
+      </div>
+
+      <div class="badge">
+         Rootless · iOS / iPadOS
+      </div>
+
+      <div class="buttons">
 
   <a
-    class="brand"
-    href="./"
+    class="button primary"
+    href="sileo://source/https://repo.xxtt.pp.ua"
   >
-
-    <img
-      src="icons/default.png"
-      alt=""
-    >
-
-    <span>
-      kefou
-    </span>
-
+    ＋ 添加到 Sileo
   </a>
 
-
-  <div class="nav-links">
-
-    <a href="#source">
-      源
-    </a>
-
-    <a href="#packages">
-      软件包
-    </a>
-
-    <a href="news/">
-      News
-    </a>
-
-    <a
-      href="https://kekezw.nyc.mn/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      博客
-    </a>
-
-  </div>
-
-</nav>
-
-
-<div class="container">
-
-
-<!-- =======================================================
-     Hero
-======================================================= -->
-
-<header class="hero">
-
-  <div class="hero-glow"></div>
-
-
-  <img
-    class="logo"
-    src="icons/default.png"
-    alt="kefou"
+  <a
+    class="button secondary"
+    href="news/"
   >
-
-
-  <h1>
-    kefou
-  </h1>
-
-
-  <div class="tagline">
-    Personal iOS Repository
-  </div>
-
-
-  <div class="hero-description">
-
-    一个专注于 iOS / iPadOS Rootless 环境的软件源，
-    分享实用插件与个人折腾记录。
-
-  </div>
-
-
-  <div class="badge">
-
-     Rootless · iOS / iPadOS
-
-  </div>
-
-
-  <div class="buttons">
-
-
-    <a
-      class="button primary"
-      href="sileo://source/https://repo.xxtt.pp.ua"
-    >
-      ＋ 添加到 Sileo
-    </a>
-
-
-    <a
-      class="button secondary"
-      href="news/"
-    >
-      📰 News
-    </a>
-
-
-    <a
-      class="button secondary"
-      href="https://kekezw.nyc.mn/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      📝 博客
-    </a>
-
-
-    <a
-      class="button secondary"
-      href="https://github.com/kefou667"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      GitHub
-    </a>
-
-
-  </div>
-
-</header>
-
-
-<!-- =======================================================
-     软件源
-======================================================= -->
-
-<section
-  class="card"
-  id="source"
->
-
-  <div class="card-title">
-
-    <h2>
-      📦 软件源
-    </h2>
-
-    <span
-      style="
-        font-size:12px;
-        color:#999aa3;
-      "
-    >
-      ROOTLESS
-    </span>
-
-  </div>
-
-
-  <div class="card-description">
-
-    将下面的地址添加到 Sileo，
-    即可获取本源软件包。
-
-  </div>
-
-
-  <div class="source-box">
-
-
-    <div
-      class="source-url"
-      id="source-url"
-    >
-      https://repo.xxtt.pp.ua
-    </div>
-
-
-    <button
-      class="copy-button"
-      onclick="copySource()"
-    >
-      复制
-    </button>
-
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     源信息
-======================================================= -->
-
-<section class="card">
-
-  <div class="card-title">
-
-    <h2>
-      📊 源信息
-    </h2>
-
-  </div>
-
-
-  <div class="stats">
-
-
-    <div class="stat">
-
-      <div
-        class="stat-number"
-        id="package-count"
-      >
-        —
-      </div>
-
-      <div class="stat-label">
-        软件包
-      </div>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-number">
-        Rootless
-      </div>
-
-      <div class="stat-label">
-        架构
-      </div>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="stat-number">
-        iOS
-      </div>
-
-      <div class="stat-label">
-        平台
-      </div>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     News
-======================================================= -->
-
-<section class="card">
-
-  <div class="card-title">
-
-    <h2>
-      📰 最新动态
-    </h2>
-
-    <a href="news/">
-      查看全部 →
-    </a>
-
-  </div>
-
-
-  <div id="news">
-    正在加载……
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     Packages
-======================================================= -->
-
-<section
-  class="card"
-  id="packages"
->
-
-  <div class="card-title">
-
-    <h2>
-      ✨ 最新软件包
-    </h2>
-
-    <span
-      style="
-        font-size:12px;
-        color:#999aa3;
-      "
-    >
-      LATEST
-    </span>
-
-  </div>
-
-
-  <div id="package-list">
-    正在加载……
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     Blog
-======================================================= -->
-
-<section class="card">
-
-  <div class="card-title">
-
-    <h2>
-      📝 我的博客
-    </h2>
-
-    <a
-      href="https://kekezw.nyc.mn/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      查看博客 →
-    </a>
-
-  </div>
-
-
-  <div
-    style="
-      display:flex;
-      align-items:center;
-      gap:16px;
-    "
+    📰 News
+  </a>
+
+  <a
+    class="button secondary"
+    href="https://kekezw.nyc.mn/"
+    target="_blank"
+    rel="noopener noreferrer"
   >
+    📝 博客
+  </a>
 
-
-    <div
-      style="
-        width:58px;
-        height:58px;
-        flex-shrink:0;
-        display:grid;
-        place-items:center;
-        border-radius:17px;
-        background:
-          linear-gradient(
-            135deg,
-            #765df5,
-            #4388f7
-          );
-        color:white;
-        font-size:27px;
-        box-shadow:
-          0 10px 24px
-          rgba(85,75,190,.20);
-      "
-    >
-      📝
-    </div>
-
-
-    <div
-      style="
-        flex:1;
-        min-width:0;
-      "
-    >
-
-      <div
-        style="
-          font-size:17px;
-          font-weight:800;
-        "
-      >
-        文章 - kefou
-      </div>
-
-
-      <div
-        style="
-          margin-top:5px;
-          color:#7b7d87;
-          font-size:13px;
-          line-height:1.55;
-        "
-      >
-        分享 iOS、越狱、软件源以及一些折腾记录。
-      </div>
-
-    </div>
-
-
-    <a
-      class="button secondary"
-      href="https://kekezw.nyc.mn/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      阅读
-    </a>
-
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     Repository
-======================================================= -->
-
-<section class="card">
-
-  <div class="card-title">
-
-    <h2>
-      ℹ️ Repository
-    </h2>
-
-  </div>
-
-
-  <div class="info-grid">
-
-
-    <div class="info">
-
-      <div class="info-label">
-        名称
-      </div>
-
-      <div class="info-value">
-        kefou
-      </div>
-
-    </div>
-
-
-    <div class="info">
-
-      <div class="info-label">
-        Identifier
-      </div>
-
-      <div class="info-value">
-        com.kefou.repo
-      </div>
-
-    </div>
-
-
-    <div class="info">
-
-      <div class="info-label">
-        类型
-      </div>
-
-      <div class="info-value">
-        Rootless Repository
-      </div>
-
-    </div>
-
-
-    <div class="info">
-
-      <div class="info-label">
-        GitHub
-      </div>
-
-      <div class="info-value">
-        github.com/kefou667
-      </div>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     Footer
-======================================================= -->
-
-<footer>
-
-  <div>
-    © 2026 kefou
-  </div>
-
-  <div>
-
-    Powered by
-
-    <a
-      href="https://github.com/kefou667/repo"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      GitHub Pages
-    </a>
-
-    ·
-
-    <a
-      href="https://github.com/kefou667"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      GitHub
-    </a>
-
-  </div>
-
-</footer>
-
+  <a
+    class="button secondary"
+    href="https://github.com/kefou667"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    GitHub
+  </a>
 
 </div>
 
-
-<script>
-
-/* =========================================================
-   源地址
-========================================================= */
-
-const SOURCE_URL =
-  "https://repo.xxtt.pp.ua";
+    </header>
 
 
-/* =========================================================
-   复制源地址
-========================================================= */
+    <!-- Source -->
 
-function copySource() {
+    <section class="card">
 
-  navigator.clipboard
+      <div class="card-title">
 
-    .writeText(SOURCE_URL)
+        <h2>📦 软件源</h2>
 
-    .then(() => {
+      </div>
 
-      const button =
-        document.querySelector(
-          ".copy-button"
-        );
+      <div>
+        将下面的地址添加到 Sileo，即可获取本源软件包。
+      </div>
 
-      button.textContent =
-        "已复制 ✓";
+      <div class="source-box">
 
+        <div
+          class="source-url"
+          id="source-url"
+        >
+          https://repo.xxtt.pp.ua
+        </div>
 
-      setTimeout(() => {
+        <button
+          class="copy-button"
+          onclick="copySource()"
+        >
+          复制
+        </button>
 
-        button.textContent =
-          "复制";
+      </div>
 
-      }, 1800);
-
-    })
-
-    .catch(() => {
-
-      const button =
-        document.querySelector(
-          ".copy-button"
-        );
-
-      button.textContent =
-        "复制失败";
+    </section>
 
 
-      setTimeout(() => {
+    <!-- Stats -->
 
-        button.textContent =
-          "复制";
+    <section class="card">
 
-      }, 1800);
+      <div class="card-title">
 
-    });
+        <h2>📊 源信息</h2>
 
-}
+      </div>
+
+      <div class="stats">
+
+        <div class="stat">
+
+          <div
+            class="stat-number"
+            id="package-count"
+          >
+            —
+          </div>
+
+          <div class="stat-label">
+            软件包
+          </div>
+
+        </div>
+
+        <div class="stat">
+
+          <div class="stat-number">
+            Rootless
+          </div>
+
+          <div class="stat-label">
+            架构
+          </div>
+
+        </div>
+
+        <div class="stat">
+
+          <div class="stat-number">
+            iOS
+          </div>
+
+          <div class="stat-label">
+            平台
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
 
 
-/* =========================================================
-   News
-========================================================= */
+    <!-- News -->
 
-fetch("news.json")
+    <section class="card">
 
-  .then(response =>
-    response.json()
-  )
+      <div class="card-title">
 
-  .then(news => {
+        <h2>📰 最新动态</h2>
 
-    const container =
-      document.getElementById(
-        "news"
-      );
+        <a href="news/">
+          查看全部 →
+        </a>
+
+      </div>
+
+      <div id="news">
+        正在加载……
+      </div>
+
+    </section>
 
 
-    if (!news.length) {
+    <!-- Packages -->
 
-      container.innerHTML =
-        "暂无新闻";
+    <section class="card">
 
-      return;
+      <div class="card-title">
+
+        <h2>✨ 最新软件包</h2>
+
+      </div>
+
+      <div id="packages">
+        正在加载……
+      </div>
+
+      <div class="scroll-hint">
+        ← 左右滑动浏览软件包 →
+      </div>
+
+    </section>
+
+
+    <!-- Repository Info -->
+
+    <section class="card">
+
+      <div class="card-title">
+
+        <h2>ℹ️ Repository</h2>
+
+      </div>
+
+      <div class="info-grid">
+
+        <div class="info">
+
+          <div class="info-label">
+            名称
+          </div>
+
+          <div class="info-value">
+            kefou
+          </div>
+
+        </div>
+
+        <div class="info">
+
+          <div class="info-label">
+            Identifier
+          </div>
+
+          <div class="info-value">
+            com.kefou.repo
+          </div>
+
+        </div>
+
+        <div class="info">
+
+          <div class="info-label">
+            类型
+          </div>
+
+          <div class="info-value">
+            Rootless Repository
+          </div>
+
+        </div>
+
+        <div class="info">
+
+          <div class="info-label">
+            GitHub
+          </div>
+
+          <div class="info-value">
+            github.com/kefou667
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+      © 2026 kefou · Powered by GitHub Pages
+    </footer>
+
+  </div>
+
+
+  <script>
+
+    const SOURCE_URL =
+      "https://repo.xxtt.pp.ua";
+
+
+    /* =========================
+       Copy Source
+    ========================= */
+
+    function copySource() {
+
+      navigator.clipboard
+        .writeText(SOURCE_URL)
+        .then(() => {
+
+          const button =
+            document.querySelector(".copy-button");
+
+          button.textContent = "已复制 ✓";
+
+          setTimeout(() => {
+
+            button.textContent = "复制";
+
+          }, 1800);
+
+        });
+
     }
 
 
-    container.innerHTML =
+    /* =========================
+       Load News
+    ========================= */
 
-      news
+    fetch("news.json")
 
-        .slice(0, 3)
+      .then(response => response.json())
 
-        .map(item => `
+      .then(news => {
 
-          <div class="news-item">
+        const container =
+          document.getElementById("news");
 
-            <div class="news-title">
-              ${escapeHTML(item.title)}
-            </div>
+        if (!news.length) {
 
-            <div class="news-date">
-              ${escapeHTML(item.date)}
-            </div>
+          container.innerHTML =
+            "暂无新闻";
 
-            <div class="news-description">
-              ${escapeHTML(item.description)}
-            </div>
+          return;
+
+        }
+
+        container.innerHTML =
+          news
+            .slice(0, 3)
+            .map(item => `
+
+              <div class="news-item">
+
+                <div class="news-title">
+                  ${escapeHTML(item.title)}
+                </div>
+
+                <div class="news-date">
+                  ${escapeHTML(item.date)}
+                </div>
+
+                <div class="news-description">
+                  ${escapeHTML(item.description)}
+                </div>
+
+              </div>
+
+            `)
+            .join("");
+
+      })
+
+      .catch(() => {
+
+        document.getElementById("news")
+          .innerHTML =
+          "暂无新闻";
+
+      });
+
+
+    /* =========================
+       Load Packages
+    ========================= */
+
+    fetch("Packages")
+
+      .then(response => response.text())
+
+      .then(text => {
+
+        const blocks =
+          text
+            .split(/\n\n+/)
+            .filter(block =>
+              block.includes("Package:")
+            );
+
+        document.getElementById(
+          "package-count"
+        ).textContent =
+          blocks.length;
+
+
+        const container =
+          document.getElementById("packages");
+
+
+        if (!blocks.length) {
+
+          container.innerHTML =
+            "暂无软件包";
+
+          return;
+
+        }
+
+
+        container.innerHTML = `
+
+          <div class="package-scroller">
+
+            ${
+              blocks
+                .slice(-5)
+                .reverse()
+                .map(block => {
+
+                  const get = key => {
+
+                    const match =
+                      block.match(
+                        new RegExp(
+                          "^" +
+                          key +
+                          ":\s*(.*)$",
+                          "m"
+                        )
+                      );
+
+                    return match
+                      ? match[1].trim()
+                      : "";
+
+                  };
+
+                  const pkg = get("Package");
+                  const name = get("Name") || pkg;
+                  const version = get("Version");
+                  const icon = get("Icon") || "icons/default.png";
+
+                  return `
+
+                    <a
+                      class="package"
+                      href="depictions/${encodeURIComponent(pkg)}.html"
+                    >
+
+                      <div class="package-top">
+
+                        <img
+                          class="package-icon"
+                          src="${escapeAttr(icon)}"
+                          onerror="this.src='icons/default.png'"
+                          alt=""
+                        >
+
+                        <div class="package-version">
+                          ${escapeHTML(version)}
+                        </div>
+
+                      </div>
+
+                      <div class="package-info">
+
+                        <div class="package-name">
+                          ${escapeHTML(name)}
+                        </div>
+
+                        <div class="package-id">
+                          ${escapeHTML(pkg)}
+                        </div>
+
+                      </div>
+
+                      <div class="package-open">
+                        查看详情 →
+                      </div>
+
+                    </a>
+
+                  `;
+
+                })
+                .join("")
+            }
 
           </div>
 
-        `)
+        `;
 
-        .join("");
+      })
 
-  })
+      .catch(() => {
 
-  .catch(() => {
+        document.getElementById("packages")
+          .innerHTML =
+          "暂时无法读取软件包信息";
 
-    document.getElementById(
-      "news"
-    ).innerHTML =
-      "暂无新闻";
-
-  });
+      });
 
 
-/* =========================================================
-   Packages
-========================================================= */
+    /* =========================
+       Safe HTML
+    ========================= */
 
-fetch("Packages")
+    function escapeHTML(value) {
 
-  .then(response =>
-    response.text()
-  )
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-  .then(text => {
-
-
-    const blocks =
-
-      text
-
-        .split(/\n\n+/)
-
-        .filter(block =>
-          block.includes(
-            "Package:"
-          )
-        );
-
-
-    document.getElementById(
-      "package-count"
-    ).textContent =
-      blocks.length;
-
-
-    const container =
-      document.getElementById(
-        "package-list"
-      );
-
-
-    if (!blocks.length) {
-
-      container.innerHTML =
-        "暂无软件包";
-
-      return;
     }
 
 
-    container.innerHTML =
+    function escapeAttr(value) {
 
-      blocks
+      return escapeHTML(value);
 
-        .slice(-5)
+    }
 
-        .reverse()
-
-        .map(block => {
-
-
-          const get = key => {
-
-            const match =
-              block.match(
-                new RegExp(
-                  "^" +
-                  key +
-                  ":\\s*(.*)$",
-                  "m"
-                )
-              );
-
-
-            return match
-              ? match[1].trim()
-              : "";
-
-          };
-
-
-          const pkg =
-            get("Package");
-
-
-          const name =
-            get("Name") ||
-            pkg;
-
-
-          const version =
-            get("Version");
-
-
-          const icon =
-            get("Icon") ||
-            "icons/default.png";
-
-
-          return `
-
-            <a
-              class="package"
-              href="depictions/${encodeURIComponent(pkg)}.html"
-              style="
-                text-decoration:none;
-                color:inherit;
-              "
-            >
-
-              <img
-                class="package-icon"
-                src="${escapeAttr(icon)}"
-                onerror="this.src='icons/default.png'"
-                alt=""
-              >
-
-
-              <div class="package-info">
-
-                <div class="package-name">
-                  ${escapeHTML(name)}
-                </div>
-
-                <div class="package-id">
-                  ${escapeHTML(pkg)}
-                </div>
-
-              </div>
-
-
-              <div class="package-version">
-                ${escapeHTML(version)}
-              </div>
-
-            </a>
-
-          `;
-
-        })
-
-        .join("");
-
-  })
-
-  .catch(() => {
-
-    document.getElementById(
-      "package-list"
-    ).innerHTML =
-      "暂时无法读取软件包信息";
-
-  });
-
-
-/* =========================================================
-   HTML 安全处理
-========================================================= */
-
-function escapeHTML(value) {
-
-  return String(value)
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
-
-}
-
-
-function escapeAttr(value) {
-
-  return escapeHTML(value);
-
-}
-
-</script>
+  </script>
 
 </body>
 </html>
