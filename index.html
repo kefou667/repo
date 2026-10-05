@@ -376,106 +376,157 @@
     }
 
     /* =========================
-       Packages · horizontal glass carousel
-    ========================= */
+   Packages · vertical glass list
+========================= */
 
-    .package-scroller {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      padding: 3px 2px 10px;
-      margin: 0 -2px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
+.package-scroller {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
-    .package-scroller::-webkit-scrollbar {
-      display: none;
-    }
+  max-height: 430px;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-    .package {
-      flex: 0 0 235px;
-      min-height: 155px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 18px;
-      border-radius: 24px;
-      text-decoration: none;
-      color: inherit;
-      background: linear-gradient(145deg, rgba(255,255,255,.78), rgba(245,247,252,.52));
-      border: 1px solid rgba(255,255,255,.82);
-      box-shadow: 0 12px 30px rgba(40,45,90,.08), inset 0 1px 0 rgba(255,255,255,.92);
-      scroll-snap-align: start;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
+  padding: 3px 5px 8px 2px;
+  margin: 0 -2px;
 
-    .package:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 38px rgba(40,45,90,.12), inset 0 1px 0 rgba(255,255,255,.95);
-    }
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
 
-    .package-top {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+.package-scroller::-webkit-scrollbar {
+  width: 6px;
+}
 
-    .package-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 17px;
-      object-fit: cover;
-      flex-shrink: 0;
-      background: #eee;
-      box-shadow: 0 7px 18px rgba(30,35,70,.12);
-    }
+.package-scroller::-webkit-scrollbar-track {
+  background: rgba(0,0,0,.04);
+  border-radius: 999px;
+}
 
-    .package-version {
-      margin-left: auto;
-      color: #777985;
-      font-size: 12px;
-      white-space: nowrap;
-    }
+.package-scroller::-webkit-scrollbar-thumb {
+  background: rgba(100,100,110,.22);
+  border-radius: 999px;
+}
 
-    .package-info {
-      width: 100%;
-      min-width: 0;
-    }
+.package {
+  width: 100%;
+  min-height: 82px;
 
-    .package-name {
-      font-size: 17px;
-      font-weight: 750;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  display: flex;
+  align-items: center;
+  gap: 14px;
 
-    .package-id {
-      margin-top: 5px;
-      color: #8a8b93;
-      font-size: 11px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  padding: 13px 15px;
 
-    .package-open {
-      color: #85868e;
-      font-size: 12px;
-      font-weight: 650;
-    }
+  border-radius: 20px;
 
-    .scroll-hint {
-      margin-top: 10px;
-      color: #999aa2;
-      text-align: right;
-      font-size: 11px;
-    }
+  text-decoration: none;
+  color: inherit;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.78),
+      rgba(245,247,252,.52)
+    );
+
+  border: 1px solid rgba(255,255,255,.82);
+
+  box-shadow:
+    0 8px 24px rgba(40,45,90,.07),
+    inset 0 1px 0 rgba(255,255,255,.92);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.package:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 13px 30px rgba(40,45,90,.11),
+    inset 0 1px 0 rgba(255,255,255,.95);
+}
+
+.package-top {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.package-icon {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 17px;
+
+  object-fit: cover;
+  flex-shrink: 0;
+
+  background: #eee;
+
+  box-shadow:
+    0 7px 18px rgba(30,35,70,.12);
+}
+
+.package-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.package-name {
+  font-size: 16px;
+  font-weight: 750;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.package-id {
+  margin-top: 5px;
+
+  color: #8a8b93;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.package-version {
+  margin-left: auto;
+
+  color: #777985;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+}
+
+.package-open {
+  color: #85868e;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  white-space: nowrap;
+}
+
+.scroll-hint {
+  margin-top: 10px;
+
+  color: #999aa2;
+
+  text-align: center;
+
+  font-size: 11px;
+}
 
     /* =========================
        Info
@@ -555,10 +606,6 @@
 
       .info-grid {
         grid-template-columns: 1fr;
-      }
-
-      .package {
-        flex-basis: 225px;
       }
 
       .source-box {
@@ -774,8 +821,8 @@
       </div>
 
       <div class="scroll-hint">
-        ← 左右滑动浏览软件包 →
-      </div>
+  ↕ 上下滑动查看更多软件包
+</div>
 
     </section>
 
@@ -980,86 +1027,80 @@
 
         container.innerHTML = `
 
-          <div class="package-scroller">
+  <div class="package-scroller">
 
-            ${
-              blocks
-                .slice(-5)
-                .reverse()
-                .map(block => {
+    ${
+      blocks
+        .reverse()
+        .map(block => {
 
-                  const get = key => {
+          const get = key => {
 
-                    const match =
-                      block.match(
-                        new RegExp(
-                          "^" +
-                          key +
-                          ":\s*(.*)$",
-                          "m"
-                        )
-                      );
+            const match =
+              block.match(
+                new RegExp(
+                  "^" +
+                  key +
+                  ":\\s*(.*)$",
+                  "m"
+                )
+              );
 
-                    return match
-                      ? match[1].trim()
-                      : "";
+            return match
+              ? match[1].trim()
+              : "";
+          };
 
-                  };
+          const pkg = get("Package");
+          const name = get("Name") || pkg;
+          const version = get("Version");
+          const icon = get("Icon") || "icons/default.png";
 
-                  const pkg = get("Package");
-                  const name = get("Name") || pkg;
-                  const version = get("Version");
-                  const icon = get("Icon") || "icons/default.png";
+          return `
 
-                  return `
+            <a
+              class="package"
+              href="depictions/${encodeURIComponent(pkg)}.html"
+            >
 
-                    <a
-                      class="package"
-                      href="depictions/${encodeURIComponent(pkg)}.html"
-                    >
+              <img
+                class="package-icon"
+                src="${escapeAttr(icon)}"
+                onerror="this.src='icons/default.png'"
+                alt=""
+              >
 
-                      <div class="package-top">
+              <div class="package-info">
 
-                        <img
-                          class="package-icon"
-                          src="${escapeAttr(icon)}"
-                          onerror="this.src='icons/default.png'"
-                          alt=""
-                        >
+                <div class="package-name">
+                  ${escapeHTML(name)}
+                </div>
 
-                        <div class="package-version">
-                          ${escapeHTML(version)}
-                        </div>
+                <div class="package-id">
+                  ${escapeHTML(pkg)}
+                </div>
 
-                      </div>
+              </div>
 
-                      <div class="package-info">
+              <div class="package-version">
+                ${escapeHTML(version)}
+              </div>
 
-                        <div class="package-name">
-                          ${escapeHTML(name)}
-                        </div>
+              <div class="package-open">
+                查看详情 →
+              </div>
 
-                        <div class="package-id">
-                          ${escapeHTML(pkg)}
-                        </div>
+            </a>
 
-                      </div>
+          `;
 
-                      <div class="package-open">
-                        查看详情 →
-                      </div>
+        })
+        .join("")
+    }
 
-                    </a>
+  </div>
 
-                  `;
-
-                })
-                .join("")
-            }
-
-          </div>
-
-        `;
+`;
 
       })
 
