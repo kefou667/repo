@@ -6,6 +6,18 @@
   "contact": "https://github.com/kefou667",
   "packages": [
     {
+      "name": "Actra",
+      "package": "com.mlgm.actra",
+      "version": "1.0",
+      "description": "手势与事件自动化工具",
+      "section": "Tweaks",
+      "author": {
+        "name": "mlgm"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.mlgm.actra.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/com.mlgm.actra.png"
+    },
+    {
       "name": "AppData",
       "package": "com.netskao.appdatas",
       "version": "1.4.4",

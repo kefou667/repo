@@ -1,3 +1,21 @@
+Package: com.mlgm.actra
+Name: Actra
+Version: 1.0
+Architecture: iphoneos-arm64e
+Description: 手势与事件自动化工具
+Maintainer: mlgm
+Author: mlgm
+Depiction: https://repo.xxtt.pp.ua//depictions/com.mlgm.actra.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.mlgm.actra.json
+Section: Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate, preferenceloader, com.opa334.altlist, uikittools, launchctl
+Conflicts: com.example.actra-plugin
+Icon: https://repo.xxtt.pp.ua//icons/com.mlgm.actra.png
+Filename: debs/Actra_1.0_iphoneos-arm64e.deb
+Size: 701172
+MD5sum: b7a0638a8f22e672a1ea484ed71f66ff
+SHA256: 22cd4516506fed21f35b7943b087c6dd08b0db9f608352e34bc2c9abf70cc6c3
+
 Package: com.netskao.appdatas
 Name: AppData
 Version: 1.4.4
