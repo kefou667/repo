@@ -740,3 +740,21 @@ Filename: debs/白名单注入之长按图标 (RootHide)_2.1_iphoneos-arm64e.deb
 Size: 5776
 MD5sum: e19a4d44b2b527ee39c3cb8b056775e3
 SHA256: de5f6cca02cb3c4918e6c62edf50725114def3c8a519e85bcdd81925859bc50c
+
+Package: com.fiore.calculatorhistory
+Name: 计算器添加历史按钮
+Version: 1.1.3
+Architecture: iphoneos-arm64e
+Description: 让自带计算器可以查看历史计算过程和结果。v1.1.3: 增加支持多步运算，修复重复运算符错误。
+Maintainer: Donato Fiore & lclrc
+Author: Donato Fiore
+Depiction: https://repo.xxtt.pp.ua//depictions/com.fiore.calculatorhistory.html
+Sileodepiction: https://repo.xxtt.pp.ua//depictions/com.fiore.calculatorhistory.json
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 13.0)
+Pre-Depends: rootless-compat (>= 0.9)
+Icon: https://repo.xxtt.pp.ua//icons/default.png
+Filename: debs/计算器添加历史按钮_1.1.3_iphoneos-arm64e.deb
+Size: 17752
+MD5sum: f631d1a1fe719f227d2bc24a9ca46795
+SHA256: cd5d714c112fe40be35c61b34445c58f553911e412d368e63316c85ac2af37cb

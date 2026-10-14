@@ -484,6 +484,18 @@
       },
       "depiction": "https://repo.xxtt.pp.ua//depictions/cn.zqbb.3dtouch.inject.roothide.html",
       "icon": "https://repo.xxtt.pp.ua//icons/default.png"
+    },
+    {
+      "name": "计算器添加历史按钮",
+      "package": "com.fiore.calculatorhistory",
+      "version": "1.1.3",
+      "description": "让自带计算器可以查看历史计算过程和结果。v1.1.3: 增加支持多步运算，修复重复运算符错误。",
+      "section": "Tweaks",
+      "author": {
+        "name": "Donato Fiore"
+      },
+      "depiction": "https://repo.xxtt.pp.ua//depictions/com.fiore.calculatorhistory.html",
+      "icon": "https://repo.xxtt.pp.ua//icons/default.png"
     }
   ]
 }
